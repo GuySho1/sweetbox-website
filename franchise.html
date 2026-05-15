@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>זכיינות · Sweet Box</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400;1,500&family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --blue: #A1D9FA; --blue-deep: #7BBCD6; --blue-soft: #EBF6FE;
+  --ink: #0F0F0F; --ink-soft: #444; --ink-whisper: #888;
+  --cream: #F4EFE6; --brown: #554B41; --paper: #FAFAFA; --line: #EAEAEA;
+}
+html, body {
+  font-family: 'Frank Ruhl Libre', 'Heebo', serif;
+  color: var(--ink); background: var(--paper); direction: rtl;
+  scroll-behavior: smooth; -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 14px 32px; display: flex; justify-content: space-between; align-items: center;
+  background: rgba(250, 250, 250, 0.85); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.topbar .logo img { height: 56px; display: block; }
+.topbar nav { display: flex; gap: 28px; }
+.topbar nav a { color: var(--ink); font-size: 12.5px; letter-spacing: 2px; }
+.topbar nav a:hover { color: var(--blue-deep); }
+.topbar .cta { background: var(--blue-deep); color: #FFF; padding: 8px 18px; font-size: 12px; letter-spacing: 2px; font-weight: 500; }
+
+.hero {
+  padding: 130px 32px 80px;
+  text-align: center;
+  background: var(--cream);
+}
+.hero-eyebrow {
+  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
+  font-size: 22px; letter-spacing: 7px; color: var(--blue-deep);
+  margin-bottom: 18px;
+}
+.hero h1 {
+  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
+  font-size: clamp(42px, 6vw, 72px); font-weight: 400;
+  line-height: 1.05; letter-spacing: 1px; margin-bottom: 26px;
+  color: var(--ink);
+}
+.hero h1 em {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; color: var(--blue-deep); font-weight: 400;
+}
+.hero p.intro {
+  font-size: 17px; line-height: 1.7; color: var(--brown);
+  max-width: 640px; margin: 0 auto 36px;
+}
+
+.features-section {
+  background: var(--paper); padding: 70px 32px;
+  text-align: center;
+}
+.section-eyebrow {
+  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
+  font-size: 20px; letter-spacing: 6px; color: var(--blue-deep);
+  margin-bottom: 16px;
+}
+.section-h2 {
+  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
+  font-size: clamp(34px, 4.5vw, 50px); font-weight: 400;
+  letter-spacing: 1px; line-height: 1.1; margin-bottom: 44px;
+}
+.features-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+  max-width: 1100px; margin: 0 auto;
+}
+.feature {
+  background: var(--cream); padding: 32px 26px; text-align: right;
+  border-inline-start: 3px solid var(--blue);
+}
+.feature h3 {
+  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
+  font-size: 22px; font-weight: 500; margin-bottom: 10px;
+}
+.feature p {
+  font-size: 14.5px; line-height: 1.6; color: var(--brown);
+}
+
+.stats {
+  background: var(--blue-soft); padding: 60px 32px;
+  text-align: center;
+}
+.stats-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px;
+  max-width: 900px; margin: 0 auto;
+}
+.stat .num {
+  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
+  font-weight: 700; font-size: 44px; color: var(--blue-deep); line-height: 1;
+}
+.stat .label {
+  font-size: 13px; color: var(--brown); letter-spacing: 1.5px; margin-top: 8px;
+}
+
+.process-section {
+  padding: 70px 32px; background: var(--paper); text-align: center;
+}
+.process-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+  max-width: 1100px; margin: 0 auto;
+}
+.step { text-align: center; }
+.step .num {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px; color: var(--blue-deep); margin-bottom: 8px;
+  font-weight: 500;
+}
+.step h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px; font-weight: 500; margin-bottom: 6px;
+}
+.step p { font-size: 13.5px; color: var(--brown); line-height: 1.5; }
+
+.contact-section {
+  background: var(--cream); padding: 70px 32px;
+}
+.contact-inner {
+  max-width: 640px; margin: 0 auto; text-align: center;
+}
+.contact-form {
+  background: #FFFFFF; padding: 36px 32px; margin-top: 30px;
+  text-align: right;
+}
+.contact-form .field { margin-bottom: 14px; }
+.contact-form label {
+  display: block; font-size: 13px; color: var(--brown);
+  margin-bottom: 5px; letter-spacing: 0.5px;
+}
+.contact-form input, .contact-form textarea {
+  width: 100%; padding: 11px 14px; border: 1px solid var(--line);
+  background: var(--paper); font-family: inherit; font-size: 14.5px;
+  color: var(--ink);
+}
+.contact-form input:focus, .contact-form textarea:focus {
+  outline: 1px solid var(--blue-deep); border-color: var(--blue-deep);
+}
+.contact-form textarea { min-height: 90px; resize: vertical; }
+.contact-form button {
+  width: 100%; padding: 14px; background: var(--ink); color: var(--paper);
+  border: none; font-size: 13px; letter-spacing: 3px; font-weight: 500;
+  cursor: pointer; font-family: inherit; transition: background 0.3s;
+  margin-top: 6px;
+}
+.contact-form button:hover { background: var(--brown); }
+
+.footer {
+  background: var(--cream); padding: 30px 32px;
+  text-align: center; font-size: 12px; color: var(--brown);
+  letter-spacing: 1.5px;
+}
+
+@media (max-width: 700px) {
+  .topbar { padding: 12px 16px; }
+  .topbar nav { display: none; }
+  .topbar .logo img { height: 44px; }
+  .hero { padding: 100px 16px 50px; }
+  .hero-eyebrow, .section-eyebrow { font-size: 16px !important; letter-spacing: 4px !important; }
+  .features-grid, .process-grid { grid-template-columns: 1fr; gap: 14px; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .stat .num { font-size: 36px; }
+  .features-section, .stats, .process-section, .contact-section { padding: 40px 16px; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="index.html" class="logo"><img src="logo-sweetbox.png" alt="Sweet Box"></a>
+  <nav>
+    <a href="index.html#display">המארזים</a>
+    <a href="index.html#branches">סניפים</a>
+    <a href="franchise.html">זכיינות</a>
+  </nav>
+  <a class="cta" href="#contact">השאירו פרטים</a>
+</div>
+
+<section class="hero">
+  <div class="hero-eyebrow">— FRANCHISE OPPORTUNITY —</div>
+  <h1>תמיד חלמת על עסק<br><em>עם ריח טוב של הצלחה?</em></h1>
+  <p class="intro">
+    Sweet Box מחפשת זכיינים מוכשרים להקמת סניפים נוספים בכל הארץ.
+    הצטרפו לחוויית האפייה האמריקאית שכבשה את ישראל — מותג מבוסס, תפעול מסודר, וליווי מקצועי צמוד.
+  </p>
+</section>
+
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat"><div class="num">2</div><div class="label">סניפים פעילים</div></div>
+    <div class="stat"><div class="num">7</div><div class="label">שנים בשוק</div></div>
+    <div class="stat"><div class="num">30K+</div><div class="label">לקוחות חוזרים</div></div>
+    <div class="stat"><div class="num">100%</div><div class="label">ייצור עצמי</div></div>
+  </div>
+</section>
+
+<section class="features-section">
+  <div class="section-eyebrow">— WHAT WE OFFER —</div>
+  <h2 class="section-h2">חבילת ערך <em>מלאה</em></h2>
+  <div class="features-grid">
+    <div class="feature">
+      <h3>מותג מבוסס ומוכר</h3>
+      <p>Sweet Box הוא שם מוכר וידוע כמותג בעל זהות חזקה ואיכותית, עם קהל אוהדים קבוע.</p>
+    </div>
+    <div class="feature">
+      <h3>שיווק רשתי מקצועי</h3>
+      <p>קמפיינים, רשתות חברתיות ומיתוג ארצי שמושך לקוחות לסניף.</p>
+    </div>
+    <div class="feature">
+      <h3>תפעול קל ויעיל</h3>
+      <p>תהליכי עבודה מגובשים שחוסכים זמן וכסף. מאפשרים הגדלת רווחיות.</p>
+    </div>
+    <div class="feature">
+      <h3>השקעה ראשונית נמוכה</h3>
+      <p>מודל עסקי אטרקטיבי עם השקעה ראשונית נמוכה ביחס למקובל בענף.</p>
+    </div>
+    <div class="feature">
+      <h3>הדרכה וליווי מקצועי</h3>
+      <p>החל משלב איתור הנכס דרך התכנון, ההקמה, הפתיחה והתפעול.</p>
+    </div>
+    <div class="feature">
+      <h3>מוצרים ייחודיים לרשת</h3>
+      <p>רוב המוצרים מיוצרים במפעל הפרטי שלנו לפי מתכונים שפיתחנו במשך 7 שנים.</p>
+    </div>
+  </div>
+</section>
+
+<section class="process-section">
+  <div class="section-eyebrow">— THE PROCESS —</div>
+  <h2 class="section-h2">איך מתחילים?</h2>
+  <div class="process-grid">
+    <div class="step">
+      <div class="num">1</div>
+      <h4>השארת פרטים</h4>
+      <p>תמלאו את הטופס למטה ונחזור אליכם תוך 48 שעות.</p>
+    </div>
+    <div class="step">
+      <div class="num">2</div>
+      <h4>שיחת היכרות</h4>
+      <p>נכיר אתכם ונבין על המיקום הפוטנציאלי שלכם.</p>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <h4>תכנון עסקי</h4>
+      <p>נבנה יחד תוכנית עסקית מותאמת ונסקור את התנאים.</p>
+    </div>
+    <div class="step">
+      <div class="num">4</div>
+      <h4>פתיחת סניף</h4>
+      <p>ליווי צמוד עד לפתיחה ובהמשך הדרך.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="section-eyebrow">— GET IN TOUCH —</div>
+    <h2 class="section-h2">השאירו פרטים</h2>
+    <p style="font-size:15px;color:var(--brown);line-height:1.6;">נחזור אליכם תוך 48 שעות ונתאם שיחת היכרות.</p>
+    <form class="contact-form" action="mailto:shop@sweetbox.co.il" method="post" enctype="text/plain">
+      <div class="field"><label>שם מלא</label><input name="name" type="text" required></div>
+      <div class="field"><label>טלפון</label><input name="phone" type="tel" required></div>
+      <div class="field"><label>מייל</label><input name="email" type="email" required></div>
+      <div class="field"><label>אזור / עיר</label><input name="area" type="text"></div>
+      <div class="field"><label>מה תרצו לספר לנו? (אופציונלי)</label><textarea name="message"></textarea></div>
+      <button type="submit">שליחה</button>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  © 2026 · SWEET BOX · sweetbox.co.il
+</footer>
+
+</body>
+</html>
