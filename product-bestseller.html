@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Best Seller Box · Sweet Box</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400;1,500&family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Italiana&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400;1,500&family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&display=swap');
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -127,14 +127,14 @@ a { color: inherit; text-decoration: none; }
   padding-top: 8px;
 }
 .product-eyebrow {
-  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
+  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
   font-size: 16px;
   letter-spacing: 6px;
   color: var(--blue-deep);
   margin-bottom: 14px;
 }
 .product-title {
-  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
+  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
   font-size: clamp(40px, 4vw, 56px);
   line-height: 1;
   margin-bottom: 16px;
@@ -167,7 +167,7 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 22px;
 }
 .product-price {
-  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
+  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
   font-size: 38px;
   color: var(--ink);
   letter-spacing: 1px;
@@ -298,7 +298,7 @@ a { color: inherit; text-decoration: none; }
   background: var(--cream);
 }
 .trust-cell .ico {
-  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
+  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
   font-size: 20px;
   color: var(--blue-deep);
   margin-bottom: 4px;
@@ -323,7 +323,7 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 40px;
 }
 .section-eyebrow {
-  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
+  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
   font-size: 22px;
   letter-spacing: 7px;
   color: var(--blue-deep);
@@ -331,7 +331,7 @@ a { color: inherit; text-decoration: none; }
   font-weight: 400;
 }
 .section-h2 {
-  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
+  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
   font-size: clamp(34px, 4vw, 46px);
   font-weight: normal;
   letter-spacing: 0.5px;
@@ -358,7 +358,7 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 16px;
 }
 .inside-item-name {
-  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
+  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
   font-size: 20px;
   letter-spacing: 0.5px;
   color: var(--ink);
@@ -464,12 +464,12 @@ a { color: inherit; text-decoration: none; }
   text-align: center;
 }
 .related-name {
-  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
+  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
   font-size: 22px;
   margin-bottom: 4px;
 }
 .related-price {
-  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
+  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
   font-size: 18px;
   color: var(--blue-deep);
 }
@@ -605,13 +605,74 @@ a { color: inherit; text-decoration: none; }
 /* Make product cards clickable */
 .display-item { cursor: pointer; }
 
+
+/* === CAROUSELS === */
+.inside-carousel, .related-carousel {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.inside-grid, .related-grid {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  grid-template-columns: none !important;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  gap: 18px !important;
+  padding: 8px 8px 24px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.inside-grid::-webkit-scrollbar,
+.related-grid::-webkit-scrollbar { display: none; }
+.inside-grid > .inside-item { flex: 0 0 240px; scroll-snap-align: center; }
+.related-grid > a { flex: 0 0 280px; scroll-snap-align: center; }
+.carousel-arrow {
+  position: absolute; top: 38%; transform: translateY(-50%); z-index: 10;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: #FFFFFF; border: 1px solid var(--line);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; color: var(--ink);
+  font-family: 'Frank Ruhl Libre', serif;
+  transition: background 0.3s, transform 0.3s;
+}
+.carousel-arrow:hover { background: var(--blue); transform: translateY(-50%) scale(1.05); }
+.carousel-arrow.prev { inset-inline-end: -8px; }
+.carousel-arrow.next { inset-inline-start: -8px; }
+
+/* === Mobile centering + footer compact === */
+@media (max-width: 700px) {
+  .product-eyebrow, .section-eyebrow, .reviews-eyebrow {
+    text-align: center !important;
+    font-size: 16px !important;
+    letter-spacing: 4px !important;
+  }
+  .product-title, .section-h2 { text-align: center; }
+  .product-rating, .product-price-block, .product-description {
+    text-align: center;
+  }
+  .product-price-block { text-align: center; }
+  .inside-grid > .inside-item { flex: 0 0 70%; }
+  .related-grid > a { flex: 0 0 78%; }
+  .carousel-arrow { width: 36px; height: 36px; font-size: 15px; }
+  .carousel-arrow.prev { inset-inline-end: 6px; }
+  .carousel-arrow.next { inset-inline-start: 6px; }
+  .footer { padding: 20px 14px 12px; }
+  .footer-top img { height: 48px; }
+  .footer-bottom { font-size: 10px; padding-top: 8px; }
+}
+
 </style>
 </head>
 <body>
 
 <!-- TOP BAR -->
 <div class="topbar">
-  <a href="index.html" class="logo"><img src="assets/logo-sweetbox.png" alt="Sweet Box"></a>
+  <a href="index.html" class="logo"><img src="logo-sweetbox.png" alt="Sweet Box"></a>
   <nav>
     <a href="index.html#display">המארזים</a>
     <a href="index.html#branches">סניפים</a>
@@ -635,14 +696,14 @@ a { color: inherit; text-decoration: none; }
   <!-- Gallery -->
   <div class="gallery">
     <div class="gallery-main">
-      <img src="assets/product-bestseller/01-box-styled.jpg" alt="Best Seller Box" id="main-img">
+      <img src="01-box-styled.jpg" alt="Best Seller Box" id="main-img">
     </div>
     <div class="gallery-thumbs">
-      <div class="thumb active" data-img="assets/product-bestseller/01-box-styled.jpg" style="background-image: url('assets/product-bestseller/01-box-styled.jpg');"></div>
-      <div class="thumb" data-img="assets/product-bestseller/02-box-story.jpg" style="background-image: url('assets/product-bestseller/02-box-story.jpg');"></div>
-      <div class="thumb" data-img="assets/product-bestseller/item-1-brownie-bites.jpg" style="background-image: url('assets/product-bestseller/item-1-brownie-bites.jpg');"></div>
-      <div class="thumb" data-img="assets/product-bestseller/item-4-cinnamon-roll.jpg" style="background-image: url('assets/product-bestseller/item-4-cinnamon-roll.jpg');"></div>
-      <div class="thumb" data-img="assets/product-bestseller/item-3-cheesecake-square.jpg" style="background-image: url('assets/product-bestseller/item-3-cheesecake-square.jpg');"></div>
+      <div class="thumb active" data-img="01-box-styled.jpg" style="background-image: url('01-box-styled.jpg');"></div>
+      <div class="thumb" data-img="02-box-story.jpg" style="background-image: url('02-box-story.jpg');"></div>
+      <div class="thumb" data-img="item-1-brownie-bites.jpg" style="background-image: url('item-1-brownie-bites.jpg');"></div>
+      <div class="thumb" data-img="item-4-cinnamon-roll.jpg" style="background-image: url('item-4-cinnamon-roll.jpg');"></div>
+      <div class="thumb" data-img="item-3-cheesecake-square.jpg" style="background-image: url('item-3-cheesecake-square.jpg');"></div>
     </div>
   </div>
 
@@ -713,45 +774,49 @@ a { color: inherit; text-decoration: none; }
     <h2 class="section-h2">6 קלאסיקות בקופסה אחת</h2>
   </div>
 
-  <div class="inside-grid">
+  <div class="inside-carousel">
+    <button class="carousel-arrow prev" aria-label="הקודם" onclick="insideScroll(-1)">›</button>
+    <button class="carousel-arrow next" aria-label="הבא" onclick="insideScroll(1)">‹</button>
+    <div class="inside-grid" id="insideGrid">
 
     <div class="inside-item">
-      <div class="inside-item-img" style="background-image: url('assets/product-bestseller/item-1-brownie-bites.jpg');"></div>
+      <div class="inside-item-img" style="background-image: url('item-1-brownie-bites.jpg');"></div>
       <div class="inside-item-name">בראוניז בייטס</div>
       <div class="inside-item-qty">18 קוביות</div>
     </div>
 
     <div class="inside-item">
-      <div class="inside-item-img" style="background-image: url('assets/product-bestseller/item-2-raspberry-muffin.jpg');"></div>
+      <div class="inside-item-img" style="background-image: url('item-2-raspberry-muffin.jpg');"></div>
       <div class="inside-item-name">מאפין פטל</div>
       <div class="inside-item-qty">1 יחידה</div>
     </div>
 
     <div class="inside-item">
-      <div class="inside-item-img" style="background-image: url('assets/product-bestseller/item-3-cheesecake-square.jpg');"></div>
+      <div class="inside-item-img" style="background-image: url('item-3-cheesecake-square.jpg');"></div>
       <div class="inside-item-name">ריבוע גבינה ניו יורק</div>
       <div class="inside-item-qty">1 יחידה</div>
     </div>
 
     <div class="inside-item">
-      <div class="inside-item-img" style="background-image: url('assets/product-bestseller/item-4-cinnamon-roll.jpg');"></div>
+      <div class="inside-item-img" style="background-image: url('item-4-cinnamon-roll.jpg');"></div>
       <div class="inside-item-name">סינמון רול</div>
       <div class="inside-item-qty">1 יחידה</div>
     </div>
 
     <div class="inside-item">
-      <div class="inside-item-img" style="background-image: url('assets/product-bestseller/item-5-monster-cookie.jpg');"></div>
+      <div class="inside-item-img" style="background-image: url('item-5-monster-cookie.jpg');"></div>
       <div class="inside-item-name">מונסטר שוקולד צ'יפס</div>
       <div class="inside-item-qty">1 יחידה</div>
     </div>
 
     <div class="inside-item">
-      <div class="inside-item-img" style="background-image: url('assets/product-bestseller/item-6-amsterdam.jpg');"></div>
+      <div class="inside-item-img" style="background-image: url('item-6-amsterdam.jpg');"></div>
       <div class="inside-item-name">מונסטר אמסטרדם</div>
       <div class="inside-item-qty">1 יחידה</div>
     </div>
 
   </div>
+</div>
 </section>
 
 <!-- STORY -->
@@ -773,10 +838,13 @@ a { color: inherit; text-decoration: none; }
     <h2 class="section-h2">קופסאות נוספות באוסף</h2>
   </div>
 
-  <div class="related-grid">
+  <div class="related-carousel">
+    <button class="carousel-arrow prev" aria-label="הקודם" onclick="relatedScroll(-1)">›</button>
+    <button class="carousel-arrow next" aria-label="הבא" onclick="relatedScroll(1)">‹</button>
+    <div class="related-grid" id="relatedGrid">
 
     <a href="#" class="related-item">
-      <div class="related-img" style="background-image: url('assets/box-dream.jpg');"></div>
+      <div class="related-img" style="background-image: url('box-dream.jpg');"></div>
       <div class="related-info">
         <div class="related-name">Dream Box</div>
         <div class="related-price">430 ₪</div>
@@ -784,7 +852,7 @@ a { color: inherit; text-decoration: none; }
     </a>
 
     <a href="#" class="related-item">
-      <div class="related-img" style="background-image: url('assets/box-crackpie.jpg');"></div>
+      <div class="related-img" style="background-image: url('box-crackpie.jpg');"></div>
       <div class="related-info">
         <div class="related-name">Crack Pie Box</div>
         <div class="related-price">190 ₪</div>
@@ -792,7 +860,7 @@ a { color: inherit; text-decoration: none; }
     </a>
 
     <a href="#" class="related-item">
-      <div class="related-img" style="background-image: url('assets/box-mix.jpg');"></div>
+      <div class="related-img" style="background-image: url('box-mix.jpg');"></div>
       <div class="related-info">
         <div class="related-name">Mix Box</div>
         <div class="related-price">220 ₪</div>
@@ -800,6 +868,7 @@ a { color: inherit; text-decoration: none; }
     </a>
 
   </div>
+</div>
 </section>
 
 <!-- BRANCHES STRIP -->
@@ -814,7 +883,7 @@ a { color: inherit; text-decoration: none; }
 <!-- FOOTER (mini) -->
 <footer class="footer">
   <div class="footer-top">
-    <img src="assets/logo-sweetbox.png" alt="Sweet Box">
+    <img src="logo-sweetbox.png" alt="Sweet Box">
     <div class="footer-social">
       <a href="https://www.instagram.com/sweetbox.il/" target="_blank" aria-label="Instagram">
         <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.9.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.9.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.9-.9-1.4-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.9-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 3.4c-3.5 0-6.4 2.9-6.4 6.4s2.9 6.4 6.4 6.4 6.4-2.9 6.4-6.4-2.9-6.4-6.4-6.4zm0 10.6c-2.3 0-4.2-1.9-4.2-4.2s1.9-4.2 4.2-4.2 4.2 1.9 4.2 4.2-1.9 4.2-4.2 4.2zm6.6-10.9c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5.7-1.5 1.5-1.5 1.5.7 1.5 1.5z"/></svg>
@@ -855,6 +924,24 @@ a { color: inherit; text-decoration: none; }
     const fields = this.parentElement.parentElement.querySelector('.gift-fields');
     fields.style.display = this.checked ? 'block' : 'none';
   });
+</script>
+
+
+<script>
+  function insideScroll(direction) {
+    const g = document.getElementById('insideGrid');
+    if (!g) return;
+    const card = g.querySelector('.inside-item');
+    const w = card ? card.offsetWidth + 18 : 260;
+    g.scrollBy({ left: direction * w, behavior: 'smooth' });
+  }
+  function relatedScroll(direction) {
+    const g = document.getElementById('relatedGrid');
+    if (!g) return;
+    const card = g.querySelector('a');
+    const w = card ? card.offsetWidth + 18 : 300;
+    g.scrollBy({ left: direction * w, behavior: 'smooth' });
+  }
 </script>
 
 </body>
