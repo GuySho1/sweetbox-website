@@ -1043,44 +1043,6 @@ html, body {
   .divider img { width: 80%; }
   .footer-columns { grid-template-columns: 1fr; gap: 22px; text-align: center; }
 }
-
-/* === Restored after file remapping === */
-.motion-showcase, .display, .franchise {
-  background-image: url('pattern-boxes.png') !important;
-  background-size: 240px 240px !important;
-  background-blend-mode: multiply !important;
-}
-.divider.patterned {
-  background-image: url('pattern-boxes.png') !important;
-  background-size: 240px 240px !important;
-  background-blend-mode: multiply !important;
-}
-
-/* Restore motion box image */
-.motion-box-wrap img.motion-box-img { content: url('box-2d-isometric.png'); }
-
-/* === Mobile footer compactness === */
-@media (max-width: 700px) {
-  .footer { padding: 26px 14px 16px; }
-  .footer-top { gap: 10px; margin-bottom: 18px; }
-  .footer-top img.brand-logo { height: 54px; }
-  .footer-columns {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 18px !important;
-    padding: 18px 0 !important;
-    text-align: right !important;
-  }
-  .footer-col h4 { font-size: 15px; margin-bottom: 8px; }
-  .footer-col li { margin-bottom: 4px; }
-  .footer-col a, .footer-col p { font-size: 12.5px; line-height: 1.5; }
-  .footer-col.footer-kosher img { width: 56px; }
-  .footer-col.footer-kosher .label { font-size: 11px; }
-  .footer-bottom { font-size: 10.5px; padding-top: 12px; margin-top: 14px; }
-}
-
-/* Make product cards clickable */
-.display-item { cursor: pointer; }
-
 </style>
 </head>
 <body>
@@ -1130,10 +1092,10 @@ html, body {
   </div>
 
   <div class="display-grid">
-    <a href="product-bestseller.html" style="text-decoration:none;color:inherit;display:block;"><div class="display-item">
+    <div class="display-item">
       <div class="display-item-image" style="background-image: url('box-bestseller.jpg');">
         <div class="display-tag">Best Seller</div>
-      </div></a>
+      </div>
       <div class="display-item-info">
         <div class="display-item-sub">THE BELOVED</div>
         <div class="display-item-name">Best Seller Box</div>
@@ -1145,10 +1107,10 @@ html, body {
       </div>
     </div>
 
-    <a href="product-bestseller.html" style="text-decoration:none;color:inherit;display:block;"><div class="display-item">
+    <div class="display-item">
       <div class="display-item-image" style="background-image: url('box-dream.jpg');">
         <div class="display-tag blue">Premium</div>
-      </div></a>
+      </div>
       <div class="display-item-info">
         <div class="display-item-sub">THE COLLECTOR</div>
         <div class="display-item-name">Dream Box</div>
@@ -1160,10 +1122,10 @@ html, body {
       </div>
     </div>
 
-    <a href="product-bestseller.html" style="text-decoration:none;color:inherit;display:block;"><div class="display-item">
+    <div class="display-item">
       <div class="display-item-image" style="background-image: url('box-crackpie.jpg');">
         <div class="display-tag">Fan Favorite</div>
-      </div></a>
+      </div>
       <div class="display-item-info">
         <div class="display-item-sub">THE OBSESSION</div>
         <div class="display-item-name">Crack Pie Box</div>
@@ -1175,7 +1137,7 @@ html, body {
       </div>
     </div>
 
-    <a href="product-bestseller.html" style="text-decoration:none;color:inherit;display:block;"><div class="display-item">
+    <div class="display-item">
       <div class="display-item-image" style="background-image: url('box-cupcake.jpg');"></div>
       <div class="display-item-info">
         <div class="display-item-sub">THE CLASSIC</div>
@@ -1185,10 +1147,10 @@ html, body {
           <span>16 מיני</span>
           <span class="display-item-price">170 ₪</span>
         </div>
-      </div></a>
+      </div>
     </div>
 
-    <a href="product-bestseller.html" style="text-decoration:none;color:inherit;display:block;"><div class="display-item">
+    <div class="display-item">
       <div class="display-item-image" style="background-image: url('box-mix.jpg');"></div>
       <div class="display-item-info">
         <div class="display-item-sub">THE SAMPLER</div>
@@ -1198,13 +1160,13 @@ html, body {
           <span>5 פריטים</span>
           <span class="display-item-price">220 ₪</span>
         </div>
-      </div></a>
+      </div>
     </div>
 
-    <a href="product-bestseller.html" style="text-decoration:none;color:inherit;display:block;"><div class="display-item">
+    <div class="display-item">
       <div class="display-item-image" style="background-image: url('box-cheesy.jpg');">
         <div class="display-tag brown">שבועות 2026</div>
-      </div></a>
+      </div>
       <div class="display-item-info">
         <div class="display-item-sub">THE GIFT</div>
         <div class="display-item-name">Cheesy Box · שבועות</div>
@@ -1392,3 +1354,30 @@ html, body {
   // === TYPEWRITER EFFECT FOR MOTION SHOWCASE ===
   (function() {
     const messag
+<script>
+  (function() {
+    const messages = [
+      "מונסטר קוקיז — רד וולווט, שוקולד צ'יפס, אמסטרדם ועוד המון.",
+      "מיני קאפקייקס רכות ומושלמות.",
+      "צ'יזקייקס למות — אוריאו, בראוניז או קלאסית.",
+      "קוביות בראוניז לא מהעולם הזה.",
+      "קראק פאי — ראו הוזהרתם.",
+      "עוגת ניו יורק קרמבל חלומית.",
+      "מאפין פטל נימוח ומתוק.",
+      "עוגת שכבות בטעמי קרם גבינה ולוטוס."
+    ];
+    let msgIdx = 0, charIdx = 0, deleting = false;
+    const textEl = document.getElementById('motion-text');
+    if (!textEl) return;
+    function tick() {
+      const full = messages[msgIdx];
+      if (deleting) { textEl.textContent = full.substring(0, charIdx - 1); charIdx--; }
+      else { textEl.textContent = full.substring(0, charIdx + 1); charIdx++; }
+      let speed = deleting ? 25 : 65;
+      if (!deleting && charIdx === full.length) { speed = 2400; deleting = true; }
+      else if (deleting && charIdx === 0) { deleting = false; msgIdx = (msgIdx + 1) % messages.length; speed = 450; }
+      setTimeout(tick, speed);
+    }
+    tick();
+  })();
+</script>
