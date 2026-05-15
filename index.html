@@ -1094,6 +1094,67 @@ html, body {
   .footer-bottom { font-size: 10px; padding-top: 10px; margin-top: 10px; }
 }
 
+
+/* === DISPLAY CAROUSEL === */
+.display-carousel {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.display-grid {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  grid-template-columns: none !important;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  gap: 24px !important;
+  padding: 8px 8px 24px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.display-grid::-webkit-scrollbar { display: none; }
+.display-grid > a {
+  flex: 0 0 320px;
+  scroll-snap-align: center;
+}
+.display-item {
+  height: 100%;
+}
+.carousel-arrow {
+  position: absolute;
+  top: 38%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  color: var(--ink);
+  font-family: 'Frank Ruhl Libre', serif;
+  transition: background 0.3s, transform 0.3s;
+}
+.carousel-arrow:hover {
+  background: var(--blue);
+  transform: translateY(-50%) scale(1.05);
+}
+.carousel-arrow.prev { inset-inline-end: -8px; }
+.carousel-arrow.next { inset-inline-start: -8px; }
+@media (max-width: 900px) {
+  .display-grid > a { flex: 0 0 78%; }
+  .carousel-arrow { width: 36px; height: 36px; font-size: 15px; }
+  .carousel-arrow.prev { inset-inline-end: 6px; }
+  .carousel-arrow.next { inset-inline-start: 6px; }
+}
+@media (max-width: 600px) {
+  .display-grid > a { flex: 0 0 85%; }
+}
+
 </style>
 </head>
 <body>
@@ -1145,7 +1206,10 @@ html, body {
     <p>מגוון קופסאות בשילובים שונים, כולן בייצור עצמי אצלנו במאפייה, ארוזות בקפידה ובאהבה.</p>
   </div>
 
-  <div class="display-grid">
+  <div class="display-carousel">
+  <button class="carousel-arrow prev" aria-label="הקודם" onclick="carouselScroll(-1)">›</button>
+  <button class="carousel-arrow next" aria-label="הבא" onclick="carouselScroll(1)">‹</button>
+  <div class="display-grid" id="displayGrid">
     <a href="product-bestseller.html" style="text-decoration:none;color:inherit;display:block;"><div class="display-item">
       <div class="display-item-image" style="background-image: url('box-cheesy.jpg');">
         <div class="display-tag brown">שבועות 2026</div>
@@ -1232,6 +1296,7 @@ html, body {
       </div>
     </div></a>
   </div>
+</div>
 </section>
 
 <!-- DIVIDER (after display, large ribbon, patterned bg) -->
@@ -1430,6 +1495,17 @@ html, body {
     }
     tick();
   })();
+</script>
+
+
+<script>
+  function carouselScroll(direction) {
+    const grid = document.getElementById('displayGrid');
+    if (!grid) return;
+    const card = grid.querySelector('a');
+    const cardWidth = card ? card.offsetWidth + 24 : 340;
+    grid.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
+  }
 </script>
 
 </body>
