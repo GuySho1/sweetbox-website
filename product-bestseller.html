@@ -567,6 +567,44 @@ a { color: inherit; text-decoration: none; }
   .inside-grid, .related-grid, .reviews-grid { grid-template-columns: 1fr; }
   .product-title { font-size: 34px; }
 }
+
+/* === Restored after file remapping === */
+.motion-showcase, .display, .franchise {
+  background-image: url('pattern-boxes.png') !important;
+  background-size: 240px 240px !important;
+  background-blend-mode: multiply !important;
+}
+.divider.patterned {
+  background-image: url('pattern-boxes.png') !important;
+  background-size: 240px 240px !important;
+  background-blend-mode: multiply !important;
+}
+
+/* Restore motion box image */
+.motion-box-wrap img.motion-box-img { content: url('box-2d-isometric.png'); }
+
+/* === Mobile footer compactness === */
+@media (max-width: 700px) {
+  .footer { padding: 26px 14px 16px; }
+  .footer-top { gap: 10px; margin-bottom: 18px; }
+  .footer-top img.brand-logo { height: 54px; }
+  .footer-columns {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 18px !important;
+    padding: 18px 0 !important;
+    text-align: right !important;
+  }
+  .footer-col h4 { font-size: 15px; margin-bottom: 8px; }
+  .footer-col li { margin-bottom: 4px; }
+  .footer-col a, .footer-col p { font-size: 12.5px; line-height: 1.5; }
+  .footer-col.footer-kosher img { width: 56px; }
+  .footer-col.footer-kosher .label { font-size: 11px; }
+  .footer-bottom { font-size: 10.5px; padding-top: 12px; margin-top: 14px; }
+}
+
+/* Make product cards clickable */
+.display-item { cursor: pointer; }
+
 </style>
 </head>
 <body>
