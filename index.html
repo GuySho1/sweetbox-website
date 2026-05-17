@@ -6,9 +6,7 @@
 <title>Sweet Box · קופסאות כחולות של אושר</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400;1,500&family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Heebo:wght@300;400;500;600;700;800&family=Italiana&display=swap');
-
 * { box-sizing: border-box; margin: 0; padding: 0; }
-
 :root {
   --blue: #B5DCE8;
   --blue-deep: #5B9DB5;
@@ -22,7 +20,6 @@
   --paper: #FCFCFD;
   --line: #E8EAED;
 }
-
 html, body {
   font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
   color: var(--ink);
@@ -31,7 +28,6 @@ html, body {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
 }
-
 /* === TOP BAR === */
 .topbar {
   position: fixed;
@@ -45,14 +41,8 @@ html, body {
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(0,0,0,0.05);
 }
-
-.topbar .logo img {
-  height: 56px;
-  display: block;
-}
-
+.topbar .logo img { height: 56px; display: block; }
 .topbar nav { display: flex; gap: 28px; }
-
 .topbar nav a {
   text-decoration: none;
   color: var(--ink);
@@ -60,9 +50,7 @@ html, body {
   font-weight: 400;
   letter-spacing: 2px;
 }
-
 .topbar nav a:hover { color: var(--blue-deep); }
-
 .topbar .cta {
   background: var(--teal-accent);
   color: #FFFFFF;
@@ -75,210 +63,16 @@ html, body {
   transition: background 0.3s, transform 0.2s;
 }
 .topbar .cta:hover { background: var(--brown); transform: translateY(-1px); }
-
-/* === DIVIDER (decorative scalloped) === */
-.divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4px 0;
-  background: var(--paper);
-  margin: 0;
-}
-
-.divider img {
-  max-width: 380px;
-  width: 60%;
-  height: auto;
-  opacity: 0.9;
-  display: block;
-}
-
-.divider.large img {
-  max-width: 720px;
-  width: 80%;
-}
-
+/* === DIVIDER === */
+.divider { display: flex; align-items: center; justify-content: center; padding: 4px 0; background: var(--paper); margin: 0; }
+.divider img { max-width: 380px; width: 60%; height: auto; opacity: 0.9; display: block; }
+.divider.large img { max-width: 720px; width: 80%; }
 .divider.cream { background: var(--cream); }
 .divider.soft-blue { background: var(--blue-soft); }
-
-.divider.patterned {
-  background: #EDF6FA;
-}
-
-/* === 01. HERO === */
-.hero {
-  position: relative;
-  height: 100vh;
-  min-height: 720px;
-  overflow: hidden;
-  background: var(--blue-soft);
-}
-
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background-image: url('hero-webimage.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
-.hero-vignette {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 60% 50% at center, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.55) 40%, rgba(255,255,255,0) 75%);
-  pointer-events: none;
-}
-
-.hero-content {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0 20px;
-  z-index: 2;
-}
-
-.hero-seal {
-  position: absolute;
-  width: 110px;
-  height: auto;
-  opacity: 0.85;
-  pointer-events: none;
-  z-index: 3;
-}
-
-.hero-seal.left  { top: 13%; inset-inline-start: 5%; transform: rotate(-8deg); }
-.hero-seal.right { bottom: 14%; inset-inline-end: 5%; transform: rotate(6deg); }
-
-.hero-eyebrow {
-  font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
-  font-style: italic;
-  font-size: 16px;
-  letter-spacing: 5px;
-  margin-bottom: 24px;
-  color: var(--brown);
-}
-
-.hero h1 {
-  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
-  font-size: clamp(44px, 7vw, 84px);
-  line-height: 1;
-  font-weight: normal;
-  letter-spacing: 1px;
-  color: var(--ink);
-  max-width: 1100px;
-}
-
-.hero h1 .blue {
-  color: var(--blue-deep);
-  font-style: italic;
-  font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
-  font-weight: 400;
-}
-
-.scroll-cue {
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--ink);
-  font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
-  font-style: italic;
-  font-size: 13px;
-  letter-spacing: 6px;
-  opacity: 0.75;
-  z-index: 2;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  text-transform: lowercase;
-}
-
-.scroll-cue .arrow {
-  font-size: 18px;
-  animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(8px); }
-}
-
-/* === TRUST BAR === */
-.trust-bar {
-  background: var(--ink);
-  color: var(--paper);
-  padding: 28px 32px;
-}
-
-.trust-bar-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-
-.trust-item {
-  text-align: center;
-  position: relative;
-}
-
-.trust-item:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  inset-inline-start: -12px;
-  top: 20%;
-  height: 60%;
-  width: 1px;
-  background: rgba(255,255,255,0.15);
-}
-
-.trust-icon {
-  width: 38px;
-  height: 38px;
-  margin: 0 auto 8px;
-  display: block;
-  filter: brightness(1.4);
-  opacity: 0.95;
-}
-
-.trust-num {
-  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
-  font-size: 32px;
-  color: var(--blue);
-  line-height: 1;
-  margin-bottom: 6px;
-  letter-spacing: 1px;
-}
-
-.trust-label {
-  font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
-  font-style: italic;
-  font-size: 12.5px;
-  color: rgba(255,255,255,0.75);
-  letter-spacing: 2px;
-}
-
+.divider.patterned { background: #EDF6FA; }
 /* === DISPLAY CASE === */
-.display {
-  background: linear-gradient(180deg, #EDF6FA 0%, #FFFFFF 100%);
-  padding: 30px 32px 40px;
-}
-
-.display-header {
-  text-align: center;
-  margin: 0 auto 34px;
-  max-width: 760px;
-}
-
+.display { background: linear-gradient(180deg, #EDF6FA 0%, #FFFFFF 100%); padding: 30px 32px 40px; }
+.display-header { text-align: center; margin: 0 auto 34px; max-width: 760px; }
 .display-eyebrow {
   font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
   font-size: 14px;
@@ -288,7 +82,6 @@ html, body {
   font-weight: 600;
   text-transform: uppercase;
 }
-
 .display-header h2 {
   font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
   font-size: clamp(36px, 4.5vw, 52px);
@@ -296,58 +89,16 @@ html, body {
   letter-spacing: 1px;
   line-height: 1.1;
 }
-
 .display-header h2 em {
   font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
   font-style: italic;
   color: var(--blue-deep);
 }
-
-.display-header p {
-  font-size: 18px;
-  color: var(--brown);
-  max-width: 620px;
-  margin: 18px auto 0;
-  line-height: 1.65;
-  font-weight: 400;
-}
-
-.display-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  max-width: 1280px;
-  margin: 0 auto;
-}
-
-.display-carousel-wrap {
-  position: relative;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 40px;
-  overflow: hidden;
-}
-
-.display-carousel {
-  display: flex;
-  gap: 22px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  padding: 6px 4px 22px;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
+.display-header p { font-size: 18px; color: var(--brown); max-width: 620px; margin: 18px auto 0; line-height: 1.65; font-weight: 400; }
+.display-carousel-wrap { position: relative; max-width: 1280px; margin: 0 auto; padding: 0 40px; overflow: hidden; }
+.display-carousel { display: flex; gap: 22px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 6px 4px 22px; scrollbar-width: none; -ms-overflow-style: none; }
 .display-carousel::-webkit-scrollbar { display: none; }
-
-.display-carousel .display-item {
-  flex: 0 0 calc(100% - 4px);
-  scroll-snap-align: center;
-  max-width: 360px;
-  margin: 0 auto;
-}
-
+.display-carousel .display-item { flex: 0 0 calc(100% - 4px); scroll-snap-align: center; max-width: 360px; margin: 0 auto; }
 .carousel-arrow {
   position: absolute;
   top: 38%;
@@ -368,35 +119,14 @@ html, body {
   transition: transform 0.2s, background 0.2s, color 0.2s;
   font-family: serif;
 }
-
-.carousel-arrow:hover {
-  background: var(--teal-accent);
-  color: #FFFFFF;
-  transform: scale(1.08);
-}
-
+.carousel-arrow:hover { background: var(--teal-accent); color: #FFFFFF; transform: scale(1.08); }
 .carousel-arrow.prev { right: 4px; }
-.carousel-arrow.next {
-  left: 4px;
-  animation: arrowPulse 2.4s ease-in-out infinite;
-  background: var(--blue);
-}
-
-.carousel-arrow.next:hover {
-  animation: none;
-  background: var(--teal-accent);
-  color: #FFFFFF;
-}
-
+.carousel-arrow.next { left: 4px; animation: arrowPulse 2.4s ease-in-out infinite; background: var(--blue); }
+.carousel-arrow.next:hover { animation: none; background: var(--teal-accent); color: #FFFFFF; }
 @keyframes arrowPulse {
-  0%, 100% {
-    box-shadow: 0 4px 14px rgba(74, 143, 168, 0.20), 0 0 0 0 rgba(74, 143, 168, 0.5);
-  }
-  50% {
-    box-shadow: 0 4px 14px rgba(74, 143, 168, 0.30), 0 0 0 12px rgba(74, 143, 168, 0);
-  }
+  0%, 100% { box-shadow: 0 4px 14px rgba(74, 143, 168, 0.20), 0 0 0 0 rgba(74, 143, 168, 0.5); }
+  50% { box-shadow: 0 4px 14px rgba(74, 143, 168, 0.30), 0 0 0 12px rgba(74, 143, 168, 0); }
 }
-
 /* === SCROLL INDICATOR === */
 .scroll-indicator {
   position: absolute;
@@ -417,158 +147,24 @@ html, body {
   cursor: pointer;
   box-shadow: 0 4px 14px rgba(74, 143, 168, 0.25);
 }
-
-.scroll-chevron {
-  display: block;
-  width: 12px;
-  height: 12px;
-  border-right: 2px solid var(--teal-accent);
-  border-bottom: 2px solid var(--teal-accent);
-  transform: rotate(45deg);
-  margin-top: -4px;
-}
-
+.scroll-chevron { display: block; width: 12px; height: 12px; border-right: 2px solid var(--teal-accent); border-bottom: 2px solid var(--teal-accent); transform: rotate(45deg); margin-top: -4px; }
 @keyframes scrollBounce {
   0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.9; }
   50% { transform: translateX(-50%) translateY(6px); opacity: 1; }
 }
-
-.display-item {
-  background: #FFFFFF;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.4s, box-shadow 0.4s;
-  display: block;
-  text-decoration: none;
-  color: inherit;
-}
-
-.display-item:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
-}
-
-.display-item-image {
-  aspect-ratio: 1;
-  background-size: cover;
-  background-position: center;
-  background-color: var(--blue-soft);
-  position: relative;
-}
-
-.display-tag {
-  position: absolute;
-  top: 14px;
-  inset-inline-start: 14px;
-  background: var(--ink);
-  color: var(--paper);
-  padding: 5px 12px;
-  font-size: 10.5px;
-  letter-spacing: 2px;
-  font-weight: 700;
-  text-transform: uppercase;
-  z-index: 2;
-}
-
+.display-item { background: #FFFFFF; position: relative; overflow: hidden; cursor: pointer; transition: transform 0.4s, box-shadow 0.4s; display: block; text-decoration: none; color: inherit; }
+.display-item:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+.display-item-image { aspect-ratio: 1; background-size: cover; background-position: center; background-color: var(--blue-soft); position: relative; }
+.display-tag { position: absolute; top: 14px; inset-inline-start: 14px; background: var(--ink); color: var(--paper); padding: 5px 12px; font-size: 10.5px; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; z-index: 2; }
 .display-tag.blue { background: var(--blue); color: var(--ink); }
 .display-tag.brown { background: var(--brown); color: var(--paper); }
-
-.display-item-info {
-  padding: 22px 24px 26px;
-  border-top: 1px solid var(--line);
-}
-
-.display-item-name {
-  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
-  font-size: 24px;
-  letter-spacing: 1px;
-  margin-bottom: 4px;
-}
-
-.display-item-sub {
-  font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
-  font-style: italic;
-  font-size: 13px;
-  color: var(--blue-deep);
-  letter-spacing: 2px;
-  margin-bottom: 8px;
-}
-
-.display-item-desc {
-  font-size: 15.5px;
-  color: var(--ink-soft);
-  line-height: 1.6;
-  font-weight: 400;
-  margin: 6px 0 12px;
-}
-
-.display-item-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  font-size: 12.5px;
-  color: var(--ink-whisper);
-  margin-top: 12px;
-  padding-top: 12px;
-  border-top: 1px solid var(--line);
-}
-
-.display-item-price {
-  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
-  font-size: 18px;
-  color: var(--ink);
-}
-
-/* === 04. PASTRY COUNTER === */
-.counter {
-  background: var(--ink);
-  padding: 50px 0 60px;
-  color: var(--paper);
-  overflow: hidden;
-}
-
-.counter-header { text-align: center; margin-bottom: 36px; padding: 0 32px; }
-
-.counter-eyebrow {
-  font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
-  font-style: italic;
-  font-size: 13px;
-  letter-spacing: 5px;
-  color: var(--blue);
-  margin-bottom: 16px;
-}
-
-.counter h2 {
-  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
-  font-size: clamp(28px, 3.5vw, 42px);
-  font-weight: normal;
-  letter-spacing: 0.5px;
-  line-height: 1.2;
-  color: var(--paper);
-}
-
-.counter-strip {
-  display: flex;
-  gap: 12px;
-  padding: 0 12px;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.counter-strip::-webkit-scrollbar { display: none; }
-
-.counter-strip img {
-  flex: 0 0 240px;
-  width: 240px;
-  height: 320px;
-  object-fit: cover;
-  filter: saturate(1.1) contrast(1.05);
-}
-
-.counter-strip img.tall { height: 380px; }
-
-/* === MOTION SHOWCASE (now the hero section) === */
+.display-item-info { padding: 22px 24px 26px; border-top: 1px solid var(--line); }
+.display-item-name { font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif; font-size: 24px; letter-spacing: 1px; margin-bottom: 4px; }
+.display-item-sub { font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-style: italic; font-size: 13px; color: var(--blue-deep); letter-spacing: 2px; margin-bottom: 8px; }
+.display-item-desc { font-size: 15.5px; color: var(--ink-soft); line-height: 1.6; font-weight: 400; margin: 6px 0 12px; }
+.display-item-meta { display: flex; justify-content: space-between; align-items: baseline; font-size: 12.5px; color: var(--ink-whisper); margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
+.display-item-price { font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif; font-size: 18px; color: var(--ink); }
+/* === MOTION SHOWCASE === */
 .motion-showcase {
   background: linear-gradient(180deg, #FFFFFF 0%, #EDF6FA 100%);
   padding: 110px 32px 60px;
@@ -578,654 +174,86 @@ html, body {
   display: flex;
   align-items: center;
 }
-
-.motion-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-  width: 100%;
-}
-
-.motion-seal {
-  position: absolute;
-  width: 280px;
-  height: auto;
-  opacity: 0.85;
-  pointer-events: none;
-  z-index: 1;
-}
-.motion-seal.left  { top: -40px;  inset-inline-start: -40px;  transform: rotate(-12deg); }
-.motion-seal.right { bottom: -40px; inset-inline-end: -40px;   transform: rotate(10deg); }
-
-.motion-text {
-  position: relative;
-  z-index: 2;
-}
-
-.motion-headline {
-  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
-  font-size: clamp(38px, 5.5vw, 64px);
-  font-weight: normal;
-  line-height: 1;
-  letter-spacing: 1px;
-  margin-bottom: 28px;
-  color: var(--ink);
-}
-.motion-headline .motion-blue {
-  color: var(--blue-deep);
-  font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
-  font-style: italic;
-  font-weight: 400;
-}
-
-.motion-eyebrow {
-  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
-  font-size: 22px;
-  letter-spacing: 7px;
-  color: var(--ink);
-  margin-bottom: 22px;
-  font-weight: 400;
-}
-
-.motion-typewriter {
-  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
-  font-size: clamp(24px, 2.9vw, 34px);
-  line-height: 1.35;
-  color: var(--ink);
-  letter-spacing: 0.5px;
-  min-height: 110px;
-  margin-top: 14px;
-}
-
-.typewriter-prefix {
-  font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
-  font-style: italic;
-  font-size: 0.62em;
-  color: var(--brown);
-  display: block;
-  margin-bottom: 18px;
-  letter-spacing: 1.5px;
-  line-height: 1.45;
-}
-
-.motion-rotator {
-  display: block;
-  font-size: 1em;
-  line-height: 1.2;
-  margin-top: 8px;
-}
-
-#motion-text {
-  color: var(--ink);
-  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
-}
-
-.cursor {
-  display: inline-block;
-  width: 3px;
-  height: 0.9em;
-  background: var(--brown);
-  margin-inline-start: 4px;
-  vertical-align: middle;
-  animation: blink 0.7s infinite;
-}
-
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
-}
-
-.motion-tagline {
-  font-size: 17px;
-  color: var(--brown);
-  margin-top: 32px;
-  font-style: italic;
-  font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
-  letter-spacing: 1px;
-}
-
-.motion-box-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  perspective: 1200px;
-  position: relative;
-}
-
-.motion-box-img {
-  max-width: 90%;
-  height: auto;
-  max-height: 420px;
-  animation: gentleFloat 5s ease-in-out infinite;
-  filter: drop-shadow(0 24px 40px rgba(85, 75, 65, 0.18));
-}
-
-.motion-box-video {
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-  aspect-ratio: 9 / 16;
-  object-fit: cover;
-  border-radius: 18px;
-  box-shadow: 0 24px 50px rgba(85, 75, 65, 0.22);
-  background: var(--cream);
-  display: block;
-  animation: gentleVideoFloat 6s ease-in-out infinite;
-}
-
-.motion-video-overlay {
-  position: absolute;
-  top: 14%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 400px;
-  padding: 0 6%;
-  text-align: center;
-  z-index: 5;
-  pointer-events: none;
-}
-
-.motion-video-overlay .motion-eyebrow {
-  font-size: clamp(12px, 1.3vw, 18px);
-  letter-spacing: 5px;
-  margin-bottom: 14px;
-  color: var(--ink);
-}
-
-.motion-video-overlay .motion-headline {
-  font-size: clamp(28px, 3.4vw, 44px);
-  margin-bottom: 0;
-  line-height: 1.05;
-}
-
-.motion-tagline-compact {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
-  font-style: italic;
-  font-size: 18px;
-  letter-spacing: 1px;
-  color: var(--brown);
-  line-height: 1.35;
-  margin-bottom: 22px;
-}
-
-@keyframes gentleFloat {
-  0%, 100% { transform: translateY(0) rotate(-2deg); }
-  50% { transform: translateY(-14px) rotate(2deg); }
-}
-
-@keyframes gentleVideoFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
+.motion-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; width: 100%; }
+.motion-seal { position: absolute; width: 280px; height: auto; opacity: 0.85; pointer-events: none; z-index: 1; }
+.motion-seal.left { top: -40px; inset-inline-start: -40px; transform: rotate(-12deg); }
+.motion-seal.right { bottom: -40px; inset-inline-end: -40px; transform: rotate(10deg); }
+.motion-text { position: relative; z-index: 2; }
+.motion-headline { font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif; font-size: clamp(38px, 5.5vw, 64px); font-weight: normal; line-height: 1; letter-spacing: 1px; margin-bottom: 28px; color: var(--ink); }
+.motion-headline .motion-blue { color: var(--blue-deep); font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-style: italic; font-weight: 400; }
+.motion-eyebrow { font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif; font-size: 22px; letter-spacing: 7px; color: var(--ink); margin-bottom: 22px; font-weight: 400; }
+.motion-typewriter { font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif; font-size: clamp(24px, 2.9vw, 34px); line-height: 1.35; color: var(--ink); letter-spacing: 0.5px; min-height: 110px; margin-top: 14px; }
+.typewriter-prefix { font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-style: italic; font-size: 0.62em; color: var(--brown); display: block; margin-bottom: 18px; letter-spacing: 1.5px; line-height: 1.45; }
+.motion-rotator { display: block; font-size: 1em; line-height: 1.2; margin-top: 8px; }
+#motion-text { color: var(--ink); font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif; }
+.cursor { display: inline-block; width: 3px; height: 0.9em; background: var(--brown); margin-inline-start: 4px; vertical-align: middle; animation: blink 0.7s infinite; }
+@keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+.motion-box-wrap { display: flex; align-items: center; justify-content: center; perspective: 1200px; position: relative; }
+.motion-box-video { width: 100%; max-width: 400px; height: auto; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 18px; box-shadow: 0 24px 50px rgba(85, 75, 65, 0.22); background: var(--cream); display: block; animation: gentleVideoFloat 6s ease-in-out infinite; }
+.motion-video-overlay { position: absolute; top: 14%; left: 50%; transform: translateX(-50%); width: 100%; max-width: 400px; padding: 0 6%; text-align: center; z-index: 5; pointer-events: none; }
+.motion-video-overlay .motion-eyebrow { font-size: clamp(12px, 1.3vw, 18px); letter-spacing: 5px; margin-bottom: 14px; color: var(--ink); }
+.motion-video-overlay .motion-headline { font-size: clamp(28px, 3.4vw, 44px); margin-bottom: 0; line-height: 1.05; }
+@keyframes gentleVideoFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 /* === REVIEWS === */
-.reviews {
-  background: var(--paper);
-  padding: 50px 32px 60px;
-}
-
-.reviews-header {
-  text-align: center;
-  margin-bottom: 36px;
-}
-
-.reviews-eyebrow {
-  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
-  font-size: 14px;
-  letter-spacing: 6px;
-  color: var(--teal-accent);
-  margin-bottom: 18px;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
-.reviews h2 {
-  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
-  font-size: clamp(32px, 4vw, 46px);
-  font-weight: normal;
-  letter-spacing: 1px;
-  line-height: 1.1;
-}
-
-.reviews-rating {
-  margin-top: 14px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
-  font-style: italic;
-  font-size: 14px;
-  color: var(--brown);
-}
-
+.reviews { background: var(--paper); padding: 50px 32px 60px; }
+.reviews-header { text-align: center; margin-bottom: 36px; }
+.reviews-eyebrow { font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif; font-size: 14px; letter-spacing: 6px; color: var(--teal-accent); margin-bottom: 18px; font-weight: 600; text-transform: uppercase; }
+.reviews h2 { font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif; font-size: clamp(32px, 4vw, 46px); font-weight: normal; letter-spacing: 1px; line-height: 1.1; }
+.reviews-rating { margin-top: 14px; display: flex; justify-content: center; align-items: center; gap: 12px; font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-style: italic; font-size: 14px; color: var(--brown); }
 .reviews-rating .stars { color: var(--blue-deep); letter-spacing: 2px; font-size: 16px; }
-
-.reviews-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.review-card {
-  background: #FFFFFF;
-  border: 1px solid var(--line);
-  padding: 28px 26px;
-  display: flex;
-  flex-direction: column;
-}
-
-.review-stars {
-  color: var(--blue-deep);
-  letter-spacing: 2px;
-  font-size: 14px;
-  margin-bottom: 14px;
-}
-
-.review-quote {
-  font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
-  font-style: italic;
-  font-size: 17px;
-  line-height: 1.55;
-  color: var(--ink);
-  margin-bottom: 18px;
-  flex: 1;
-}
-
-.review-attribution {
-  font-size: 12.5px;
-  color: var(--ink-whisper);
-  letter-spacing: 1px;
-  padding-top: 14px;
-  border-top: 1px solid var(--line);
-}
-
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; }
+.review-card { background: #FFFFFF; border: 1px solid var(--line); padding: 28px 26px; display: flex; flex-direction: column; }
+.review-stars { color: var(--blue-deep); letter-spacing: 2px; font-size: 14px; margin-bottom: 14px; }
+.review-quote { font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-style: italic; font-size: 17px; line-height: 1.55; color: var(--ink); margin-bottom: 18px; flex: 1; }
+.review-attribution { font-size: 12.5px; color: var(--ink-whisper); letter-spacing: 1px; padding-top: 14px; border-top: 1px solid var(--line); }
 .review-attribution strong { color: var(--ink); font-weight: 500; }
-
 /* === BRANCHES === */
-.branches-section {
-  background: var(--blue-soft);
-  padding: 40px 32px 50px;
-}
-
-.branches-section .header {
-  text-align: center;
-  margin-bottom: 32px;
-}
-
-.branches-section .eyebrow {
-  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
-  font-size: 14px;
-  letter-spacing: 6px;
-  color: var(--teal-accent);
-  margin-bottom: 22px;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
-.branches-section h2 {
-  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
-  font-size: clamp(36px, 4.5vw, 52px);
-  font-weight: normal;
-  letter-spacing: 1px;
-  line-height: 1.1;
-}
-
-.branches-intro {
-  font-size: 16px;
-  color: var(--brown);
-  max-width: 640px;
-  margin: 18px auto 0;
-  line-height: 1.7;
-  font-weight: 300;
-}
-
-.branches-wolt-cta {
-  max-width: 760px;
-  margin: 32px auto 0;
-  text-align: center;
-  font-size: 15px;
-  color: var(--brown);
-  line-height: 1.65;
-  font-weight: 300;
-  padding: 18px 24px;
-  background: rgba(74, 143, 168, 0.06);
-  border-radius: 16px;
-  border: 1px solid rgba(74, 143, 168, 0.12);
-}
-
-.branches-wolt-cta strong {
-  color: var(--teal-accent);
-  font-weight: 500;
-}
-
-.branches-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 36px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.branch-card {
-  background: #FFFFFF;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.branch-image {
-  aspect-ratio: 16 / 10;
-  background-size: cover;
-  background-position: center;
-  background-color: var(--blue-soft);
-}
-
-.branch-info {
-  padding: 26px 28px 28px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.branch-name {
-  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
-  font-size: 30px;
-  letter-spacing: 1px;
-  margin-bottom: 6px;
-}
-
-.branch-address {
-  font-size: 14px;
-  color: var(--brown);
-  line-height: 1.5;
-  margin-bottom: 8px;
-}
-
-.branch-hours {
-  font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
-  font-style: italic;
-  font-size: 13px;
-  color: var(--blue-deep);
-  letter-spacing: 2px;
-  margin-bottom: 20px;
-}
-
-.branch-wolt {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: #009DE0;
-  color: white;
-  padding: 12px 22px;
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 1.5px;
-  margin-top: auto;
-  transition: background 0.3s;
-}
-
+.branches-section { background: var(--blue-soft); padding: 40px 32px 50px; }
+.branches-section .header { text-align: center; margin-bottom: 32px; }
+.branches-section .eyebrow { font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif; font-size: 14px; letter-spacing: 6px; color: var(--teal-accent); margin-bottom: 22px; font-weight: 600; text-transform: uppercase; }
+.branches-section h2 { font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif; font-size: clamp(36px, 4.5vw, 52px); font-weight: normal; letter-spacing: 1px; line-height: 1.1; }
+.branches-intro { font-size: 16px; color: var(--brown); max-width: 640px; margin: 18px auto 0; line-height: 1.7; font-weight: 300; }
+.branches-wolt-cta { max-width: 760px; margin: 32px auto 0; text-align: center; font-size: 15px; color: var(--brown); line-height: 1.65; font-weight: 300; padding: 18px 24px; background: rgba(74, 143, 168, 0.06); border-radius: 16px; border: 1px solid rgba(74, 143, 168, 0.12); }
+.branches-wolt-cta strong { color: var(--teal-accent); font-weight: 500; }
+.branches-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; max-width: 1100px; margin: 0 auto; }
+.branch-card { background: #FFFFFF; overflow: hidden; display: flex; flex-direction: column; }
+.branch-image { aspect-ratio: 16 / 10; background-size: cover; background-position: center; background-color: var(--blue-soft); }
+.branch-info { padding: 26px 28px 28px; flex: 1; display: flex; flex-direction: column; }
+.branch-name { font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif; font-size: 30px; letter-spacing: 1px; margin-bottom: 6px; }
+.branch-address { font-size: 14px; color: var(--brown); line-height: 1.5; margin-bottom: 8px; }
+.branch-hours { font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-style: italic; font-size: 13px; color: var(--blue-deep); letter-spacing: 2px; margin-bottom: 20px; }
+.branch-wolt { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #009DE0; color: white; padding: 12px 22px; text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 1.5px; margin-top: auto; transition: background 0.3s; }
 .branch-wolt:hover { background: #007BB8; }
-
-.branch-wolt .wolt-icon {
-  font-weight: 700;
-  font-size: 14px;
-}
-
-/* === FRANCHISE (soft blue, no black) === */
-.franchise {
-  background: linear-gradient(180deg, #FFFFFF 0%, #EDF6FA 100%);
-  color: var(--ink);
-  padding: 60px 32px 70px;
-  text-align: center;
-  position: relative;
-}
-
-.franchise-eyebrow {
-  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
-  font-size: 14px;
-  letter-spacing: 6px;
-  color: var(--teal-accent);
-  margin-bottom: 24px;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
-.franchise h2 {
-  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
-  font-size: clamp(36px, 5vw, 56px);
-  font-weight: normal;
-  line-height: 1.05;
-  letter-spacing: 1px;
-  margin-bottom: 24px;
-  color: var(--ink);
-}
-
-.franchise p {
-  font-size: 16px;
-  line-height: 1.7;
-  color: var(--brown);
-  max-width: 560px;
-  margin: 0 auto 32px;
-  font-weight: 300;
-}
-
-.franchise-features {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 36px 0;
-  border-top: 1px solid rgba(85,75,65,0.18);
-  border-bottom: 1px solid rgba(85,75,65,0.18);
-}
-
+.branch-wolt .wolt-icon { font-weight: 700; font-size: 14px; }
+/* === FRANCHISE === */
+.franchise { background: linear-gradient(180deg, #FFFFFF 0%, #EDF6FA 100%); color: var(--ink); padding: 60px 32px 70px; text-align: center; position: relative; }
+.franchise-eyebrow { font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif; font-size: 14px; letter-spacing: 6px; color: var(--teal-accent); margin-bottom: 24px; font-weight: 600; text-transform: uppercase; }
+.franchise h2 { font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif; font-size: clamp(36px, 5vw, 56px); font-weight: normal; line-height: 1.05; letter-spacing: 1px; margin-bottom: 24px; color: var(--ink); }
+.franchise p { font-size: 16px; line-height: 1.7; color: var(--brown); max-width: 560px; margin: 0 auto 32px; font-weight: 300; }
+.franchise-features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 900px; margin: 40px auto; padding: 36px 0; border-top: 1px solid rgba(85,75,65,0.18); border-bottom: 1px solid rgba(85,75,65,0.18); }
 .franchise-feature { text-align: center; }
-
-.franchise-feature .num {
-  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
-  font-size: 36px;
-  color: var(--blue-deep);
-  margin-bottom: 6px;
-}
-
-.franchise-feature .label {
-  font-size: 12px;
-  color: var(--brown);
-  letter-spacing: 1.5px;
-}
-
-.franchise .btn {
-  display: inline-block;
-  padding: 17px 44px;
-  background: var(--teal-accent);
-  color: #FFFFFF;
-  text-decoration: none;
-  font-size: 13px;
-  letter-spacing: 3px;
-  font-weight: 500;
-  border-radius: 999px;
-  transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
-  margin-top: 16px;
-  box-shadow: 0 6px 18px rgba(74, 143, 168, 0.18);
-}
-
-.franchise .btn:hover {
-  transform: translateY(-2px);
-  background: var(--brown);
-  box-shadow: 0 8px 22px rgba(85, 75, 65, 0.22);
-}
-
-/* === FOOTER (expanded layout) === */
-.footer {
-  background: #FFFFFF;
-  color: var(--brown);
-  padding: 26px 32px 16px;
-  border-top: 1px solid rgba(74, 143, 168, 0.18);
-  text-align: center;
-}
-
-.footer-top {
-  max-width: 800px;
-  margin: 0 auto 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-
-.footer-brand-block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}
-
-.footer-brand-block img.brand-logo {
-  height: 54px;
-  width: auto;
-  display: block;
-}
-
-.footer-brand-block .footer-tag {
-  font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
-  font-style: italic;
-  font-size: 13.5px;
-  letter-spacing: 2px;
-  color: var(--blue-deep);
-  max-width: 480px;
-  line-height: 1.5;
-  text-align: center;
-}
-
-.footer-social {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-}
-
-.footer-social a {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--brown);
-  color: var(--paper);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  transition: background 0.3s;
-}
-
+.franchise-feature .num { font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif; font-size: 36px; color: var(--blue-deep); margin-bottom: 6px; }
+.franchise-feature .label { font-size: 12px; color: var(--brown); letter-spacing: 1.5px; }
+.franchise .btn { display: inline-block; padding: 17px 44px; background: var(--teal-accent); color: #FFFFFF; text-decoration: none; font-size: 13px; letter-spacing: 3px; font-weight: 500; border-radius: 999px; transition: transform 0.3s, background 0.3s, box-shadow 0.3s; margin-top: 16px; box-shadow: 0 6px 18px rgba(74, 143, 168, 0.18); }
+.franchise .btn:hover { transform: translateY(-2px); background: var(--brown); box-shadow: 0 8px 22px rgba(85, 75, 65, 0.22); }
+/* === FOOTER === */
+.footer { background: #FFFFFF; color: var(--brown); padding: 26px 32px 16px; border-top: 1px solid rgba(74, 143, 168, 0.18); text-align: center; }
+.footer-top { max-width: 800px; margin: 0 auto 16px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.footer-brand-block { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.footer-brand-block img.brand-logo { height: 54px; width: auto; display: block; }
+.footer-social { display: flex; gap: 10px; justify-content: center; }
+.footer-social a { width: 32px; height: 32px; border-radius: 50%; background: var(--brown); color: var(--paper); display: inline-flex; align-items: center; justify-content: center; text-decoration: none; transition: background 0.3s; }
 .footer-social a:hover { background: var(--blue-deep); }
 .footer-social svg { width: 16px; height: 16px; fill: currentColor; }
-
-.footer-columns {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 22px;
-  padding: 18px 0;
-  border-top: 1px solid rgba(74, 143, 168, 0.15);
-  border-bottom: 1px solid rgba(74, 143, 168, 0.15);
-  text-align: center;
-}
-
-.footer-col h4 {
-  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 2.5px;
-  color: var(--teal-accent);
-  margin-bottom: 10px;
-  text-transform: uppercase;
-}
-
-.footer-col ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-col li {
-  margin-bottom: 5px;
-}
-
-.footer-col a, .footer-col p {
-  font-size: 13px;
-  color: var(--brown);
-  text-decoration: none;
-  line-height: 1.55;
-  font-weight: 300;
-  transition: color 0.3s;
-  display: inline-block;
-}
-
+.footer-columns { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 22px; padding: 18px 0; border-top: 1px solid rgba(74, 143, 168, 0.15); border-bottom: 1px solid rgba(74, 143, 168, 0.15); text-align: center; }
+.footer-col h4 { font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 2.5px; color: var(--teal-accent); margin-bottom: 10px; text-transform: uppercase; }
+.footer-col ul { list-style: none; padding: 0; }
+.footer-col li { margin-bottom: 5px; }
+.footer-col a, .footer-col p { font-size: 13px; color: var(--brown); text-decoration: none; line-height: 1.55; font-weight: 300; transition: color 0.3s; display: inline-block; }
 .footer-col a:hover { color: var(--blue-deep); }
-
-.footer-col .small-note {
-  font-size: 11.5px;
-  color: var(--blue-deep);
-  font-style: italic;
-  font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
-  letter-spacing: 1px;
-}
-
-.footer-kosher {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.footer-kosher img {
-  width: 76px;
-  height: auto;
-  margin-bottom: 8px;
-  opacity: 0.85;
-}
-
-.footer-kosher .label {
-  font-size: 12.5px;
-  color: var(--brown);
-  font-weight: 400;
-  letter-spacing: 1px;
-}
-
-.footer-kosher-line {
-  max-width: 1200px;
-  margin: 14px auto 0;
-  text-align: center;
-  font-size: 12px;
-  color: var(--teal-accent);
-  font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
-  font-style: italic;
-  letter-spacing: 1.5px;
-  padding: 8px 0 4px;
-}
-
-.footer-bottom {
-  max-width: 1200px;
-  margin: 8px auto 0;
-  text-align: center;
-  font-size: 11px;
-  color: var(--brown);
-  letter-spacing: 2px;
-  opacity: 0.6;
-}
-
+.footer-col .small-note { font-size: 11.5px; color: var(--blue-deep); font-style: italic; font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; letter-spacing: 1px; }
+.footer-kosher-line { max-width: 1200px; margin: 14px auto 0; text-align: center; font-size: 12px; color: var(--teal-accent); font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif; font-style: italic; letter-spacing: 1.5px; padding: 8px 0 4px; }
+.footer-bottom { max-width: 1200px; margin: 8px auto 0; text-align: center; font-size: 11px; color: var(--brown); letter-spacing: 2px; opacity: 0.6; }
 /* === RESPONSIVE === */
 @media (max-width: 900px) {
   .topbar { padding: 12px 16px; }
@@ -1234,40 +262,13 @@ html, body {
   .motion-showcase { padding: 70px 0 40px; min-height: auto; }
   .motion-inner { grid-template-columns: 1fr; gap: 22px; text-align: center; }
   .motion-typewriter { min-height: 100px; }
-  .motion-box-img { max-height: 280px; }
   .motion-box-wrap { order: -1; margin: 0; }
-  .motion-box-video {
-    max-width: 100%;
-    width: 100%;
-    border-radius: 0;
-    box-shadow: none;
-    animation: none;
-    aspect-ratio: 9 / 16;
-    max-height: 92vh;
-  }
-  .motion-video-overlay {
-    max-width: 100%;
-    padding: 0 8%;
-    top: 12%;
-  }
-  .motion-video-overlay .motion-eyebrow {
-    font-size: 13px;
-    letter-spacing: 5px;
-    margin-bottom: 12px;
-  }
-  .motion-video-overlay .motion-headline {
-    font-size: 38px;
-    line-height: 1.05;
-  }
+  .motion-box-video { max-width: 100%; width: 100%; border-radius: 0; box-shadow: none; animation: none; aspect-ratio: 9 / 16; max-height: 92vh; }
+  .motion-video-overlay { max-width: 100%; padding: 0 8%; top: 12%; }
+  .motion-video-overlay .motion-eyebrow { font-size: 13px; letter-spacing: 5px; margin-bottom: 12px; }
+  .motion-video-overlay .motion-headline { font-size: 38px; line-height: 1.05; }
   .motion-text { padding: 0 20px; }
-  .motion-tagline-compact {
-    align-items: center;
-    text-align: center;
-    font-size: 17px;
-    margin-bottom: 14px;
-  }
   .motion-seal { width: 130px; opacity: 0.7; }
-  .display-grid { grid-template-columns: 1fr 1fr; gap: 18px; }
   .display-carousel-wrap { padding: 0 50px; }
   .display-carousel { gap: 12px; }
   .display-carousel .display-item { flex: 0 0 100%; max-width: 100%; scroll-snap-align: center; }
@@ -1285,18 +286,14 @@ html, body {
   .footer-col h4 { font-size: 12px; letter-spacing: 2px; margin-bottom: 6px; }
   .footer-col a, .footer-col p { font-size: 12.5px; line-height: 1.45; }
   .footer-col li { margin-bottom: 3px; }
-  .footer-kosher img { width: 70px; }
   .footer-kosher-line { font-size: 11px; padding: 6px 12px; }
   .footer-bottom { font-size: 10px; }
 }
-
 @media (max-width: 600px) {
-  .display-grid { grid-template-columns: 1fr; }
   .motion-headline { font-size: 34px; }
   .motion-typewriter { font-size: 20px; min-height: 90px; }
   .motion-video-overlay .motion-headline { font-size: 34px; }
   .motion-video-overlay .motion-eyebrow { font-size: 12px; letter-spacing: 4px; }
-  .motion-tagline-compact { font-size: 16px; }
   .motion-seal { display: none; }
   .divider img { width: 80%; }
   .footer-columns { grid-template-columns: 1fr 1fr; gap: 14px; text-align: center; }
@@ -1316,14 +313,11 @@ html, body {
   <a class="cta" href="#display">בחירת קופסה</a>
 </div>
 
-<!-- 01. MOTION SHOWCASE — typewriter + box (now the FIRST section) -->
+<!-- 01. MOTION SHOWCASE -->
 <section class="motion-showcase" id="story">
-
   <img src="seal-est-2019.png" class="motion-seal left" alt="">
   <img src="seal-made-with-care.png" class="motion-seal right" alt="">
-
   <div class="motion-inner">
-
     <div class="motion-text">
       <div class="motion-typewriter">
         <span class="typewriter-prefix">מגוון רחב של מתוקים מוגזמים,<br>ארוזים בצורה מושלמת — ובדרך לאן שתגידו</span>
@@ -1332,15 +326,8 @@ html, body {
         </div>
       </div>
     </div>
-
     <div class="motion-box-wrap">
-      <video class="motion-box-video"
-             autoplay
-             muted
-             loop
-             playsinline
-             preload="metadata"
-             aria-label="Sweet Box brand animation">
+      <video class="motion-box-video" autoplay muted loop playsinline preload="metadata" aria-label="Sweet Box brand animation">
         <source src="brand-motion.mp4" type="video/mp4">
       </video>
       <div class="motion-video-overlay">
@@ -1351,7 +338,6 @@ html, body {
         <span class="scroll-chevron"></span>
       </a>
     </div>
-
   </div>
 </section>
 
@@ -1362,114 +348,113 @@ html, body {
     <h2>בחרו את <em>הקופסה</em> שלכם</h2>
     <p>מגוון קופסאות בשילובים שונים, כולן בייצור עצמי אצלנו במאפייה, ארוזות בקפידה ובאהבה.</p>
   </div>
-
   <div class="display-carousel-wrap">
     <button class="carousel-arrow prev" onclick="carouselScroll(1)" aria-label="הקודם">›</button>
     <button class="carousel-arrow next" onclick="carouselScroll(-1)" aria-label="הבא">‹</button>
-
     <div class="display-carousel" id="boxesCarousel">
-    <a class="display-item" href="product-bestseller.html">
-      <div class="display-item-image" style="background-image: url('box-cheesy.jpg');">
-        <div class="display-tag brown">שבועות 2026</div>
-      </div>
-      <div class="display-item-info">
-        <div class="display-item-sub">THE GIFT</div>
-        <div class="display-item-name">Cheesy Box · שבועות</div>
-        <div class="display-item-desc">המארז החגיגי לשבועות. עוגת לוטוס שכבות אישית + 6 ריבועי גבינה.</div>
-        <div class="display-item-meta">
-          <span>7 פריטי גבינה</span>
-          <span class="display-item-price">239 ₪</span>
-        </div>
-      </div>
-    </a>
 
-    <a class="display-item" href="product-bestseller.html">
-      <div class="display-item-image" style="background-image: url('box-bestseller.jpg');">
-        <div class="display-tag">Best Seller</div>
-      </div>
-      <div class="display-item-info">
-        <div class="display-item-sub">THE BELOVED</div>
-        <div class="display-item-name">Best Seller Box</div>
-        <div class="display-item-desc">6 פריטים אייקוניים בקופסה אחת — מתאים למתחילים ולמכורים כאחד.</div>
-        <div class="display-item-meta">
-          <span>6 פריטים</span>
-          <span class="display-item-price">190 ₪</span>
+      <a class="display-item" href="product-bestseller.html">
+        <div class="display-item-image" style="background-image: url('box-cheesy.jpg');">
+          <div class="display-tag brown">שבועות 2026</div>
         </div>
-      </div>
-    </a>
+        <div class="display-item-info">
+          <div class="display-item-sub">THE GIFT</div>
+          <div class="display-item-name">Cheesy Box · שבועות</div>
+          <div class="display-item-desc">המארז החגיגי לשבועות. עוגת לוטוס שכבות אישית + 6 ריבועי גבינה.</div>
+          <div class="display-item-meta">
+            <span>7 פריטי גבינה</span>
+            <span class="display-item-price">239 ₪</span>
+          </div>
+        </div>
+      </a>
 
-    <a class="display-item" href="product-bestseller.html">
-      <div class="display-item-image" style="background-image: url('box-dream.jpg');">
-        <div class="display-tag blue">Premium</div>
-      </div>
-      <div class="display-item-info">
-        <div class="display-item-sub">THE COLLECTOR</div>
-        <div class="display-item-name">Dream Box</div>
-        <div class="display-item-desc">המארז הגדול ביותר שלנו. 11 פריטים שונים, 26 יחידות סך הכל. לאירועים גדולים.</div>
-        <div class="display-item-meta">
-          <span>11 פריטים · 26 יח'</span>
-          <span class="display-item-price">430 ₪</span>
+      <a class="display-item" href="product-bestseller.html">
+        <div class="display-item-image" style="background-image: url('box-bestseller.jpg');">
+          <div class="display-tag">Best Seller</div>
         </div>
-      </div>
-    </a>
+        <div class="display-item-info">
+          <div class="display-item-sub">THE BELOVED</div>
+          <div class="display-item-name">Best Seller Box</div>
+          <div class="display-item-desc">6 פריטים אייקוניים בקופסה אחת — מתאים למתחילים ולמכורים כאחד.</div>
+          <div class="display-item-meta">
+            <span>6 פריטים</span>
+            <span class="display-item-price">190 ₪</span>
+          </div>
+        </div>
+      </a>
 
-    <a class="display-item" href="product-bestseller.html">
-      <div class="display-item-image" style="background-image: url('box-crackpie.jpg');">
-        <div class="display-tag">Fan Favorite</div>
-      </div>
-      <div class="display-item-info">
-        <div class="display-item-sub">THE OBSESSION</div>
-        <div class="display-item-name">Crack Pie Box</div>
-        <div class="display-item-desc">עוגת ההתמכרות שלנו. שלמה, קוטר 18 ס"מ. בהשראת Milk Bar הניו-יורקית.</div>
-        <div class="display-item-meta">
-          <span>עוגה שלמה</span>
-          <span class="display-item-price">190 ₪</span>
+      <a class="display-item" href="product-bestseller.html">
+        <div class="display-item-image" style="background-image: url('box-dream.jpg');">
+          <div class="display-tag blue">Premium</div>
         </div>
-      </div>
-    </a>
+        <div class="display-item-info">
+          <div class="display-item-sub">THE COLLECTOR</div>
+          <div class="display-item-name">Dream Box</div>
+          <div class="display-item-desc">המארז הגדול ביותר שלנו. 11 פריטים שונים, 26 יחידות סך הכל. לאירועים גדולים.</div>
+          <div class="display-item-meta">
+            <span>11 פריטים · 26 יח'</span>
+            <span class="display-item-price">430 ₪</span>
+          </div>
+        </div>
+      </a>
 
-    <a class="display-item" href="product-bestseller.html">
-      <div class="display-item-image" style="background-image: url('box-cupcake.jpg');"></div>
-      <div class="display-item-info">
-        <div class="display-item-sub">THE CLASSIC</div>
-        <div class="display-item-name">Mini Cupcake Box</div>
-        <div class="display-item-desc">16 מיני קאפקייקס — וניל, רד וולווט, שוקולד וריסז. 4 מכל טעם.</div>
-        <div class="display-item-meta">
-          <span>16 מיני</span>
-          <span class="display-item-price">170 ₪</span>
+      <a class="display-item" href="product-bestseller.html">
+        <div class="display-item-image" style="background-image: url('box-crackpie.jpg');">
+          <div class="display-tag">Fan Favorite</div>
         </div>
-      </div>
-    </a>
+        <div class="display-item-info">
+          <div class="display-item-sub">THE OBSESSION</div>
+          <div class="display-item-name">Crack Pie Box</div>
+          <div class="display-item-desc">עוגת ההתמכרות שלנו. שלמה, קוטר 18 ס"מ. בהשראת Milk Bar הניו-יורקית.</div>
+          <div class="display-item-meta">
+            <span>עוגה שלמה</span>
+            <span class="display-item-price">190 ₪</span>
+          </div>
+        </div>
+      </a>
 
-    <a class="display-item" href="product-bestseller.html">
-      <div class="display-item-image" style="background-image: url('box-mix.jpg');"></div>
-      <div class="display-item-info">
-        <div class="display-item-sub">THE SAMPLER</div>
-        <div class="display-item-name">Mix Box</div>
-        <div class="display-item-desc">5 קלאסיקות אהובות בקופסה קומפקטית. מושלם לטעימה קלה או למתנה אישית.</div>
-        <div class="display-item-meta">
-          <span>5 פריטים</span>
-          <span class="display-item-price">220 ₪</span>
+      <a class="display-item" href="product-bestseller.html">
+        <div class="display-item-image" style="background-image: url('box-cupcake.jpg');"></div>
+        <div class="display-item-info">
+          <div class="display-item-sub">THE CLASSIC</div>
+          <div class="display-item-name">Mini Cupcake Box</div>
+          <div class="display-item-desc">16 מיני קאפקייקס — וניל, רד וולווט, שוקולד וריסז. 4 מכל טעם.</div>
+          <div class="display-item-meta">
+            <span>16 מיני</span>
+            <span class="display-item-price">170 ₪</span>
+          </div>
         </div>
-      </div>
-    </a>
+      </a>
+
+      <a class="display-item" href="product-bestseller.html">
+        <div class="display-item-image" style="background-image: url('box-mix.jpg');"></div>
+        <div class="display-item-info">
+          <div class="display-item-sub">THE SAMPLER</div>
+          <div class="display-item-name">Mix Box</div>
+          <div class="display-item-desc">5 קלאסיקות אהובות בקופסה קומפקטית. מושלם לטעימה קלה או למתנה אישית.</div>
+          <div class="display-item-meta">
+            <span>5 פריטים</span>
+            <span class="display-item-price">220 ₪</span>
+          </div>
+        </div>
+      </a>
+
     </div>
   </div>
 </section>
 
-<!-- DIVIDER (after display, large ribbon, patterned bg) -->
+<!-- DIVIDER -->
 <div class="divider large patterned">
   <img src="divider-ribbon.png" alt="">
 </div>
 
-<!-- BRANCHES (moved up - before Reviews) -->
+<!-- 03. BRANCHES -->
 <section class="branches-section" id="branches">
   <div class="header">
     <div class="eyebrow">— OUR HOMES —</div>
     <h2>הסניפים שלנו</h2>
     <p class="branches-intro">בסניפים ניתן למצוא עוד המון קינוחים מיוחדים שלא נמצאים באתר, אז אם במקרה אתם בסביבה או באיזורי החלוקה שווה להציץ ;)</p>
   </div>
-
   <div class="branches-grid">
 
     <div class="branch-card">
@@ -1478,4 +463,204 @@ html, body {
         <div class="branch-name">גלילות</div>
         <div class="branch-address">ביג פאשן גלילות<br>קומת קרקע</div>
         <div class="branch-hours">— 09:00 – 22:00 · 7 ימים בשבוע —</div>
-        <a class="branch-wolt" href="https://wolt.com/en/isr/tel-aviv/restaurant/sweet-box-glilot" target="_
+        <a class="branch-wolt" href="https://wolt.com/en/isr/tel-aviv/restaurant/sweet-box-glilot" target="_blank" rel="noopener">
+          <span class="wolt-icon">●</span> הזמנה ב-Wolt
+        </a>
+      </div>
+    </div>
+
+    <div class="branch-card">
+      <div class="branch-image" style="background-image: url('branch-levinsky.jpg');"></div>
+      <div class="branch-info">
+        <div class="branch-name">שוק לוינסקי</div>
+        <div class="branch-address">לוינסקי 46<br>תל אביב</div>
+        <div class="branch-hours">— 09:00 – 22:00 · 7 ימים בשבוע —</div>
+        <a class="branch-wolt" href="https://wolt.com/he/isr/tel-aviv/restaurant/sweetbox" target="_blank" rel="noopener">
+          <span class="wolt-icon">●</span> הזמנה ב-Wolt
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="branches-wolt-cta">
+    לא מצאתם את השילוב המתאים? אם אתם באיזורי החלוקה של הסניפים שלנו אפשר להרכיב קופסאות מותאמות אישית דרך וולט — אבל <strong>ההזמנה תגיע ללא הקופסה הכחולה האייקונית שלנו</strong>, קחו בחשבון ;)
+  </p>
+</section>
+
+<!-- 04. REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="reviews-header">
+    <div class="reviews-eyebrow">— WHAT PEOPLE SAY —</div>
+    <h2>הלקוחות שלנו, במילים שלהם</h2>
+    <div class="reviews-rating">
+      <span class="stars">★★★★★</span>
+      <span>4.9 מתוך 5 · מעל 800 ביקורות</span>
+    </div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-quote">"הזמנתי 15 קופסאות לצוות שלנו במשרד. התיאום היה מושלם, כולם פשוט התפרקו. בייקרי שעובד נכון."</p>
+      <div class="review-attribution"><strong>נועה ב.</strong> · תל אביב</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-quote">"קיבלתי מתנה והבנתי שזו הקופסה הכי יפה שראיתי. הטעם פשוט וואו. הזמנתי שוב באותו השבוע."</p>
+      <div class="review-attribution"><strong>איתי ל.</strong> · רמת השרון</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-quote">"הקראק פאי שלהם הכי טוב בארץ נקודה. אחרי שטעמתי פעם ראשונה, חזרתי כל שבועיים."</p>
+      <div class="review-attribution"><strong>מיכל ר.</strong> · הרצליה</div>
+    </div>
+  </div>
+</section>
+
+<!-- 05. FRANCHISE -->
+<section class="franchise" id="franchise">
+  <div class="franchise-eyebrow">— FRANCHISE OPPORTUNITY —</div>
+  <h2>רוצים להיות חלק<br><span class="motion-blue">מהמשפחה המתוקה?</span></h2>
+  <p>אנחנו מחפשים זכיינים שותפים לדרך — אנשים אוהבי מתוקים, עם תשוקה לשירות וחזון לפתוח סניף Sweet Box חדש.</p>
+  <div class="franchise-features">
+    <div class="franchise-feature">
+      <div class="num">2</div>
+      <div class="label">סניפים פעילים</div>
+    </div>
+    <div class="franchise-feature">
+      <div class="num">7</div>
+      <div class="label">שנים בשוק</div>
+    </div>
+    <div class="franchise-feature">
+      <div class="num">30K+</div>
+      <div class="label">לקוחות חוזרים</div>
+    </div>
+    <div class="franchise-feature">
+      <div class="num">100%</div>
+      <div class="label">ייצור עצמי</div>
+    </div>
+  </div>
+  <a href="https://sweetbox.co.il/zahyanot/" class="btn">לפרטים על זכיינות →</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand-block">
+      <img src="logo-sweetbox.png" alt="Sweet Box" class="brand-logo">
+    </div>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/sweetboxtlv/?hl=en" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.9.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.9.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.9-.9-1.4-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.9-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 3.4a6.4 6.4 0 100 12.8 6.4 6.4 0 000-12.8zm0 10.5a4.1 4.1 0 110-8.2 4.1 4.1 0 010 8.2zm6.7-10.8a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/sweetboxil/" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.69.24 2.69.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.79V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-columns">
+    <div class="footer-col">
+      <h4>הסניפים שלנו</h4>
+      <ul>
+        <li><p>לוינסקי 46, תל אביב</p></li>
+        <li><p>ביג פאשן גלילות, רמת השרון<br><span class="small-note">(פתוח בשבת)</span></p></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>המפעל</h4>
+      <ul>
+        <li><p>החלוצים 6, תל אביב</p></li>
+        <li><p>כשר חלבי — הרבנות הראשית ת"א-יפו</p></li>
+        <li><a href="tel:036196030">03-6196030</a></li>
+        <li><a href="mailto:shop@sweetbox.co.il">shop@sweetbox.co.il</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>שירות לקוחות</h4>
+      <ul>
+        <li><p>א'–ה'&nbsp;&nbsp;08:00–16:00</p></li>
+        <li><p>ו'&nbsp;&nbsp;08:00–15:00</p></li>
+        <li><p>שבת — סגור</p></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>אודות</h4>
+      <ul>
+        <li><a href="#">הסיפור שלנו</a></li>
+        <li><a href="#">תקנון האתר</a></li>
+        <li><a href="#">ביטול וזיכוי</a></li>
+        <li><a href="#">צור קשר</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-kosher-line">✦ כשר בהשגחת הרבנות הראשית תל אביב יפו ✦</div>
+
+  <div class="footer-bottom">© 2026 · SWEET BOX · sweetbox.co.il</div>
+</footer>
+
+<script>
+  // === TYPEWRITER EFFECT FOR MOTION SHOWCASE ===
+  (function() {
+    const messages = [
+      'מונסטר קוקיז - רד וולווט, שוקולד צ׳יפס, אמסטרדם ועוד המון',
+      'מיני קאפקייקס רכות ומושלמות',
+      'צ׳יזקייקס למות - אוריאו, בראוניז או קלאסית',
+      'קוביות בראוניז לא מהעולם הזה',
+      'קראק פאי - ראו הוזהרתם',
+      'עוגת ניו יורק קרמבל חלומית',
+      'מאפין פטל נימוח ומתוק',
+      'עוגת שכבות בטעמי קרם גבינה ולוטוס'
+    ];
+    const target = document.getElementById('motion-text');
+    if (!target) return;
+
+    let messageIdx = 0;
+    let charIdx = 0;
+    let isDeleting = false;
+    const typeSpeed = 90;
+    const deleteSpeed = 45;
+    const pauseAtEnd = 1600;
+    const pauseAtStart = 400;
+
+    function tick() {
+      const current = messages[messageIdx];
+      if (!isDeleting) {
+        target.textContent = current.substring(0, charIdx + 1);
+        charIdx++;
+        if (charIdx === current.length) {
+          isDeleting = true;
+          setTimeout(tick, pauseAtEnd);
+          return;
+        }
+        setTimeout(tick, typeSpeed);
+      } else {
+        target.textContent = current.substring(0, charIdx - 1);
+        charIdx--;
+        if (charIdx === 0) {
+          isDeleting = false;
+          messageIdx = (messageIdx + 1) % messages.length;
+          setTimeout(tick, pauseAtStart);
+          return;
+        }
+        setTimeout(tick, deleteSpeed);
+      }
+    }
+
+    setTimeout(tick, 600);
+  })();
+
+  // === CAROUSEL SCROLL ===
+  function carouselScroll(direction) {
+    const carousel = document.getElementById('boxesCarousel');
+    if (!carousel) return;
+    const firstItem = carousel.querySelector('.display-item');
+    if (!firstItem) return;
+    const itemWidth = firstItem.offsetWidth + 22;
+    carousel.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
