@@ -10,16 +10,17 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --blue: #A1D9FA;
-  --blue-deep: #7BBCD6;
-  --blue-soft: #EBF6FE;
-  --ink: #0F0F0F;
-  --ink-soft: #444;
-  --ink-whisper: #888;
-  --cream: #F4EFE6;
+  --blue: #B5DCE8;
+  --blue-deep: #5B9DB5;
+  --blue-soft: #EDF6FA;
+  --teal-accent: #4A8FA8;
+  --ink: #1A1A1F;
+  --ink-soft: #4D5258;
+  --ink-whisper: #8A8E96;
+  --cream: #F7F3EC;
   --brown: #554B41;
-  --paper: #FAFAFA;
-  --line: #EAEAEA;
+  --paper: #FCFCFD;
+  --line: #E8EAED;
 }
 
 html, body {
@@ -63,16 +64,17 @@ html, body {
 .topbar nav a:hover { color: var(--blue-deep); }
 
 .topbar .cta {
-  background: var(--blue-deep);
+  background: var(--teal-accent);
   color: #FFFFFF;
-  padding: 8px 18px;
+  padding: 10px 22px;
   font-size: 12px;
   letter-spacing: 2px;
   text-decoration: none;
   font-weight: 500;
-  transition: background 0.3s;
+  border-radius: 999px;
+  transition: background 0.3s, transform 0.2s;
 }
-.topbar .cta:hover { background: var(--brown); }
+.topbar .cta:hover { background: var(--brown); transform: translateY(-1px); }
 
 /* === DIVIDER (decorative scalloped) === */
 .divider {
@@ -323,6 +325,92 @@ html, body {
   margin: 0 auto;
 }
 
+.display-carousel-wrap {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.display-carousel {
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 6px 4px 22px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.display-carousel::-webkit-scrollbar { display: none; }
+
+.display-carousel .display-item {
+  flex: 0 0 320px;
+  scroll-snap-align: start;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 42%;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(85, 75, 65, 0.12);
+  transition: transform 0.2s, background 0.2s;
+  font-family: serif;
+}
+
+.carousel-arrow:hover {
+  background: var(--blue);
+  transform: scale(1.06);
+}
+
+.carousel-arrow.prev { right: 0; }
+.carousel-arrow.next { left: 0; }
+
+/* === SCROLL INDICATOR === */
+.scroll-indicator {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 8;
+  text-decoration: none;
+  animation: scrollBounce 2.2s ease-in-out infinite;
+  cursor: pointer;
+}
+
+.scroll-chevron {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-right: 2px solid var(--brown);
+  border-bottom: 2px solid var(--brown);
+  transform: rotate(45deg);
+  margin-top: -4px;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.85; }
+  50% { transform: translateX(-50%) translateY(8px); opacity: 1; }
+}
+
 .display-item {
   background: #FFFFFF;
   position: relative;
@@ -533,15 +621,24 @@ html, body {
 .typewriter-prefix {
   font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
   font-style: italic;
-  font-size: 0.65em;
+  font-size: 0.62em;
   color: var(--brown);
   display: block;
-  margin-bottom: 14px;
-  letter-spacing: 2px;
+  margin-bottom: 18px;
+  letter-spacing: 1.5px;
+  line-height: 1.45;
+}
+
+.motion-rotator {
+  display: block;
+  font-size: 1em;
+  line-height: 1.2;
+  margin-top: 8px;
 }
 
 #motion-text {
   color: var(--ink);
+  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
 }
 
 .cursor {
@@ -911,20 +1008,23 @@ html, body {
 
 .franchise .btn {
   display: inline-block;
-  padding: 16px 38px;
-  background: var(--blue-deep);
+  padding: 17px 44px;
+  background: var(--teal-accent);
   color: #FFFFFF;
   text-decoration: none;
   font-size: 13px;
   letter-spacing: 3px;
   font-weight: 500;
-  transition: transform 0.3s, background 0.3s;
+  border-radius: 999px;
+  transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
   margin-top: 16px;
+  box-shadow: 0 6px 18px rgba(74, 143, 168, 0.18);
 }
 
 .franchise .btn:hover {
   transform: translateY(-2px);
   background: var(--brown);
+  box-shadow: 0 8px 22px rgba(85, 75, 65, 0.22);
 }
 
 /* === FOOTER (expanded layout) === */
@@ -1062,9 +1162,22 @@ html, body {
   letter-spacing: 1px;
 }
 
+.footer-kosher-line {
+  max-width: 1200px;
+  margin: 22px auto 0;
+  text-align: center;
+  font-size: 13px;
+  color: var(--teal-accent);
+  font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
+  font-style: italic;
+  letter-spacing: 2px;
+  padding: 14px 0 6px;
+  border-top: 1px solid rgba(74, 143, 168, 0.15);
+}
+
 .footer-bottom {
   max-width: 1200px;
-  margin: 24px auto 0;
+  margin: 14px auto 0;
   text-align: center;
   font-size: 11.5px;
   color: var(--brown);
@@ -1113,6 +1226,9 @@ html, body {
   }
   .motion-seal { width: 130px; opacity: 0.7; }
   .display-grid { grid-template-columns: 1fr 1fr; gap: 18px; }
+  .display-carousel-wrap { padding: 0 16px; }
+  .display-carousel .display-item { flex: 0 0 78vw; max-width: 320px; }
+  .carousel-arrow { width: 38px; height: 38px; font-size: 22px; top: 38%; }
   .reviews-grid { grid-template-columns: 1fr; gap: 16px; }
   .branches-grid { grid-template-columns: 1fr; gap: 24px; }
   .franchise-features { grid-template-columns: repeat(2, 1fr); gap: 24px; }
@@ -1158,13 +1274,11 @@ html, body {
   <div class="motion-inner">
 
     <div class="motion-text">
-      <div class="motion-tagline-compact">
-        <span>ארוזים בצורה מושלמת</span>
-        <span>ובדרך לאן שתגידו</span>
-      </div>
       <div class="motion-typewriter">
-        <span class="typewriter-prefix">מגוון רחב של מתוקים מוגזמים :</span>
-        <span id="motion-text"></span><span class="cursor"></span>
+        <span class="typewriter-prefix">מגוון רחב של מתוקים מוגזמים,<br>ארוזים בצורה מושלמת — ובדרך לאן שתגידו</span>
+        <div class="motion-rotator">
+          <span id="motion-text"></span><span class="cursor"></span>
+        </div>
       </div>
     </div>
 
@@ -1185,6 +1299,10 @@ html, body {
     </div>
 
   </div>
+
+  <a href="#display" class="scroll-indicator" aria-label="גלילה למטה">
+    <span class="scroll-chevron"></span>
+  </a>
 </section>
 
 <!-- 02. DISPLAY CASE -->
@@ -1195,7 +1313,11 @@ html, body {
     <p>מגוון קופסאות בשילובים שונים, כולן בייצור עצמי אצלנו במאפייה, ארוזות בקפידה ובאהבה.</p>
   </div>
 
-  <div class="display-grid">
+  <div class="display-carousel-wrap">
+    <button class="carousel-arrow prev" onclick="carouselScroll(-1)" aria-label="הקודם">‹</button>
+    <button class="carousel-arrow next" onclick="carouselScroll(1)" aria-label="הבא">›</button>
+
+    <div class="display-carousel" id="boxesCarousel">
     <div class="display-item">
       <div class="display-item-image" style="background-image: url('box-bestseller.jpg');">
         <div class="display-tag">Best Seller</div>
@@ -1280,6 +1402,7 @@ html, body {
           <span class="display-item-price">239 ₪</span>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </section>
@@ -1450,6 +1573,8 @@ html, body {
 
   </div>
 
+  <div class="footer-kosher-line">✦ כשר בהשגחת הרבנות הראשית תל אביב יפו ✦</div>
+
   <div class="footer-bottom">© 2026 · SWEET BOX · sweetbox.co.il</div>
 
 </footer>
@@ -1457,4 +1582,64 @@ html, body {
 <script>
   // === TYPEWRITER EFFECT FOR MOTION SHOWCASE ===
   (function() {
-    const messag
+    const messages = [
+      'עוגיות חמאת בוטנים',
+      'קראק פאי',
+      'סינמון רול',
+      'ברווניז נימוחים',
+      'ניו יורק צ׳יזקייק',
+      'מאפינס בננה',
+      'קאפקייקס וניל',
+      'עוגות גבינה אישיות'
+    ];
+    const target = document.getElementById('motion-text');
+    if (!target) return;
+
+    let messageIdx = 0;
+    let charIdx = 0;
+    let isDeleting = false;
+    const typeSpeed = 90;
+    const deleteSpeed = 45;
+    const pauseAtEnd = 1600;
+    const pauseAtStart = 400;
+
+    function tick() {
+      const current = messages[messageIdx];
+      if (!isDeleting) {
+        target.textContent = current.substring(0, charIdx + 1);
+        charIdx++;
+        if (charIdx === current.length) {
+          isDeleting = true;
+          setTimeout(tick, pauseAtEnd);
+          return;
+        }
+        setTimeout(tick, typeSpeed);
+      } else {
+        target.textContent = current.substring(0, charIdx - 1);
+        charIdx--;
+        if (charIdx === 0) {
+          isDeleting = false;
+          messageIdx = (messageIdx + 1) % messages.length;
+          setTimeout(tick, pauseAtStart);
+          return;
+        }
+        setTimeout(tick, deleteSpeed);
+      }
+    }
+
+    setTimeout(tick, 600);
+  })();
+
+  // === CAROUSEL SCROLL ===
+  function carouselScroll(direction) {
+    const carousel = document.getElementById('boxesCarousel');
+    if (!carousel) return;
+    const firstItem = carousel.querySelector('.display-item');
+    if (!firstItem) return;
+    const itemWidth = firstItem.offsetWidth + 22;
+    carousel.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
