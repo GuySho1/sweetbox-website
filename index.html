@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sweet Box · קופסאות כחולות של אושר</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400;1,500&family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400;1,500&family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Italiana&display=swap');
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -102,7 +102,7 @@ html, body {
 
 .divider.patterned {
   background: var(--cream);
-  background-image: none;
+  background-image: url('pattern-boxes.png');
   background-size: 240px 240px;
   background-blend-mode: multiply;
 }
@@ -166,7 +166,7 @@ html, body {
 }
 
 .hero h1 {
-  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
+  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
   font-size: clamp(44px, 7vw, 84px);
   line-height: 1;
   font-weight: normal;
@@ -252,7 +252,7 @@ html, body {
 }
 
 .trust-num {
-  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
+  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
   font-size: 32px;
   color: var(--blue);
   line-height: 1;
@@ -271,7 +271,7 @@ html, body {
 /* === DISPLAY CASE === */
 .display {
   background: var(--cream);
-  background-image: none;
+  background-image: url('pattern-boxes.png');
   background-size: 240px 240px;
   background-blend-mode: multiply;
   padding: 30px 32px 40px;
@@ -284,7 +284,7 @@ html, body {
 }
 
 .display-eyebrow {
-  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
+  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
   font-size: 22px;
   letter-spacing: 7px;
   color: var(--blue-deep);
@@ -293,7 +293,7 @@ html, body {
 }
 
 .display-header h2 {
-  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
+  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
   font-size: clamp(36px, 4.5vw, 52px);
   font-weight: normal;
   letter-spacing: 1px;
@@ -367,7 +367,7 @@ html, body {
 }
 
 .display-item-name {
-  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
+  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
   font-size: 24px;
   letter-spacing: 1px;
   margin-bottom: 4px;
@@ -402,7 +402,7 @@ html, body {
 }
 
 .display-item-price {
-  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
+  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
   font-size: 18px;
   color: var(--ink);
 }
@@ -427,7 +427,7 @@ html, body {
 }
 
 .counter h2 {
-  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
+  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
   font-size: clamp(28px, 3.5vw, 42px);
   font-weight: normal;
   letter-spacing: 0.5px;
@@ -458,7 +458,7 @@ html, body {
 /* === MOTION SHOWCASE (now the hero section) === */
 .motion-showcase {
   background: var(--cream);
-  background-image: none;
+  background-image: url('pattern-boxes.png');
   background-size: 240px 240px;
   background-blend-mode: multiply;
   padding: 110px 32px 60px;
@@ -496,7 +496,7 @@ html, body {
 }
 
 .motion-headline {
-  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
+  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
   font-size: clamp(38px, 5.5vw, 64px);
   font-weight: normal;
   line-height: 1;
@@ -512,7 +512,7 @@ html, body {
 }
 
 .motion-eyebrow {
-  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
+  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
   font-size: 22px;
   letter-spacing: 7px;
   color: var(--ink);
@@ -521,7 +521,7 @@ html, body {
 }
 
 .motion-typewriter {
-  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
+  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
   font-size: clamp(24px, 2.9vw, 34px);
   line-height: 1.35;
   color: var(--ink);
@@ -583,9 +583,27 @@ html, body {
   filter: drop-shadow(0 24px 40px rgba(85, 75, 65, 0.18));
 }
 
+.motion-box-video {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 24px 50px rgba(85, 75, 65, 0.22);
+  background: var(--cream);
+  display: block;
+  animation: gentleVideoFloat 6s ease-in-out infinite;
+}
+
 @keyframes gentleFloat {
   0%, 100% { transform: translateY(0) rotate(-2deg); }
   50% { transform: translateY(-14px) rotate(2deg); }
+}
+
+@keyframes gentleVideoFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 /* === REVIEWS === */
@@ -600,7 +618,7 @@ html, body {
 }
 
 .reviews-eyebrow {
-  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
+  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
   font-size: 22px;
   letter-spacing: 7px;
   color: var(--blue-deep);
@@ -609,7 +627,7 @@ html, body {
 }
 
 .reviews h2 {
-  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
+  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
   font-size: clamp(32px, 4vw, 46px);
   font-weight: normal;
   letter-spacing: 1px;
@@ -685,7 +703,7 @@ html, body {
 }
 
 .branches-section .eyebrow {
-  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
+  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
   font-size: 22px;
   letter-spacing: 7px;
   color: var(--blue-deep);
@@ -694,7 +712,7 @@ html, body {
 }
 
 .branches-section h2 {
-  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
+  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
   font-size: clamp(36px, 4.5vw, 52px);
   font-weight: normal;
   letter-spacing: 1px;
@@ -740,7 +758,7 @@ html, body {
 }
 
 .branch-name {
-  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
+  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
   font-size: 30px;
   letter-spacing: 1px;
   margin-bottom: 6px;
@@ -788,7 +806,7 @@ html, body {
 /* === FRANCHISE (cream palette, no black) === */
 .franchise {
   background: var(--cream);
-  background-image: none;
+  background-image: url('pattern-boxes.png');
   background-size: 240px 240px;
   background-blend-mode: multiply;
   color: var(--ink);
@@ -798,7 +816,7 @@ html, body {
 }
 
 .franchise-eyebrow {
-  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
+  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
   font-size: 22px;
   letter-spacing: 7px;
   color: var(--blue-deep);
@@ -807,7 +825,7 @@ html, body {
 }
 
 .franchise h2 {
-  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
+  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
   font-size: clamp(36px, 5vw, 56px);
   font-weight: normal;
   line-height: 1.05;
@@ -839,7 +857,7 @@ html, body {
 .franchise-feature { text-align: center; }
 
 .franchise-feature .num {
-  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
+  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
   font-size: 36px;
   color: var(--blue-deep);
   margin-bottom: 6px;
@@ -946,7 +964,7 @@ html, body {
 }
 
 .footer-col h4 {
-  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
+  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
   font-size: 19px;
   font-weight: normal;
   letter-spacing: 1.5px;
@@ -1023,6 +1041,7 @@ html, body {
   .motion-inner { grid-template-columns: 1fr; gap: 28px; text-align: center; }
   .motion-typewriter { min-height: 100px; }
   .motion-box-img { max-height: 280px; }
+  .motion-box-video { max-width: 260px; border-radius: 16px; }
   .motion-seal { width: 130px; opacity: 0.7; }
   .display-grid { grid-template-columns: 1fr 1fr; gap: 18px; }
   .reviews-grid { grid-template-columns: 1fr; gap: 16px; }
@@ -1039,122 +1058,11 @@ html, body {
   .display-grid { grid-template-columns: 1fr; }
   .motion-headline { font-size: 34px; }
   .motion-typewriter { font-size: 20px; min-height: 90px; }
-  .motion-seal { width: 140px; opacity: 0.78; }
-  .motion-seal.left { top: 70px; inset-inline-start: -20px; }
-  .motion-seal.right { bottom: 30px; inset-inline-end: -20px; }
+  .motion-box-video { max-width: 230px; }
+  .motion-seal { display: none; }
   .divider img { width: 80%; }
   .footer-columns { grid-template-columns: 1fr; gap: 22px; text-align: center; }
 }
-
-/* === Scroll-down indicator === */
-.scroll-down {
-  position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
-  z-index: 5;
-  font-family: 'Playfair Display', 'Frank Ruhl Libre', serif;
-  font-size: 11px; letter-spacing: 4px; color: var(--brown);
-  text-transform: uppercase;
-  display: flex; flex-direction: column; align-items: center; gap: 4px;
-  opacity: 0.7;
-}
-.scroll-down .arrow { font-size: 18px; animation: scrollBounce 1.6s infinite; }
-@keyframes scrollBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
-
-/* === Mobile improvements === */
-@media (max-width: 700px) {
-  .motion-eyebrow, .display-eyebrow, .branches-section .eyebrow,
-  .reviews-eyebrow, .franchise-eyebrow, .product-eyebrow {
-    text-align: center !important; font-size: 16px !important;
-    letter-spacing: 4px !important; margin-bottom: 14px !important;
-  }
-  .motion-headline, .motion-typewriter, .motion-tagline { text-align: center; }
-  .motion-headline { line-height: 1.1; }
-  .display-header h2, .branches-section h2, .reviews h2, .franchise h2 {
-    text-align: center; line-height: 1.15;
-  }
-  .franchise-feature .num {
-    font-family: 'Playfair Display', 'Frank Ruhl Libre', serif !important;
-    font-weight: 700 !important; font-size: 30px !important;
-  }
-  .scroll-down { font-size: 10px; bottom: 16px; }
-  .footer { padding: 20px 14px 12px; }
-  .footer-top { gap: 8px; margin-bottom: 14px; }
-  .footer-top img.brand-logo { height: 48px; }
-  .footer-social a { width: 30px; height: 30px; }
-  .footer-social svg { width: 14px; height: 14px; }
-  .footer-columns {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 14px !important; padding: 14px 0 !important;
-    text-align: center !important;
-  }
-  .footer-col h4 { font-size: 13px; margin-bottom: 6px; letter-spacing: 1px; }
-  .footer-col li { margin-bottom: 3px; }
-  .footer-col a, .footer-col p { font-size: 11.5px; line-height: 1.45; }
-  .footer-col.footer-kosher img { width: 48px; margin-bottom: 4px; }
-  .footer-col.footer-kosher .label { font-size: 10.5px; }
-  .footer-bottom { font-size: 10px; padding-top: 10px; margin-top: 10px; }
-}
-
-
-/* === DISPLAY CAROUSEL === */
-.display-carousel {
-  position: relative;
-  max-width: 1280px;
-  margin: 0 auto;
-}
-.display-grid {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
-  grid-template-columns: none !important;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  gap: 24px !important;
-  padding: 8px 8px 24px;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-.display-grid::-webkit-scrollbar { display: none; }
-.display-grid > a {
-  flex: 0 0 320px;
-  scroll-snap-align: center;
-}
-.display-item {
-  height: 100%;
-}
-.carousel-arrow {
-  position: absolute;
-  top: 38%;
-  transform: translateY(-50%);
-  z-index: 10;
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  background: #FFFFFF;
-  border: 1px solid var(--line);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px;
-  color: var(--ink);
-  font-family: 'Frank Ruhl Libre', serif;
-  transition: background 0.3s, transform 0.3s;
-}
-.carousel-arrow:hover {
-  background: var(--blue);
-  transform: translateY(-50%) scale(1.05);
-}
-.carousel-arrow.prev { inset-inline-end: -8px; }
-.carousel-arrow.next { inset-inline-start: -8px; }
-@media (max-width: 900px) {
-  .display-grid > a { flex: 0 0 78%; }
-  .carousel-arrow { width: 36px; height: 36px; font-size: 15px; }
-  .carousel-arrow.prev { inset-inline-end: 6px; }
-  .carousel-arrow.next { inset-inline-start: 6px; }
-}
-@media (max-width: 600px) {
-  .display-grid > a { flex: 0 0 85%; }
-}
-
 </style>
 </head>
 <body>
@@ -1165,7 +1073,6 @@ html, body {
   <nav>
     <a href="#display">המארזים</a>
     <a href="#branches">סניפים</a>
-    <a href="bulk-orders.html">הזמנות מרוכזות</a>
     <a href="#franchise">זכיינות</a>
   </nav>
   <a class="cta" href="#display">בחירת קופסה</a>
@@ -1190,12 +1097,18 @@ html, body {
     </div>
 
     <div class="motion-box-wrap">
-      <img src="box-2d-isometric.png" alt="Sweet Box" class="motion-box-img">
+      <video class="motion-box-video"
+             autoplay
+             muted
+             loop
+             playsinline
+             preload="metadata"
+             aria-label="Sweet Box brand animation">
+        <source src="brand-motion.mp4" type="video/mp4">
+      </video>
     </div>
 
   </div>
-
-  <div class="scroll-down"><span>scroll</span><span class="arrow">↓</span></div>
 </section>
 
 <!-- 02. DISPLAY CASE -->
@@ -1206,26 +1119,8 @@ html, body {
     <p>מגוון קופסאות בשילובים שונים, כולן בייצור עצמי אצלנו במאפייה, ארוזות בקפידה ובאהבה.</p>
   </div>
 
-  <div class="display-carousel">
-  <button class="carousel-arrow prev" aria-label="הקודם" onclick="carouselScroll(-1)">›</button>
-  <button class="carousel-arrow next" aria-label="הבא" onclick="carouselScroll(1)">‹</button>
-  <div class="display-grid" id="displayGrid">
-    <a href="product-bestseller.html" style="text-decoration:none;color:inherit;display:block;"><div class="display-item">
-      <div class="display-item-image" style="background-image: url('box-cheesy.jpg');">
-        <div class="display-tag brown">שבועות 2026</div>
-      </div>
-      <div class="display-item-info">
-        <div class="display-item-sub">THE GIFT</div>
-        <div class="display-item-name">Cheesy Box · שבועות</div>
-        <div class="display-item-desc">המארז החגיגי לשבועות. עוגת לוטוס שכבות אישית + 6 ריבועי גבינה.</div>
-        <div class="display-item-meta">
-          <span>7 פריטי גבינה</span>
-          <span class="display-item-price">239 ₪</span>
-        </div>
-      </div>
-    </div></a>
-
-    <a href="product-bestseller.html" style="text-decoration:none;color:inherit;display:block;"><div class="display-item">
+  <div class="display-grid">
+    <div class="display-item">
       <div class="display-item-image" style="background-image: url('box-bestseller.jpg');">
         <div class="display-tag">Best Seller</div>
       </div>
@@ -1238,9 +1133,9 @@ html, body {
           <span class="display-item-price">190 ₪</span>
         </div>
       </div>
-    </div></a>
+    </div>
 
-    <a href="product-bestseller.html" style="text-decoration:none;color:inherit;display:block;"><div class="display-item">
+    <div class="display-item">
       <div class="display-item-image" style="background-image: url('box-dream.jpg');">
         <div class="display-tag blue">Premium</div>
       </div>
@@ -1253,9 +1148,9 @@ html, body {
           <span class="display-item-price">430 ₪</span>
         </div>
       </div>
-    </div></a>
+    </div>
 
-    <a href="product-bestseller.html" style="text-decoration:none;color:inherit;display:block;"><div class="display-item">
+    <div class="display-item">
       <div class="display-item-image" style="background-image: url('box-crackpie.jpg');">
         <div class="display-tag">Fan Favorite</div>
       </div>
@@ -1268,9 +1163,9 @@ html, body {
           <span class="display-item-price">190 ₪</span>
         </div>
       </div>
-    </div></a>
+    </div>
 
-    <a href="product-bestseller.html" style="text-decoration:none;color:inherit;display:block;"><div class="display-item">
+    <div class="display-item">
       <div class="display-item-image" style="background-image: url('box-cupcake.jpg');"></div>
       <div class="display-item-info">
         <div class="display-item-sub">THE CLASSIC</div>
@@ -1281,9 +1176,9 @@ html, body {
           <span class="display-item-price">170 ₪</span>
         </div>
       </div>
-    </div></a>
+    </div>
 
-    <a href="product-bestseller.html" style="text-decoration:none;color:inherit;display:block;"><div class="display-item">
+    <div class="display-item">
       <div class="display-item-image" style="background-image: url('box-mix.jpg');"></div>
       <div class="display-item-info">
         <div class="display-item-sub">THE SAMPLER</div>
@@ -1294,13 +1189,27 @@ html, body {
           <span class="display-item-price">220 ₪</span>
         </div>
       </div>
-    </div></a>
+    </div>
+
+    <div class="display-item">
+      <div class="display-item-image" style="background-image: url('box-cheesy.jpg');">
+        <div class="display-tag brown">שבועות 2026</div>
+      </div>
+      <div class="display-item-info">
+        <div class="display-item-sub">THE GIFT</div>
+        <div class="display-item-name">Cheesy Box · שבועות</div>
+        <div class="display-item-desc">המארז החגיגי לשבועות. עוגת לוטוס שכבות אישית + 6 ריבועי גבינה.</div>
+        <div class="display-item-meta">
+          <span>7 פריטי גבינה</span>
+          <span class="display-item-price">239 ₪</span>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 </section>
 
 <!-- DIVIDER (after display, large ribbon, patterned bg) -->
-<div class="divider large soft-blue" style="padding:8px 0;">
+<div class="divider large patterned">
   <img src="divider-ribbon.png" alt="">
 </div>
 
@@ -1403,7 +1312,7 @@ html, body {
     </div>
   </div>
 
-  <a href="franchise.html" class="btn">לפרטים על זכיינות →</a>
+  <a href="../../05_חומרי_AI/דפי_נחיתה/2026-04-27_דף_נחיתה_זכיינות.html" class="btn">לפרטים על זכיינות →</a>
 </section>
 
 <!-- FOOTER -->
@@ -1470,43 +1379,6 @@ html, body {
 </footer>
 
 <script>
+  // === TYPEWRITER EFFECT FOR MOTION SHOWCASE ===
   (function() {
-    const messages = [
-      "מונסטר קוקיז — רד וולווט, שוקולד צ'יפס, אמסטרדם ועוד המון.",
-      "מיני קאפקייקס רכות ומושלמות.",
-      "צ'יזקייקס למות — אוריאו, בראוניז או קלאסית.",
-      "קוביות בראוניז לא מהעולם הזה.",
-      "קראק פאי — ראו הוזהרתם.",
-      "עוגת ניו יורק קרמבל חלומית.",
-      "מאפין פטל נימוח ומתוק.",
-      "עוגת שכבות בטעמי קרם גבינה ולוטוס."
-    ];
-    let msgIdx = 0, charIdx = 0, deleting = false;
-    const textEl = document.getElementById('motion-text');
-    if (!textEl) return;
-    function tick() {
-      const full = messages[msgIdx];
-      if (deleting) { textEl.textContent = full.substring(0, charIdx - 1); charIdx--; }
-      else { textEl.textContent = full.substring(0, charIdx + 1); charIdx++; }
-      let speed = deleting ? 25 : 65;
-      if (!deleting && charIdx === full.length) { speed = 2400; deleting = true; }
-      else if (deleting && charIdx === 0) { deleting = false; msgIdx = (msgIdx + 1) % messages.length; speed = 450; }
-      setTimeout(tick, speed);
-    }
-    tick();
-  })();
-</script>
-
-
-<script>
-  function carouselScroll(direction) {
-    const grid = document.getElementById('displayGrid');
-    if (!grid) return;
-    const card = grid.querySelector('a');
-    const cardWidth = card ? card.offsetWidth + 24 : 340;
-    grid.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
-  }
-</script>
-
-</body>
-</html>
+    const messag
