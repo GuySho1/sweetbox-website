@@ -573,6 +573,7 @@ html, body {
   align-items: center;
   justify-content: center;
   perspective: 1200px;
+  position: relative;
 }
 
 .motion-box-img {
@@ -585,7 +586,7 @@ html, body {
 
 .motion-box-video {
   width: 100%;
-  max-width: 320px;
+  max-width: 400px;
   height: auto;
   aspect-ratio: 9 / 16;
   object-fit: cover;
@@ -594,6 +595,45 @@ html, body {
   background: var(--cream);
   display: block;
   animation: gentleVideoFloat 6s ease-in-out infinite;
+}
+
+.motion-video-overlay {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 400px;
+  padding: 7% 6% 0;
+  text-align: center;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.motion-video-overlay .motion-eyebrow {
+  font-size: clamp(12px, 1.3vw, 18px);
+  letter-spacing: 5px;
+  margin-bottom: 14px;
+  color: var(--ink);
+}
+
+.motion-video-overlay .motion-headline {
+  font-size: clamp(28px, 3.4vw, 44px);
+  margin-bottom: 0;
+  line-height: 1.05;
+}
+
+.motion-tagline-compact {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
+  font-style: italic;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: var(--brown);
+  line-height: 1.35;
+  margin-bottom: 22px;
 }
 
 @keyframes gentleFloat {
@@ -1037,11 +1077,40 @@ html, body {
   .topbar { padding: 12px 16px; }
   .topbar nav { display: none; }
   .topbar .logo img { height: 44px; }
-  .motion-showcase { padding: 90px 16px 50px; min-height: auto; }
-  .motion-inner { grid-template-columns: 1fr; gap: 28px; text-align: center; }
+  .motion-showcase { padding: 70px 0 40px; min-height: auto; }
+  .motion-inner { grid-template-columns: 1fr; gap: 22px; text-align: center; }
   .motion-typewriter { min-height: 100px; }
   .motion-box-img { max-height: 280px; }
-  .motion-box-video { max-width: 260px; border-radius: 16px; }
+  .motion-box-wrap { order: -1; margin: 0; }
+  .motion-box-video {
+    max-width: 100%;
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    animation: none;
+    aspect-ratio: 9 / 16;
+    max-height: 92vh;
+  }
+  .motion-video-overlay {
+    max-width: 100%;
+    padding: 7% 8% 0;
+  }
+  .motion-video-overlay .motion-eyebrow {
+    font-size: 13px;
+    letter-spacing: 5px;
+    margin-bottom: 12px;
+  }
+  .motion-video-overlay .motion-headline {
+    font-size: 38px;
+    line-height: 1.05;
+  }
+  .motion-text { padding: 0 20px; }
+  .motion-tagline-compact {
+    align-items: center;
+    text-align: center;
+    font-size: 17px;
+    margin-bottom: 14px;
+  }
   .motion-seal { width: 130px; opacity: 0.7; }
   .display-grid { grid-template-columns: 1fr 1fr; gap: 18px; }
   .reviews-grid { grid-template-columns: 1fr; gap: 16px; }
@@ -1058,7 +1127,9 @@ html, body {
   .display-grid { grid-template-columns: 1fr; }
   .motion-headline { font-size: 34px; }
   .motion-typewriter { font-size: 20px; min-height: 90px; }
-  .motion-box-video { max-width: 230px; }
+  .motion-video-overlay .motion-headline { font-size: 34px; }
+  .motion-video-overlay .motion-eyebrow { font-size: 12px; letter-spacing: 4px; }
+  .motion-tagline-compact { font-size: 16px; }
   .motion-seal { display: none; }
   .divider img { width: 80%; }
   .footer-columns { grid-template-columns: 1fr; gap: 22px; text-align: center; }
@@ -1087,13 +1158,14 @@ html, body {
   <div class="motion-inner">
 
     <div class="motion-text">
-      <div class="motion-eyebrow">— AMERICAN BAKESHOP —</div>
-      <h1 class="motion-headline">קופסאות כחולות<br><span class="motion-blue">של אושר</span></h1>
+      <div class="motion-tagline-compact">
+        <span>ארוזים בצורה מושלמת</span>
+        <span>ובדרך לאן שתגידו</span>
+      </div>
       <div class="motion-typewriter">
         <span class="typewriter-prefix">מגוון רחב של מתוקים מוגזמים :</span>
         <span id="motion-text"></span><span class="cursor"></span>
       </div>
-      <div class="motion-tagline">— ארוזים בצורה מושלמת — ובדרך לאן שתגידו —</div>
     </div>
 
     <div class="motion-box-wrap">
@@ -1106,6 +1178,10 @@ html, body {
              aria-label="Sweet Box brand animation">
         <source src="brand-motion.mp4" type="video/mp4">
       </video>
+      <div class="motion-video-overlay">
+        <div class="motion-eyebrow">— AMERICAN BAKESHOP —</div>
+        <h1 class="motion-headline">קופסאות כחולות<br><span class="motion-blue">של אושר</span></h1>
+      </div>
     </div>
 
   </div>
