@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sweet Box · קופסאות כחולות של אושר</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400;1,500&family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Italiana&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400;1,500&family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Heebo:wght@300;400;500;600;700;800&family=Italiana&display=swap');
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -24,7 +24,7 @@
 }
 
 html, body {
-  font-family: 'Frank Ruhl Libre', 'Heebo', serif;
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
   color: var(--ink);
   background: var(--paper);
   direction: rtl;
@@ -103,10 +103,7 @@ html, body {
 .divider.soft-blue { background: var(--blue-soft); }
 
 .divider.patterned {
-  background: var(--cream);
-  background-image: url('pattern-boxes.png');
-  background-size: 240px 240px;
-  background-blend-mode: multiply;
+  background: #EDF6FA;
 }
 
 /* === 01. HERO === */
@@ -168,7 +165,7 @@ html, body {
 }
 
 .hero h1 {
-  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
   font-size: clamp(44px, 7vw, 84px);
   line-height: 1;
   font-weight: normal;
@@ -254,7 +251,7 @@ html, body {
 }
 
 .trust-num {
-  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
   font-size: 32px;
   color: var(--blue);
   line-height: 1;
@@ -272,10 +269,7 @@ html, body {
 
 /* === DISPLAY CASE === */
 .display {
-  background: var(--cream);
-  background-image: url('pattern-boxes.png');
-  background-size: 240px 240px;
-  background-blend-mode: multiply;
+  background: linear-gradient(180deg, #EDF6FA 0%, #FFFFFF 100%);
   padding: 30px 32px 40px;
 }
 
@@ -286,16 +280,17 @@ html, body {
 }
 
 .display-eyebrow {
-  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
-  font-size: 22px;
-  letter-spacing: 7px;
-  color: var(--blue-deep);
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
+  font-size: 14px;
+  letter-spacing: 6px;
+  color: var(--teal-accent);
   margin-bottom: 22px;
-  font-weight: 400;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .display-header h2 {
-  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
   font-size: clamp(36px, 4.5vw, 52px);
   font-weight: normal;
   letter-spacing: 1px;
@@ -330,6 +325,7 @@ html, body {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 40px;
+  overflow: hidden;
 }
 
 .display-carousel {
@@ -346,15 +342,17 @@ html, body {
 .display-carousel::-webkit-scrollbar { display: none; }
 
 .display-carousel .display-item {
-  flex: 0 0 320px;
-  scroll-snap-align: start;
+  flex: 0 0 calc(100% - 4px);
+  scroll-snap-align: center;
+  max-width: 360px;
+  margin: 0 auto;
 }
 
 .carousel-arrow {
   position: absolute;
-  top: 42%;
-  width: 46px;
-  height: 46px;
+  top: 38%;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: #FFFFFF;
   border: 1px solid var(--line);
@@ -367,17 +365,37 @@ html, body {
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 14px rgba(85, 75, 65, 0.12);
-  transition: transform 0.2s, background 0.2s;
+  transition: transform 0.2s, background 0.2s, color 0.2s;
   font-family: serif;
 }
 
 .carousel-arrow:hover {
-  background: var(--blue);
-  transform: scale(1.06);
+  background: var(--teal-accent);
+  color: #FFFFFF;
+  transform: scale(1.08);
 }
 
-.carousel-arrow.prev { right: 0; }
-.carousel-arrow.next { left: 0; }
+.carousel-arrow.prev { right: 4px; }
+.carousel-arrow.next {
+  left: 4px;
+  animation: arrowPulse 2.4s ease-in-out infinite;
+  background: var(--blue);
+}
+
+.carousel-arrow.next:hover {
+  animation: none;
+  background: var(--teal-accent);
+  color: #FFFFFF;
+}
+
+@keyframes arrowPulse {
+  0%, 100% {
+    box-shadow: 0 4px 14px rgba(74, 143, 168, 0.20), 0 0 0 0 rgba(74, 143, 168, 0.5);
+  }
+  50% {
+    box-shadow: 0 4px 14px rgba(74, 143, 168, 0.30), 0 0 0 12px rgba(74, 143, 168, 0);
+  }
+}
 
 /* === SCROLL INDICATOR === */
 .scroll-indicator {
@@ -455,7 +473,7 @@ html, body {
 }
 
 .display-item-name {
-  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
   font-size: 24px;
   letter-spacing: 1px;
   margin-bottom: 4px;
@@ -490,7 +508,7 @@ html, body {
 }
 
 .display-item-price {
-  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
   font-size: 18px;
   color: var(--ink);
 }
@@ -515,7 +533,7 @@ html, body {
 }
 
 .counter h2 {
-  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
   font-size: clamp(28px, 3.5vw, 42px);
   font-weight: normal;
   letter-spacing: 0.5px;
@@ -545,10 +563,7 @@ html, body {
 
 /* === MOTION SHOWCASE (now the hero section) === */
 .motion-showcase {
-  background: var(--cream);
-  background-image: url('pattern-boxes.png');
-  background-size: 240px 240px;
-  background-blend-mode: multiply;
+  background: linear-gradient(180deg, #FFFFFF 0%, #EDF6FA 100%);
   padding: 110px 32px 60px;
   overflow: hidden;
   position: relative;
@@ -584,7 +599,7 @@ html, body {
 }
 
 .motion-headline {
-  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
   font-size: clamp(38px, 5.5vw, 64px);
   font-weight: normal;
   line-height: 1;
@@ -600,7 +615,7 @@ html, body {
 }
 
 .motion-eyebrow {
-  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
   font-size: 22px;
   letter-spacing: 7px;
   color: var(--ink);
@@ -609,7 +624,7 @@ html, body {
 }
 
 .motion-typewriter {
-  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
   font-size: clamp(24px, 2.9vw, 34px);
   line-height: 1.35;
   color: var(--ink);
@@ -638,7 +653,7 @@ html, body {
 
 #motion-text {
   color: var(--ink);
-  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
 }
 
 .cursor {
@@ -755,16 +770,17 @@ html, body {
 }
 
 .reviews-eyebrow {
-  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
-  font-size: 22px;
-  letter-spacing: 7px;
-  color: var(--blue-deep);
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
+  font-size: 14px;
+  letter-spacing: 6px;
+  color: var(--teal-accent);
   margin-bottom: 18px;
-  font-weight: 400;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .reviews h2 {
-  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
   font-size: clamp(32px, 4vw, 46px);
   font-weight: normal;
   letter-spacing: 1px;
@@ -840,16 +856,17 @@ html, body {
 }
 
 .branches-section .eyebrow {
-  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
-  font-size: 22px;
-  letter-spacing: 7px;
-  color: var(--blue-deep);
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
+  font-size: 14px;
+  letter-spacing: 6px;
+  color: var(--teal-accent);
   margin-bottom: 22px;
-  font-weight: 400;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .branches-section h2 {
-  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
   font-size: clamp(36px, 4.5vw, 52px);
   font-weight: normal;
   letter-spacing: 1px;
@@ -863,6 +880,25 @@ html, body {
   margin: 18px auto 0;
   line-height: 1.7;
   font-weight: 300;
+}
+
+.branches-wolt-cta {
+  max-width: 760px;
+  margin: 32px auto 0;
+  text-align: center;
+  font-size: 15px;
+  color: var(--brown);
+  line-height: 1.65;
+  font-weight: 300;
+  padding: 18px 24px;
+  background: rgba(74, 143, 168, 0.06);
+  border-radius: 16px;
+  border: 1px solid rgba(74, 143, 168, 0.12);
+}
+
+.branches-wolt-cta strong {
+  color: var(--teal-accent);
+  font-weight: 500;
 }
 
 .branches-grid {
@@ -895,7 +931,7 @@ html, body {
 }
 
 .branch-name {
-  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
   font-size: 30px;
   letter-spacing: 1px;
   margin-bottom: 6px;
@@ -940,12 +976,9 @@ html, body {
   font-size: 14px;
 }
 
-/* === FRANCHISE (cream palette, no black) === */
+/* === FRANCHISE (soft blue, no black) === */
 .franchise {
-  background: var(--cream);
-  background-image: url('pattern-boxes.png');
-  background-size: 240px 240px;
-  background-blend-mode: multiply;
+  background: linear-gradient(180deg, #FFFFFF 0%, #EDF6FA 100%);
   color: var(--ink);
   padding: 60px 32px 70px;
   text-align: center;
@@ -953,16 +986,17 @@ html, body {
 }
 
 .franchise-eyebrow {
-  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
-  font-size: 22px;
-  letter-spacing: 7px;
-  color: var(--blue-deep);
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
+  font-size: 14px;
+  letter-spacing: 6px;
+  color: var(--teal-accent);
   margin-bottom: 24px;
-  font-weight: 400;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .franchise h2 {
-  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
   font-size: clamp(36px, 5vw, 56px);
   font-weight: normal;
   line-height: 1.05;
@@ -994,7 +1028,7 @@ html, body {
 .franchise-feature { text-align: center; }
 
 .franchise-feature .num {
-  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
   font-size: 36px;
   color: var(--blue-deep);
   margin-bottom: 6px;
@@ -1029,31 +1063,31 @@ html, body {
 
 /* === FOOTER (expanded layout) === */
 .footer {
-  background: var(--cream);
+  background: #FFFFFF;
   color: var(--brown);
-  padding: 40px 32px 22px;
-  border-top: 1px solid rgba(123,188,214,0.4);
+  padding: 26px 32px 16px;
+  border-top: 1px solid rgba(74, 143, 168, 0.18);
   text-align: center;
 }
 
 .footer-top {
   max-width: 800px;
-  margin: 0 auto 26px;
+  margin: 0 auto 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 
 .footer-brand-block {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .footer-brand-block img.brand-logo {
-  height: 72px;
+  height: 54px;
   width: auto;
   display: block;
 }
@@ -1076,8 +1110,8 @@ html, body {
 }
 
 .footer-social a {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background: var(--brown);
   color: var(--paper);
@@ -1096,20 +1130,21 @@ html, body {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 32px;
-  padding: 26px 0;
-  border-top: 1px solid rgba(85,75,65,0.18);
-  border-bottom: 1px solid rgba(85,75,65,0.18);
+  gap: 22px;
+  padding: 18px 0;
+  border-top: 1px solid rgba(74, 143, 168, 0.15);
+  border-bottom: 1px solid rgba(74, 143, 168, 0.15);
   text-align: center;
 }
 
 .footer-col h4 {
-  font-family: 'Italiana', 'Frank Ruhl Libre', serif;
-  font-size: 19px;
-  font-weight: normal;
-  letter-spacing: 1.5px;
-  color: var(--ink);
-  margin-bottom: 14px;
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  color: var(--teal-accent);
+  margin-bottom: 10px;
+  text-transform: uppercase;
 }
 
 .footer-col ul {
@@ -1118,14 +1153,14 @@ html, body {
 }
 
 .footer-col li {
-  margin-bottom: 8px;
+  margin-bottom: 5px;
 }
 
 .footer-col a, .footer-col p {
-  font-size: 14.5px;
+  font-size: 13px;
   color: var(--brown);
   text-decoration: none;
-  line-height: 1.7;
+  line-height: 1.55;
   font-weight: 300;
   transition: color 0.3s;
   display: inline-block;
@@ -1164,25 +1199,24 @@ html, body {
 
 .footer-kosher-line {
   max-width: 1200px;
-  margin: 22px auto 0;
+  margin: 14px auto 0;
   text-align: center;
-  font-size: 13px;
+  font-size: 12px;
   color: var(--teal-accent);
   font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', serif;
   font-style: italic;
-  letter-spacing: 2px;
-  padding: 14px 0 6px;
-  border-top: 1px solid rgba(74, 143, 168, 0.15);
+  letter-spacing: 1.5px;
+  padding: 8px 0 4px;
 }
 
 .footer-bottom {
   max-width: 1200px;
-  margin: 14px auto 0;
+  margin: 8px auto 0;
   text-align: center;
-  font-size: 11.5px;
+  font-size: 11px;
   color: var(--brown);
   letter-spacing: 2px;
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
 /* === RESPONSIVE === */
@@ -1226,17 +1260,26 @@ html, body {
   }
   .motion-seal { width: 130px; opacity: 0.7; }
   .display-grid { grid-template-columns: 1fr 1fr; gap: 18px; }
-  .display-carousel-wrap { padding: 0 16px; }
-  .display-carousel .display-item { flex: 0 0 78vw; max-width: 320px; }
-  .carousel-arrow { width: 38px; height: 38px; font-size: 22px; top: 38%; }
+  .display-carousel-wrap { padding: 0 50px; }
+  .display-carousel { gap: 12px; }
+  .display-carousel .display-item { flex: 0 0 100%; max-width: 100%; scroll-snap-align: center; }
+  .carousel-arrow { width: 42px; height: 42px; font-size: 22px; top: 38%; }
+  .carousel-arrow.prev { right: 4px; }
+  .carousel-arrow.next { left: 4px; }
   .reviews-grid { grid-template-columns: 1fr; gap: 16px; }
   .branches-grid { grid-template-columns: 1fr; gap: 24px; }
   .franchise-features { grid-template-columns: repeat(2, 1fr); gap: 24px; }
   .display, .reviews, .branches-section, .franchise { padding-left: 16px; padding-right: 16px; }
-  .footer { padding: 36px 16px 20px; }
-  .footer-top { flex-direction: column; align-items: center; text-align: center; gap: 20px; }
-  .footer-columns { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .footer { padding: 22px 16px 14px; }
+  .footer-top { flex-direction: column; align-items: center; text-align: center; gap: 10px; margin-bottom: 12px; }
+  .footer-brand-block img.brand-logo { height: 46px; }
+  .footer-columns { grid-template-columns: 1fr 1fr; gap: 14px; padding: 14px 0; }
+  .footer-col h4 { font-size: 12px; letter-spacing: 2px; margin-bottom: 6px; }
+  .footer-col a, .footer-col p { font-size: 12.5px; line-height: 1.45; }
+  .footer-col li { margin-bottom: 3px; }
   .footer-kosher img { width: 70px; }
+  .footer-kosher-line { font-size: 11px; padding: 6px 12px; }
+  .footer-bottom { font-size: 10px; }
 }
 
 @media (max-width: 600px) {
@@ -1248,7 +1291,7 @@ html, body {
   .motion-tagline-compact { font-size: 16px; }
   .motion-seal { display: none; }
   .divider img { width: 80%; }
-  .footer-columns { grid-template-columns: 1fr; gap: 22px; text-align: center; }
+  .footer-columns { grid-template-columns: 1fr 1fr; gap: 14px; text-align: center; }
 }
 </style>
 </head>
@@ -1417,7 +1460,7 @@ html, body {
   <div class="header">
     <div class="eyebrow">— OUR HOMES —</div>
     <h2>הסניפים שלנו</h2>
-    <p class="branches-intro">בסניפים ניתן למצוא עוד המון קינוחים מיוחדים שלא נמצאים באתר. אם במקרה אתם בסביבה או באזורי החלוקה — שווה להציץ ;)</p>
+    <p class="branches-intro">בסניפים ניתן למצוא עוד המון קינוחים מיוחדים שלא נמצאים באתר, אז אם במקרה אתם בסביבה או באיזורי החלוקה שווה להציץ ;)</p>
   </div>
 
   <div class="branches-grid">
@@ -1447,6 +1490,10 @@ html, body {
     </div>
 
   </div>
+
+  <p class="branches-wolt-cta">
+    לא מצאתם את השילוב המתאים? אם אתם באיזורי החלוקה של הסניפים שלנו אפשר להרכיב קופסאות מותאמות אישית דרך וולט — אבל <strong>ההזמנה תגיע ללא הקופסה הכחולה האייקונית שלנו</strong>, קחו בחשבון ;)
+  </p>
 </section>
 
 <!-- REVIEWS (moved down - after Branches) -->
@@ -1583,14 +1630,14 @@ html, body {
   // === TYPEWRITER EFFECT FOR MOTION SHOWCASE ===
   (function() {
     const messages = [
-      'עוגיות חמאת בוטנים',
-      'קראק פאי',
-      'סינמון רול',
-      'ברווניז נימוחים',
-      'ניו יורק צ׳יזקייק',
-      'מאפינס בננה',
-      'קאפקייקס וניל',
-      'עוגות גבינה אישיות'
+      'מונסטר קוקיז - רד וולווט, שוקולד צ׳יפס, אמסטרדם ועוד המון',
+      'מיני קאפקייקס רכות ומושלמות',
+      'צ׳יזקייקס למות - אוריאו, בראוניז או קלאסית',
+      'קוביות בראוניז לא מהעולם הזה',
+      'קראק פאי - ראו הוזהרתם',
+      'עוגת ניו יורק קרמבל חלומית',
+      'מאפין פטל נימוח ומתוק',
+      'עוגת שכבות בטעמי קרם גבינה ולוטוס'
     ];
     const target = document.getElementById('motion-text');
     if (!target) return;
