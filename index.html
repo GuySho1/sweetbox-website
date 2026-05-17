@@ -130,7 +130,7 @@ html, body {
 /* === SCROLL INDICATOR === */
 .scroll-indicator {
   position: absolute;
-  bottom: 20px;
+  bottom: 60px;
   left: 50%;
   transform: translateX(-50%);
   width: 44px;
@@ -190,7 +190,7 @@ html, body {
 @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
 .motion-box-wrap { display: flex; align-items: center; justify-content: center; perspective: 1200px; position: relative; }
 .motion-box-video { width: 100%; max-width: 400px; height: auto; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 18px; box-shadow: 0 24px 50px rgba(85, 75, 65, 0.22); background: var(--cream); display: block; animation: gentleVideoFloat 6s ease-in-out infinite; }
-.motion-video-overlay { position: absolute; top: 14%; left: 50%; transform: translateX(-50%); width: 100%; max-width: 400px; padding: 0 6%; text-align: center; z-index: 5; pointer-events: none; }
+.motion-video-overlay { position: absolute; top: 7%; left: 50%; transform: translateX(-50%); width: 100%; max-width: 400px; padding: 0 6%; text-align: center; z-index: 5; pointer-events: none; }
 .motion-video-overlay .motion-eyebrow { font-size: clamp(12px, 1.3vw, 18px); letter-spacing: 5px; margin-bottom: 14px; color: var(--ink); }
 .motion-video-overlay .motion-headline { font-size: clamp(28px, 3.4vw, 44px); margin-bottom: 0; line-height: 1.05; }
 @keyframes gentleVideoFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
@@ -264,7 +264,7 @@ html, body {
   .motion-typewriter { min-height: 100px; }
   .motion-box-wrap { order: -1; margin: 0; }
   .motion-box-video { max-width: 100%; width: 100%; border-radius: 0; box-shadow: none; animation: none; aspect-ratio: 9 / 16; max-height: 92vh; }
-  .motion-video-overlay { max-width: 100%; padding: 0 8%; top: 12%; }
+  .motion-video-overlay { max-width: 100%; padding: 0 8%; top: 5%; }
   .motion-video-overlay .motion-eyebrow { font-size: 13px; letter-spacing: 5px; margin-bottom: 12px; }
   .motion-video-overlay .motion-headline { font-size: 38px; line-height: 1.05; }
   .motion-text { padding: 0 20px; }
@@ -349,8 +349,8 @@ html, body {
     <p>מגוון קופסאות בשילובים שונים, כולן בייצור עצמי אצלנו במאפייה, ארוזות בקפידה ובאהבה.</p>
   </div>
   <div class="display-carousel-wrap">
-    <button class="carousel-arrow prev" onclick="carouselScroll(1)" aria-label="הקודם">›</button>
-    <button class="carousel-arrow next" onclick="carouselScroll(-1)" aria-label="הבא">‹</button>
+    <button class="carousel-arrow prev" onclick="carouselScroll(1)" aria-label="הקודם"><span style="display:inline-block;direction:ltr;unicode-bidi:bidi-override;">❯</span></button>
+    <button class="carousel-arrow next" onclick="carouselScroll(-1)" aria-label="הבא"><span style="display:inline-block;direction:ltr;unicode-bidi:bidi-override;">❮</span></button>
     <div class="display-carousel" id="boxesCarousel">
 
       <a class="display-item" href="product-bestseller.html">
