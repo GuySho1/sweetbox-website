@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sweet Box · הזמנות מרוכזות ומתנות לעובדים</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400;1,500&family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Heebo:wght@300;400;500;600;700;800&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --blue: #B5DCE8;
+  --blue-deep: #5B9DB5;
+  --blue-soft: #EDF6FA;
+  --teal-accent: #4A8FA8;
+  --ink: #1A1A1F;
+  --ink-soft: #4D5258;
+  --ink-whisper: #8A8E96;
+  --cream: #F7F3EC;
+  --brown: #554B41;
+  --paper: #FCFCFD;
+  --line: #E8EAED;
+}
+html, body {
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
+  font-weight: 300;
+  color: var(--ink);
+  background: var(--paper);
+  direction: rtl;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.7;
+}
+
+/* === TOP BAR === */
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 14px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(250, 250, 250, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.topbar .logo img { height: 56px; display: block; }
+.topbar .logo a { display: block; line-height: 0; }
+.topbar nav { display: flex; gap: 28px; }
+.topbar nav a {
+  text-decoration: none; color: var(--ink);
+  font-size: 12.5px; font-weight: 400; letter-spacing: 2px;
+}
+.topbar nav a:hover { color: var(--blue-deep); }
+.topbar .cta {
+  background: var(--teal-accent); color: #FFFFFF;
+  padding: 10px 22px; font-size: 12px;
+  letter-spacing: 2px; text-decoration: none; font-weight: 500;
+  border-radius: 999px;
+  transition: background 0.3s, transform 0.2s;
+}
+.topbar .cta:hover { background: var(--brown); transform: translateY(-1px); }
+
+/* === HERO === */
+.hero {
+  background: linear-gradient(180deg, #FFFFFF 0%, #EDF6FA 100%);
+  padding: 130px 32px 70px;
+  text-align: center;
+  position: relative;
+}
+.hero-eyebrow {
+  font-family: 'Heebo', sans-serif;
+  font-size: 14px;
+  letter-spacing: 6px;
+  color: var(--teal-accent);
+  margin-bottom: 22px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.hero h1 {
+  font-family: 'Heebo', sans-serif;
+  font-size: clamp(38px, 5.5vw, 62px);
+  font-weight: normal;
+  line-height: 1.1;
+  letter-spacing: 1px;
+  margin-bottom: 22px;
+  color: var(--ink);
+}
+.hero h1 .blue {
+  color: var(--blue-deep);
+  font-weight: 300;
+}
+.hero p.intro {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 18px;
+  color: var(--brown);
+  line-height: 1.7;
+  font-weight: 300;
+}
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 44px;
+  flex-wrap: wrap;
+}
+.hero-stat {
+  text-align: center;
+}
+.hero-stat .num {
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--teal-accent);
+  line-height: 1;
+}
+.hero-stat .label {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--brown);
+  margin-top: 6px;
+  text-transform: uppercase;
+}
+
+/* === PATHS SECTION === */
+.paths {
+  padding: 70px 32px;
+  background: #FFFFFF;
+}
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.section-eyebrow {
+  font-family: 'Heebo', sans-serif;
+  font-size: 14px;
+  letter-spacing: 6px;
+  color: var(--teal-accent);
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.section-header h2 {
+  font-family: 'Heebo', sans-serif;
+  font-size: clamp(32px, 4vw, 46px);
+  font-weight: normal;
+  line-height: 1.15;
+  letter-spacing: 1px;
+  margin-bottom: 18px;
+}
+.section-header p {
+  font-size: 17px;
+  color: var(--brown);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.paths-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.path-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 42px 38px;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+.path-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(74, 143, 168, 0.08);
+  border-color: rgba(74, 143, 168, 0.25);
+}
+.path-card .icon {
+  font-size: 32px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+.path-card .sub {
+  font-size: 11.5px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--teal-accent);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+.path-card h3 {
+  font-family: 'Heebo', sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  line-height: 1.2;
+  color: var(--ink);
+}
+.path-card p {
+  font-size: 15.5px;
+  color: var(--brown);
+  line-height: 1.75;
+  margin-bottom: 22px;
+  font-weight: 300;
+}
+.path-card ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 24px;
+}
+.path-card li {
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+  padding-right: 18px;
+  position: relative;
+  line-height: 1.55;
+}
+.path-card li::before {
+  content: '✦';
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: var(--teal-accent);
+  font-size: 10px;
+}
+
+/* === APPROACH SECTION === */
+.approach {
+  background: linear-gradient(180deg, #EDF6FA 0%, #FFFFFF 100%);
+  padding: 70px 32px;
+}
+.approach-inner {
+  max-width: 880px;
+  margin: 0 auto;
+  text-align: center;
+}
+.approach-quote {
+  font-family: 'Heebo', sans-serif;
+  font-size: clamp(20px, 2.4vw, 26px);
+  line-height: 1.55;
+  color: var(--ink);
+  margin-top: 18px;
+  margin-bottom: 30px;
+  font-weight: 300;
+}
+.approach-quote .em {
+  color: var(--teal-accent);
+  font-weight: 500;
+}
+.approach-process {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-top: 40px;
+}
+.process-step {
+  text-align: center;
+  padding: 0 14px;
+}
+.process-step .step-num {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Heebo', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+.process-step h4 {
+  font-family: 'Heebo', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+.process-step p {
+  font-size: 13.5px;
+  color: var(--brown);
+  line-height: 1.55;
+  font-weight: 300;
+}
+
+/* === EMPLOYEE GIFTS DETAIL === */
+.gifts-detail {
+  padding: 70px 32px;
+  background: #FFFFFF;
+}
+.gifts-inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
+.gifts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 30px;
+}
+.gifts-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 34px;
+}
+.gifts-card h3 {
+  font-family: 'Heebo', sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  color: var(--ink);
+}
+.gifts-card p {
+  font-size: 15px;
+  color: var(--brown);
+  line-height: 1.7;
+  margin-bottom: 14px;
+  font-weight: 300;
+}
+.gifts-card strong { color: var(--teal-accent); font-weight: 500; }
+
+/* === DELIVERY TRANSPARENCY === */
+.delivery {
+  background: var(--cream);
+  padding: 60px 32px;
+}
+.delivery-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.delivery-box {
+  background: #FFFFFF;
+  border: 1px solid rgba(74, 143, 168, 0.18);
+  border-radius: 16px;
+  padding: 36px 34px;
+  margin-top: 24px;
+  text-align: right;
+}
+.delivery-box h3 {
+  font-family: 'Heebo', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 14px;
+  color: var(--ink);
+  text-align: center;
+}
+.delivery-box p {
+  font-size: 15px;
+  color: var(--brown);
+  line-height: 1.75;
+  margin-bottom: 12px;
+  font-weight: 300;
+}
+.delivery-box .highlight {
+  background: var(--blue-soft);
+  padding: 14px 18px;
+  border-radius: 10px;
+  border-right: 3px solid var(--teal-accent);
+  margin-top: 18px;
+  font-size: 14.5px;
+  color: var(--ink);
+}
+.delivery-box .highlight strong { color: var(--teal-accent); font-weight: 500; }
+
+/* === CTA FORM === */
+.cta-section {
+  background: linear-gradient(180deg, #FFFFFF 0%, #EDF6FA 100%);
+  padding: 70px 32px 90px;
+  text-align: center;
+}
+.cta-section h2 {
+  font-family: 'Heebo', sans-serif;
+  font-size: clamp(32px, 4vw, 46px);
+  font-weight: normal;
+  line-height: 1.15;
+  letter-spacing: 1px;
+  margin-bottom: 18px;
+  color: var(--ink);
+}
+.cta-section p {
+  max-width: 600px;
+  margin: 0 auto 36px;
+  font-size: 17px;
+  color: var(--brown);
+  font-weight: 300;
+  line-height: 1.7;
+}
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 42px;
+  background: var(--teal-accent);
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  border-radius: 999px;
+  transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+  box-shadow: 0 6px 18px rgba(74, 143, 168, 0.18);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  background: var(--brown);
+  box-shadow: 0 8px 22px rgba(85, 75, 65, 0.22);
+}
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 42px;
+  background: #FFFFFF;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  transition: transform 0.3s, border-color 0.3s, background 0.3s;
+}
+.btn-secondary:hover {
+  border-color: var(--teal-accent);
+  background: var(--blue-soft);
+  transform: translateY(-2px);
+}
+
+/* === LEAD FORM === */
+.lead-form {
+  max-width: 580px;
+  margin: 0 auto 36px;
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 36px 32px;
+  box-shadow: 0 8px 28px rgba(74, 143, 168, 0.06);
+  text-align: right;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.form-field {
+  display: flex;
+  flex-direction: column;
+}
+.form-field label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+.form-field input {
+  font-family: 'Heebo', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--paper);
+  color: var(--ink);
+  transition: border-color 0.2s, background 0.2s;
+  direction: rtl;
+}
+.form-field input:focus {
+  outline: none;
+  border-color: var(--teal-accent);
+  background: #FFFFFF;
+}
+.form-submit {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  font-family: 'Heebo', sans-serif;
+  justify-content: center;
+}
+.form-success {
+  display: none;
+  text-align: center;
+  background: rgba(74, 143, 168, 0.08);
+  border: 1px solid rgba(74, 143, 168, 0.2);
+  color: var(--teal-accent);
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-top: 14px;
+  font-size: 14.5px;
+  font-weight: 500;
+}
+.form-success.visible { display: block; }
+.cta-or {
+  font-size: 13.5px;
+  color: var(--ink-whisper);
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+/* === FOOTER === */
+.footer {
+  background: #FFFFFF;
+  color: var(--brown);
+  padding: 26px 32px 16px;
+  border-top: 1px solid rgba(74, 143, 168, 0.18);
+  text-align: center;
+}
+.footer-bottom { font-size: 11px; color: var(--brown); letter-spacing: 2px; opacity: 0.6; }
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+  .topbar { padding: 10px 12px; }
+  .topbar .logo img { height: 40px; }
+  .topbar .cta { padding: 8px 14px; font-size: 11px; letter-spacing: 1px; }
+  .hero { padding: 100px 18px 50px; }
+  .hero-stats { gap: 28px; }
+  .paths, .approach, .gifts-detail, .delivery, .cta-section { padding-left: 18px; padding-right: 18px; padding-top: 50px; padding-bottom: 50px; }
+  .paths-grid { grid-template-columns: 1fr; gap: 22px; }
+  .path-card { padding: 32px 26px; }
+  .gifts-grid { grid-template-columns: 1fr; gap: 22px; }
+  .gifts-card { padding: 26px 24px; }
+  .approach-process { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .delivery-box { padding: 28px 22px; }
+  .cta-buttons { flex-direction: column; align-items: stretch; padding: 0 8px; }
+  .btn-primary, .btn-secondary { justify-content: center; }
+  .lead-form { padding: 26px 20px; margin-bottom: 24px; }
+  .form-row { grid-template-columns: 1fr; gap: 12px; margin-bottom: 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="logo"><a href="index.html"><img src="logo-sweetbox.png" alt="Sweet Box"></a></div>
+  <a class="cta" href="index.html#display">בחירת קופסה</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">— BUSINESS · GIFTS · EVENTS —</div>
+  <h1>הזמנות מרוכזות<br><span class="blue">ומתנות לעובדים</span></h1>
+  <p class="intro">בין אם זה אירוע חברה עם עשרות אורחים, חבילת פינוקים למשרד, או מתנות יום הולדת אישיות לעובדים — אנחנו מתאימים את עצמנו לכל אירוע, לכל תקציב, ולכל סוג של חוויה. שיחה קצרה ואנחנו בונים לכם את התמהיל המושלם.</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="num">7</div>
+      <div class="label">שנים</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">30K+</div>
+      <div class="label">לקוחות חוזרים</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">100%</div>
+      <div class="label">ייצור עצמי</div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="approach">
+  <div class="approach-inner">
+    <div class="section-eyebrow">— OUR APPROACH —</div>
+    <p class="approach-quote">
+      אנחנו יודעים להתאים את עצמנו לבקשות שלכם. אחרי שיחה קצרה שבה תתארו לנו את <span class="em">האירוע</span>, את <span class="em">כמות המשתתפים</span> ואת <span class="em">המסגרת התקציבית</span> — אנחנו בונים לכם הצעה מפורטת עם תמהיל מושלם מתוך עשרות המוצרים שלנו.
+    </p>
+
+    <div class="approach-process">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <h4>השאירו פרטים</h4>
+        <p>טלפון או טופס למטה. נחזור אליכם תוך שעות ספורות.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <h4>שיחה קצרה</h4>
+        <p>מבינים את האירוע, הכמות, התקציב, והעדפות הטעם.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <h4>הצעה מותאמת</h4>
+        <p>בונים תמהיל מותאם מתוך עשרות המוצרים שלנו.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <h4>אנחנו דואגים לכל</h4>
+        <p>ייצור, אריזה, משלוח. אתם רק נהנים מהקרדיט.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EMPLOYEE GIFTS DETAIL -->
+<section class="gifts-detail">
+  <div class="gifts-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">— HOW IT WORKS —</div>
+      <h2>איך עובדת תוכנית <em style="font-style:normal;color:var(--blue-deep);font-weight:300">המתנות לעובדים</em></h2>
+      <p>הכל אוטומטי, מסודר ומתועד — אתם רק שולחים לנו את הרשימה.</p>
+    </div>
+
+    <div class="gifts-grid">
+      <div class="gifts-card">
+        <h3>הזרימה הפשוטה</h3>
+        <p>שולחים לנו קובץ עם רשימת מקבלי המתנה ותאריך לביצוע. ומאותו רגע — <strong>כל הטיפול עובר אלינו</strong>.</p>
+        <p>אריזה, תיאום, ושליחה לכל אחד מהעובדים ביום שתבחרו. אתם לא מטפלים בשום פרט לוגיסטי.</p>
+        <p>בסוף כל חודש תקבלו <strong>ריכוז שמי</strong> של כל מקבלי המתנות לתיעוד ולמעקב פנימי.</p>
+      </div>
+
+      <div class="gifts-card">
+        <h3>מיתוג מותאם אישית</h3>
+        <p>יש לנו פתרונות מיתוג מגוונים על מנת שהמתנה תהיה <strong>יותר מזוהה עם העסק שלכם</strong>.</p>
+        <p>מסטיקר עדין עם הלוגו שלכם, דרך כרטיסי ברכה מותאמים, ועד אריזות מיתוגיות מלאות — נמצא יחד את הפתרון המושלם.</p>
+        <p>שאלו אותנו ונשמח לספר לכם על האפשרויות בהרחבה במהלך השיחה.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERY -->
+<section class="delivery">
+  <div class="delivery-inner">
+    <div class="section-eyebrow">— DELIVERY —</div>
+    <h2 style="font-family: 'Heebo', sans-serif; font-size: clamp(28px, 3.5vw, 40px); font-weight: normal; line-height: 1.15;">איזורי <em style="font-style:normal;color:var(--blue-deep);font-weight:300">חלוקה</em></h2>
+
+    <div class="delivery-box">
+      <p style="text-align: center; font-size: 17px; line-height: 1.75;">משלוחי המתנות שלנו מבוצעים <strong style="color:var(--teal-accent)">באזור גוש דן המורחב</strong>.</p>
+      <p style="text-align: center; font-size: 17px; line-height: 1.75; margin-top: 10px;">בהזמנות גדולות עם כמות גדולה של יעדים באותו יום, <strong style="color:var(--teal-accent)">ניתן להפיץ גם למקומות מרוחקים יותר</strong>.</p>
+      <p style="text-align: center; font-size: 15px; line-height: 1.75; color: var(--ink-soft); margin-top: 14px;">נשמח לתאם איתכם את הפתרון הלוגיסטי המתאים בהתאם להיקף ולכמות היעדים.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA + LEAD FORM -->
+<section class="cta-section" id="contact">
+  <div class="section-eyebrow">— LET'S TALK —</div>
+  <h2>מוכנים להתחיל?</h2>
+  <p>השאירו פרטים ונחזור אליכם בהקדם עם הצעה מותאמת אישית. בלי התחייבות, בלי לחץ.</p>
+
+  <form class="lead-form" id="leadForm" onsubmit="return submitLead(event)">
+    <div class="form-row">
+      <div class="form-field">
+        <label for="lead-name">שם מלא</label>
+        <input type="text" id="lead-name" name="name" required autocomplete="name">
+      </div>
+      <div class="form-field">
+        <label for="lead-company">חברה / מקום עבודה</label>
+        <input type="text" id="lead-company" name="company" required autocomplete="organization">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field">
+        <label for="lead-phone">טלפון</label>
+        <input type="tel" id="lead-phone" name="phone" required autocomplete="tel" pattern="[0-9\-+\s]{9,15}">
+      </div>
+      <div class="form-field">
+        <label for="lead-email">אימייל</label>
+        <input type="email" id="lead-email" name="email" required autocomplete="email">
+      </div>
+    </div>
+    <button type="submit" class="btn-primary form-submit">שלחו פרטים</button>
+    <div class="form-success" id="formSuccess">
+      ✓ קיבלנו את הפרטים, נחזור אליכם בהקדם!
+    </div>
+  </form>
+
+  <p class="cta-or">או צרו קשר ישיר:</p>
+  <div class="cta-buttons">
+    <a href="tel:036196030" class="btn-secondary">📞 03-6196030</a>
+    <a href="mailto:shop@sweetbox.co.il" class="btn-secondary">✉ shop@sweetbox.co.il</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-bottom">© 2026 · SWEET BOX · sweetbox.co.il</div>
+</footer>
+
+<script>
+  function submitLead(e) {
+    e.preventDefault();
+    const form = document.getElementById('leadForm');
+    const success = document.getElementById('formSuccess');
+    const data = {
+      name: form.name.value.trim(),
+      company: form.company.value.trim(),
+      phone: form.phone.value.trim(),
+      email: form.email.value.trim(),
+      timestamp: new Date().toISOString(),
+      source: 'happy-hour-page'
+    };
+
+    // Here the form data would be sent to the backend.
+    // For now we just log it and show success.
+    console.log('Lead submitted:', data);
+
+    success.classList.add('visible');
+    form.reset();
+
+    setTimeout(() => {
+      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 100);
+
+    return false;
+  }
+</script>
+
+</body>
+</html>
