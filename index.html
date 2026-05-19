@@ -99,6 +99,27 @@ html, body {
 .display-carousel-wrap { position: relative; max-width: 1280px; margin: 0 auto; padding: 0 40px; overflow: hidden; }
 .display-carousel { display: flex; gap: 22px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 6px 4px 22px; scrollbar-width: none; -ms-overflow-style: none; }
 .display-carousel::-webkit-scrollbar { display: none; }
+.carousel-counter {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--brown);
+  letter-spacing: 1.5px;
+  box-shadow: 0 2px 10px rgba(85, 75, 65, 0.1);
+  pointer-events: none;
+}
+.carousel-counter span#boxesCurrent { color: var(--teal-accent); font-weight: 600; font-size: 14px; }
+.display-carousel-wrap { padding-bottom: 40px; }
 .display-carousel .display-item { flex: 0 0 calc(100% - 4px); scroll-snap-align: center; max-width: 360px; margin: 0 auto; }
 .carousel-arrow {
   position: absolute;
@@ -462,6 +483,7 @@ html, body {
   <div class="display-carousel-wrap">
     <button class="carousel-arrow prev" onclick="carouselScroll(1)" aria-label="הקודם"><span style="display:inline-block;direction:ltr;unicode-bidi:bidi-override;">❯</span></button>
     <button class="carousel-arrow next" onclick="carouselScroll(-1)" aria-label="הבא"><span style="display:inline-block;direction:ltr;unicode-bidi:bidi-override;">❮</span></button>
+    <div class="carousel-counter" id="boxesCounter"><span id="boxesCurrent">1</span> / <span id="boxesTotal">15</span></div>
     <div class="display-carousel" id="boxesCarousel">
 
       <a class="display-item" href="product-bestseller.html">
@@ -692,9 +714,6 @@ html, body {
     <div class="eyebrow">— OUR HOMES —</div>
     <h2>הסניפים שלנו</h2>
     <p class="branches-intro">בסניפים ניתן למצוא עוד המון קינוחים מיוחדים שלא נמצאים באתר, אז אם במקרה אתם בסביבה או באיזורי החלוקה שווה להציץ ;)</p>
-    <p class="branches-wolt-cta">
-      לא מצאתם את השילוב המתאים? אם אתם באיזורי החלוקה של הסניפים שלנו אפשר להרכיב קופסאות מותאמות אישית דרך וולט — אבל <strong>ההזמנה תגיע ללא הקופסה הכחולה האייקונית שלנו</strong>, קחו בחשבון ;)
-    </p>
   </div>
   <div class="branches-carousel-wrap">
     <button class="branches-arrow prev" onclick="branchesScroll(1)" aria-label="הקודם"><span style="display:inline-block;direction:ltr;unicode-bidi:bidi-override;">❯</span></button>
@@ -728,6 +747,10 @@ html, body {
 
     </div>
   </div>
+
+  <p class="branches-wolt-cta">
+    לא מצאתם את השילוב המתאים? אם אתם באיזורי החלוקה של הסניפים שלנו אפשר להרכיב קופסאות מותאמות אישית דרך וולט — אבל <strong>ההזמנה תגיע ללא הקופסה הכחולה האייקונית שלנו</strong>, קחו בחשבון ;)
+  </p>
 </section>
 
 <!-- 04. REVIEWS -->
@@ -907,6 +930,30 @@ html, body {
     const itemWidth = firstItem.offsetWidth + 22;
     carousel.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
   }
+
+  // === BOXES COUNTER UPDATE ===
+  (function() {
+    const carousel = document.getElementById('boxesCarousel');
+    const currentEl = document.getElementById('boxesCurrent');
+    if (!carousel || !currentEl) return;
+    const items = carousel.querySelectorAll('.display-item');
+    const total = items.length;
+    document.getElementById('boxesTotal').textContent = total;
+
+    function updateCounter() {
+      const firstItem = carousel.querySelector('.display-item');
+      if (!firstItem) return;
+      const itemWidth = firstItem.offsetWidth + 22;
+      // In RTL the scrollLeft is negative when scrolling toward the end
+      const scrollPos = Math.abs(carousel.scrollLeft);
+      const index = Math.round(scrollPos / itemWidth) + 1;
+      const clamped = Math.max(1, Math.min(total, index));
+      currentEl.textContent = clamped;
+    }
+
+    carousel.addEventListener('scroll', updateCounter, { passive: true });
+    updateCounter();
+  })();
 
   // === BRANCHES CAROUSEL SCROLL ===
   function branchesScroll(direction) {
