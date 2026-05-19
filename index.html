@@ -217,6 +217,57 @@ html, body {
 .branches-wolt-cta { max-width: 760px; margin: 32px auto 0; text-align: center; font-size: 15px; color: var(--brown); line-height: 1.65; font-weight: 300; padding: 18px 24px; background: rgba(74, 143, 168, 0.06); border-radius: 16px; border: 1px solid rgba(74, 143, 168, 0.12); }
 .branches-wolt-cta strong { color: var(--teal-accent); font-weight: 500; }
 .branches-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; max-width: 1100px; margin: 0 auto; }
+.branches-carousel-wrap {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+  overflow: hidden;
+}
+.branches-carousel {
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 6px 4px 22px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.branches-carousel::-webkit-scrollbar { display: none; }
+.branches-carousel .branch-card {
+  flex: 0 0 calc(100% - 4px);
+  scroll-snap-align: center;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.branches-arrow {
+  position: absolute;
+  top: 42%;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(85, 75, 65, 0.12);
+  transition: transform 0.2s, background 0.2s, color 0.2s;
+}
+.branches-arrow:hover { background: var(--teal-accent); color: #FFFFFF; transform: scale(1.08); }
+.branches-arrow.prev { right: 4px; }
+.branches-arrow.next {
+  left: 4px;
+  background: var(--blue);
+  animation: arrowPulse 2.4s ease-in-out infinite;
+}
+.branches-arrow.next:hover { animation: none; background: var(--teal-accent); color: #FFFFFF; }
 .branch-card { background: #FFFFFF; overflow: hidden; display: flex; flex-direction: column; }
 .branch-image { aspect-ratio: 16 / 10; background-size: cover; background-position: center; background-color: var(--blue-soft); }
 .branch-info { padding: 26px 28px 28px; flex: 1; display: flex; flex-direction: column; }
@@ -278,6 +329,10 @@ html, body {
   .carousel-arrow.next { left: 4px; }
   .reviews-grid { grid-template-columns: 1fr; gap: 16px; }
   .branches-grid { grid-template-columns: 1fr; gap: 24px; }
+  .branches-carousel-wrap { padding: 0 50px; }
+  .branches-carousel { gap: 12px; }
+  .branches-carousel .branch-card { flex: 0 0 100%; max-width: 100%; scroll-snap-align: center; }
+  .branches-arrow { width: 42px; height: 42px; font-size: 20px; top: 42%; }
   .franchise-features { grid-template-columns: repeat(2, 1fr); gap: 24px; }
   .display, .reviews, .branches-section, .franchise { padding-left: 16px; padding-right: 16px; }
   .footer { padding: 22px 16px 14px; }
@@ -583,32 +638,37 @@ html, body {
     <h2>הסניפים שלנו</h2>
     <p class="branches-intro">בסניפים ניתן למצוא עוד המון קינוחים מיוחדים שלא נמצאים באתר, אז אם במקרה אתם בסביבה או באיזורי החלוקה שווה להציץ ;)</p>
   </div>
-  <div class="branches-grid">
+  <div class="branches-carousel-wrap">
+    <button class="branches-arrow prev" onclick="branchesScroll(1)" aria-label="הקודם"><span style="display:inline-block;direction:ltr;unicode-bidi:bidi-override;">❯</span></button>
+    <button class="branches-arrow next" onclick="branchesScroll(-1)" aria-label="הבא"><span style="display:inline-block;direction:ltr;unicode-bidi:bidi-override;">❮</span></button>
 
-    <div class="branch-card">
-      <div class="branch-image" style="background-image: url('branch-glilot.jpg');"></div>
-      <div class="branch-info">
-        <div class="branch-name">גלילות</div>
-        <div class="branch-address">ביג פאשן גלילות<br>קומת קרקע</div>
-        <div class="branch-hours">— 09:00 – 22:00 · 7 ימים בשבוע —</div>
-        <a class="branch-wolt" href="https://wolt.com/en/isr/tel-aviv/restaurant/sweet-box-glilot" target="_blank" rel="noopener">
-          <span class="wolt-icon">●</span> הזמנה ב-Wolt
-        </a>
+    <div class="branches-carousel" id="branchesCarousel">
+
+      <div class="branch-card">
+        <div class="branch-image" style="background-image: url('branch-glilot.jpg');"></div>
+        <div class="branch-info">
+          <div class="branch-name">גלילות</div>
+          <div class="branch-address">ביג פאשן גלילות<br>קומת קרקע</div>
+          <div class="branch-hours">— 09:00 – 22:00 · 7 ימים בשבוע —</div>
+          <a class="branch-wolt" href="https://wolt.com/en/isr/tel-aviv/restaurant/sweet-box-glilot" target="_blank" rel="noopener">
+            <span class="wolt-icon">●</span> הזמנה ב-Wolt
+          </a>
+        </div>
       </div>
-    </div>
 
-    <div class="branch-card">
-      <div class="branch-image" style="background-image: url('branch-levinsky.jpg');"></div>
-      <div class="branch-info">
-        <div class="branch-name">שוק לוינסקי</div>
-        <div class="branch-address">לוינסקי 46<br>תל אביב</div>
-        <div class="branch-hours">— 09:00 – 22:00 · 7 ימים בשבוע —</div>
-        <a class="branch-wolt" href="https://wolt.com/he/isr/tel-aviv/restaurant/sweetbox" target="_blank" rel="noopener">
-          <span class="wolt-icon">●</span> הזמנה ב-Wolt
-        </a>
+      <div class="branch-card">
+        <div class="branch-image" style="background-image: url('branch-levinsky.jpg');"></div>
+        <div class="branch-info">
+          <div class="branch-name">שוק לוינסקי</div>
+          <div class="branch-address">לוינסקי 46<br>תל אביב</div>
+          <div class="branch-hours">— 09:00 – 22:00 · 7 ימים בשבוע —</div>
+          <a class="branch-wolt" href="https://wolt.com/he/isr/tel-aviv/restaurant/sweetbox" target="_blank" rel="noopener">
+            <span class="wolt-icon">●</span> הזמנה ב-Wolt
+          </a>
+        </div>
       </div>
-    </div>
 
+    </div>
   </div>
 
   <p class="branches-wolt-cta">
@@ -784,6 +844,16 @@ html, body {
     const carousel = document.getElementById('boxesCarousel');
     if (!carousel) return;
     const firstItem = carousel.querySelector('.display-item');
+    if (!firstItem) return;
+    const itemWidth = firstItem.offsetWidth + 22;
+    carousel.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
+  }
+
+  // === BRANCHES CAROUSEL SCROLL ===
+  function branchesScroll(direction) {
+    const carousel = document.getElementById('branchesCarousel');
+    if (!carousel) return;
+    const firstItem = carousel.querySelector('.branch-card');
     if (!firstItem) return;
     const itemWidth = firstItem.offsetWidth + 22;
     carousel.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
