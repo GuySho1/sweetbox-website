@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>תקנון האתר · Sweet Box</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --blue: #B5DCE8;
+  --blue-deep: #5B9DB5;
+  --blue-soft: #EDF6FA;
+  --teal-accent: #4A8FA8;
+  --ink: #1A1A1F;
+  --ink-soft: #4D5258;
+  --ink-whisper: #8A8E96;
+  --cream: #F7F3EC;
+  --brown: #554B41;
+  --paper: #FCFCFD;
+  --line: #E8EAED;
+}
+
+html, body {
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  direction: rtl;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.75;
+}
+
+a { color: inherit; text-decoration: none; }
+a:hover { color: var(--blue-deep); }
+
+/* === TOP BAR === */
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 14px 32px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  background: rgba(252, 252, 253, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.topbar .logo { text-align: center; }
+.topbar .logo img { height: 56px; display: inline-block; }
+.topbar .cta-bulk {
+  background: transparent;
+  border: 1.5px solid var(--teal-accent);
+  color: var(--teal-accent);
+  padding: 10px 22px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  border-radius: 999px;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+  justify-self: start;
+}
+.topbar .cta-bulk:hover { background: var(--teal-accent); color: #FFF; transform: translateY(-1px); }
+.topbar .cta {
+  background: var(--teal-accent);
+  color: #FFF;
+  padding: 10px 22px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  border-radius: 999px;
+  transition: background 0.3s, transform 0.2s;
+  justify-self: end;
+}
+.topbar .cta:hover { background: var(--brown); transform: translateY(-1px); color: #FFF; }
+
+/* === BREADCRUMB === */
+.breadcrumb {
+  padding: 110px 32px 18px;
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--brown);
+  letter-spacing: 1px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.breadcrumb a { color: var(--blue-deep); }
+.breadcrumb a:hover { color: var(--ink); }
+.breadcrumb .sep { margin: 0 8px; color: var(--ink-whisper); }
+
+/* === HERO === */
+.terms-hero {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 32px 40px;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+.terms-eyebrow {
+  font-size: 12px;
+  letter-spacing: 6px;
+  color: var(--blue-deep);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.terms-hero h1 {
+  font-size: clamp(38px, 5vw, 56px);
+  font-weight: 900;
+  color: var(--brown);
+  letter-spacing: 1px;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.terms-hero .sub {
+  font-size: 15px;
+  color: var(--ink-soft);
+  font-weight: 300;
+  max-width: 560px;
+  margin: 0 auto;
+  padding-bottom: 36px;
+}
+
+/* === CONTENT === */
+.terms-content {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 50px 32px 80px;
+}
+.terms-content section {
+  margin-bottom: 44px;
+  padding-bottom: 44px;
+  border-bottom: 1px solid var(--line);
+}
+.terms-content section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.terms-content h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--brown);
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.terms-content h2::before {
+  content: '';
+  width: 6px;
+  height: 26px;
+  background: var(--blue);
+  border-radius: 3px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.terms-content p {
+  color: var(--ink-soft);
+  font-weight: 300;
+  font-size: 16px;
+  margin-bottom: 14px;
+}
+.terms-content p:last-child { margin-bottom: 0; }
+.terms-content a {
+  color: var(--blue-deep);
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom-color 0.2s;
+}
+.terms-content a:hover { border-bottom-color: var(--blue-deep); }
+.terms-content .hours-block {
+  background: var(--blue-soft);
+  border-right: 4px solid var(--blue-deep);
+  padding: 22px 26px;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+.terms-content .hours-block p {
+  margin-bottom: 6px;
+  color: var(--brown);
+}
+.terms-content .hours-block p:last-child {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line);
+  margin-bottom: 0;
+}
+
+.terms-meta {
+  max-width: 860px;
+  margin: 40px auto 0;
+  padding: 24px 32px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--ink-whisper);
+  letter-spacing: 1px;
+}
+
+/* === FOOTER === */
+.footer {
+  background: var(--cream);
+  padding: 36px 32px 22px;
+  margin-top: 40px;
+}
+.footer-top {
+  max-width: 1200px;
+  margin: 0 auto 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(85,75,65,.12);
+  padding-bottom: 18px;
+}
+.footer-top img { height: 54px; }
+.footer-social { display: flex; gap: 14px; }
+.footer-social a {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid var(--line);
+  transition: background 0.3s;
+}
+.footer-social a:hover { background: var(--blue-soft); }
+.footer-social svg { width: 16px; height: 16px; fill: var(--brown); }
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 11px;
+  color: var(--brown);
+  letter-spacing: 2px;
+  opacity: 0.6;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 700px) {
+  .topbar { padding: 12px 16px; }
+  .topbar .cta-bulk, .topbar .cta { padding: 8px 14px; font-size: 11px; letter-spacing: 1.5px; }
+  .topbar .logo img { height: 44px; }
+  .breadcrumb { padding: 100px 18px 14px; font-size: 12.5px; }
+  .terms-hero { padding: 0 18px 28px; }
+  .terms-content { padding: 36px 18px 60px; }
+  .terms-content h2 { font-size: 21px; }
+  .terms-content p { font-size: 14.5px; }
+  .footer-top { flex-direction: column; gap: 14px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <a class="cta-bulk" href="happy-hour.html">הזמנה מרוכזת</a>
+  <div class="logo"><a href="index.html"><img src="logo-sweetbox.png" alt="Sweet Box"></a></div>
+  <a class="cta" href="index.html#display">בחירת קופסה</a>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">דף הבית</a>
+  <span class="sep">/</span>
+  תקנון האתר
+</div>
+
+<!-- HERO -->
+<section class="terms-hero">
+  <h1>תקנון האתר</h1>
+</section>
+
+<!-- CONTENT -->
+<div class="terms-content">
+
+  <section>
+    <h2>כללי</h2>
+    <p>אתר מכירה זה משמש אתר פירסום וחנות וירטואלית והינו בבעלות רחוב 42 ע.מ. 515355287 (להלן: "רחוב 42").</p>
+  </section>
+
+  <section>
+    <h2>תנאי שימוש באתר</h2>
+    <p>שימוש באתר משמעו שהמשתמש מקבל/ת על עצמו תנאי שימוש באתר אלו. אם אינך מסכים/ה לתנאים עליך להפסיק להשתמש באתר.</p>
+    <p>כל אדם שהנו מעל גיל 18 ,שברשותו כרטיס אשראי תקף של אחת מחברות האשראי הפעילות בישראל ובעל תיבת דואר אלקטרוני ברשת האינטרנט רשאי לבצע פעולה באתר.</p>
+  </section>
+
+  <section>
+    <h2>מדיניות</h2>
+    <p>מחיר המוצרים והמשלוחים יכול להשתנות מעת לעת על פי שיקול דעתה הבלעדי של רחוב 42, המחיר הקובע הוא זה המופיע באתר בעת ביצוע הזמנה.</p>
+    <p>מגוון המוצרים והמארזים עשוי להשתנות אך שווי המוצר יישאר כמופיע באתר.</p>
+    <p>רחוב 42 מתחייבת לטיב מוצריה ולטריותם. יש לשמור את המוצר במקרר כדי לא לפגוע בטעמו ואיכותו. בכל מקרה, יש לצרוך את המוצר תוך 3 ימים מקבלתו.</p>
+    <p>משלוחים מבוצעים בשעות הפעילות המצויינות מטה ובתיאום מראש עם הקונה. יובהר כי הזמנות המתבצעות לאחר השעה 15:00 לא תבוצענה באותו יום אלא במקרים מיוחדים ולאחר תיאום מראש, עלות המשלוח עשויה להשתנות במקרה כזה.</p>
+    <p>המחירים כוללים מע"מ, אלא אם כן נאמר במפורש אחרת. במידה והתקבלה תלונה לגבי המוצר זכאי הרוכש לפנות בכתב אל רחוב 42 . מוסכם כי רחוב 42 תבדוק את התלונה ותהא רשאית לפצות את הרוכש על פי שיקול דעתה הבלעדי.</p>
+    <p>התמונות באתר מיועדות להמחשה בלבד וייתכנו שינויים. כל הזכויות בתמונות ובתכנים המופיעים באתר שמורות לרחוב 42 בלבד ואין לעשות בהן שימוש כלשהו.</p>
+    <p>המוצרים מכילים חומרים ורכיבים שיתכן והרוכש או כל מי שיצרוך אותם אלרגי אליהם, הרוכש אחראי בלעדית לבדוק עם רחוב 42 נוכחותם של חומרים כאלו בשמו ובשם מי שהמוצר מיועד עבורו.</p>
+    <p>פרטים נוספים אודות מדיניות תיאום המשלוחים, ביטול וזיכוי הזמנות ניתן למצוא בקישור הבא: <a href="https://sweetbox.co.il/%d7%91%d7%99%d7%98%d7%95%d7%9c%d7%99%d7%9d-%d7%95%d7%96%d7%99%d7%9b%d7%95%d7%99/" target="_blank" rel="noopener">(לחץ כאן)</a>.</p>
+  </section>
+
+  <section>
+    <h2>אבטחת האתר</h2>
+    <p>רחוב 42 אינה אחראית על טעויות הקלדה שמתבצעות על ידיי גולשי האתר בעת הקלדת פרטים כפי שנתבקשו על ידיי המערכת.</p>
+    <p>רחוב 42 לא תהיה אחראית במישרין או בעקיפין באחריות כלשהי למקרה שבו פרטי הרכישה לא ייקלטו במערכת ו/או לכל בעיה טכנית ו/או אחרת המונעת ביצוע פעולות באתר.</p>
+    <p>הקלדת פרטים כוזבים הינה עברה פלילית ונגד מוסרי פרטים כוזבים יינקטו צעדים משפטיים.</p>
+    <p>לצורך אבטחת תהליך הרכישה, האתר מעביר את כל נתוני כרטיסי האשראי תוך שימוש בפרוטוקול SSL לשרת.</p>
+    <p>רחוב 42 תהא רשאית לשלוח למבצעי הפעולות דואר אלקטרוני ולפנות אליהם בכתב או בעל פה בכל מידע בדבר מבצעים ו/או חדשות של רחוב 42, אלא אם יודיע הרוכש בכתב כי אינו מעוניין בכך.</p>
+    <p>רחוב 42 משאירה לעצמה את הזכות להשתמש בפרטים שימסור הרוכש לצורך ניתוח מידע סטטיסטי. הנתונים לא יתייחסו אישית למבצע הפעולה ולא יזהו אותו.</p>
+  </section>
+
+  <section>
+    <h2>שעות פעילות</h2>
+    <div class="hours-block">
+      <p>א'-ה' 08:00-24:00</p>
+      <p>ו' 08:00-16:00</p>
+      <p>טלפון <a href="tel:036196030">03-6196030</a></p>
+      <p>החלוצים 6 תל אביב</p>
+    </div>
+  </section>
+
+</div>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <a href="index.html"><img src="logo-sweetbox.png" alt="Sweet Box"></a>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/sweetbox.il/" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.9.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.9.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.9-.9-1.4-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.9-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 3.4c-3.5 0-6.4 2.9-6.4 6.4s2.9 6.4 6.4 6.4 6.4-2.9 6.4-6.4-2.9-6.4-6.4-6.4zm0 10.6c-2.3 0-4.2-1.9-4.2-4.2s1.9-4.2 4.2-4.2 4.2 1.9 4.2 4.2-1.9 4.2-4.2 4.2zm6.6-10.9c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5.7-1.5 1.5-1.5 1.5.7 1.5 1.5z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/sweetboxil/" target="_blank" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.69.24 2.69.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.79V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 · SWEET BOX · sweetbox.co.il</div>
+</footer>
+
+</body>
+</html>
