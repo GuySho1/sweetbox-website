@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>שאלות ותשובות · Sweet Box</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --blue: #B5DCE8;
+  --blue-deep: #5B9DB5;
+  --blue-soft: #EDF6FA;
+  --teal-accent: #4A8FA8;
+  --ink: #1A1A1F;
+  --ink-soft: #4D5258;
+  --ink-whisper: #8A8E96;
+  --cream: #F7F3EC;
+  --brown: #554B41;
+  --paper: #FCFCFD;
+  --line: #E8EAED;
+}
+
+html, body {
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  direction: rtl;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.75;
+}
+
+a { color: inherit; text-decoration: none; }
+a:hover { color: var(--blue-deep); }
+
+/* === TOP BAR === */
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 14px 32px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  background: rgba(252, 252, 253, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.topbar .logo { text-align: center; }
+.topbar .logo img { height: 56px; display: inline-block; }
+.topbar .cta-bulk {
+  background: transparent;
+  border: 1.5px solid var(--teal-accent);
+  color: var(--teal-accent);
+  padding: 10px 22px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  border-radius: 999px;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+  justify-self: start;
+}
+.topbar .cta-bulk:hover { background: var(--teal-accent); color: #FFF; transform: translateY(-1px); }
+.topbar .cta {
+  background: var(--teal-accent);
+  color: #FFF;
+  padding: 10px 22px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  border-radius: 999px;
+  transition: background 0.3s, transform 0.2s;
+  justify-self: end;
+}
+.topbar .cta:hover { background: var(--brown); transform: translateY(-1px); color: #FFF; }
+
+/* === BREADCRUMB === */
+.breadcrumb {
+  padding: 110px 32px 18px;
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--brown);
+  letter-spacing: 1px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.breadcrumb a { color: var(--blue-deep); }
+.breadcrumb a:hover { color: var(--ink); }
+.breadcrumb .sep { margin: 0 8px; color: var(--ink-whisper); }
+
+/* === HERO === */
+.qna-hero {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 32px 40px;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+.qna-hero h1 {
+  font-size: clamp(38px, 5vw, 56px);
+  font-weight: 900;
+  color: var(--brown);
+  letter-spacing: 1px;
+  line-height: 1.15;
+}
+
+/* === CATEGORY NAV === */
+.category-nav {
+  max-width: 860px;
+  margin: 36px auto 0;
+  padding: 0 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+.category-nav a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--brown);
+  background: var(--blue-soft);
+  padding: 8px 18px;
+  border-radius: 999px;
+  transition: background 0.3s, color 0.3s;
+  letter-spacing: 0.5px;
+}
+.category-nav a:hover { background: var(--blue-deep); color: white; }
+
+/* === CONTENT === */
+.qna-content {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 50px 32px 80px;
+}
+.category {
+  margin-bottom: 56px;
+}
+.category:last-child { margin-bottom: 0; }
+.category-title {
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--brown);
+  margin-bottom: 24px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--blue);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.category-title::before {
+  content: '';
+  width: 8px;
+  height: 32px;
+  background: var(--blue-deep);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+details.qa-item {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+details.qa-item[open] {
+  border-color: var(--blue-deep);
+  box-shadow: 0 4px 14px rgba(91, 157, 181, 0.08);
+}
+details.qa-item summary {
+  cursor: pointer;
+  padding: 18px 22px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--brown);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  transition: background 0.2s;
+}
+details.qa-item summary::-webkit-details-marker { display: none; }
+details.qa-item summary:hover { background: var(--blue-soft); }
+details.qa-item summary::after {
+  content: '+';
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--blue-deep);
+  flex-shrink: 0;
+  line-height: 1;
+  transition: transform 0.3s;
+}
+details.qa-item[open] summary::after {
+  content: '−';
+}
+details.qa-item .qa-answer {
+  padding: 0 22px 22px;
+  color: var(--ink-soft);
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.8;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+details.qa-item .qa-answer p {
+  margin-bottom: 12px;
+}
+details.qa-item .qa-answer p:last-child {
+  margin-bottom: 0;
+}
+details.qa-item .qa-answer strong { color: var(--brown); font-weight: 600; }
+
+/* === FOOTER === */
+.footer {
+  background: var(--cream);
+  padding: 36px 32px 22px;
+  margin-top: 40px;
+}
+.footer-top {
+  max-width: 1200px;
+  margin: 0 auto 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(85,75,65,.12);
+  padding-bottom: 18px;
+}
+.footer-top img { height: 54px; }
+.footer-social { display: flex; gap: 14px; }
+.footer-social a {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid var(--line);
+  transition: background 0.3s;
+}
+.footer-social a:hover { background: var(--blue-soft); }
+.footer-social svg { width: 16px; height: 16px; fill: var(--brown); }
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 11px;
+  color: var(--brown);
+  letter-spacing: 2px;
+  opacity: 0.6;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 700px) {
+  .topbar { padding: 12px 16px; }
+  .topbar .cta-bulk, .topbar .cta { padding: 8px 14px; font-size: 11px; letter-spacing: 1.5px; }
+  .topbar .logo img { height: 44px; }
+  .breadcrumb { padding: 100px 18px 14px; font-size: 12.5px; }
+  .qna-hero { padding: 0 18px 28px; }
+  .category-nav { padding: 0 18px; }
+  .qna-content { padding: 36px 18px 60px; }
+  .category-title { font-size: 24px; }
+  details.qa-item summary { font-size: 14.5px; padding: 16px 18px; }
+  details.qa-item .qa-answer { font-size: 14px; padding: 0 18px 18px; padding-top: 16px; }
+  .footer-top { flex-direction: column; gap: 14px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <a class="cta-bulk" href="happy-hour.html">הזמנה מרוכזת</a>
+  <div class="logo"><a href="index.html"><img src="logo-sweetbox.png" alt="Sweet Box"></a></div>
+  <a class="cta" href="index.html#display">בחירת קופסה</a>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">דף הבית</a>
+  <span class="sep">/</span>
+  שאלות ותשובות
+</div>
+
+<!-- HERO -->
+<section class="qna-hero">
+  <h1>שאלות ותשובות</h1>
+</section>
+
+<!-- CATEGORY NAV -->
+<nav class="category-nav">
+  <a href="#deliveries">משלוחים</a>
+  <a href="#orders">הזמנות</a>
+  <a href="#nutrition">תזונה</a>
+  <a href="#shop">חנות ומאפייה</a>
+  <a href="#special">הזמנות מיוחדות</a>
+</nav>
+
+<!-- CONTENT -->
+<div class="qna-content">
+
+  <!-- משלוחים -->
+  <div class="category" id="deliveries">
+    <h2 class="category-title">משלוחים</h2>
+
+    <details class="qa-item">
+      <summary>מה ההבדל בין אזור חלוקה רגילה לקו גוש דן?</summary>
+      <div class="qa-answer">
+        <p>אזור החלוקה הרגיל, כולל את הישובים הקרובים אלינו.</p>
+        <p>לישובים באזור זה ניתן לבצע משלוח לימים א'-ה' בין השעות 10:00-20:00 בבחירת אחד מסבבי המשלוחים שלנו: 10:00-14:00, 13:00-17:00, 16:00-20:00. ולימי ו' בין השעות 9:00-15:30.</p>
+        <p>לישובים באזור החלוקה, קו גוש דן, אין באפשרותך לבחור את שעת האספקה המועדפת עליך. זמני האספקה יקבעו ע"פ מיקום הישוב בתוך הקו ובכפוף להזמנות האחרות של אותו היום. לישובים באזורים אלו, ניתן לבצע משלוח לימים א'-ו'.</p>
+        <p>בכל מקרה, יציאת המארז מותנית בתיאום מול מקבל המשלוח על מנת להבטיח את טריות המוצרים.</p>
+      </div>
+    </details>
+
+    <details class="qa-item">
+      <summary>מהי רשימת הישובים אליהם ניתן לשלוח קופסה בהזמנה דרך האתר?</summary>
+      <div class="qa-answer">
+        <p><strong>קו חלוקה רגיל - תל אביב וגוש דן (לפי א'-ב'):</strong></p>
+        <p>אור יהודה / אזור / בני ברק / בת ים / גבעת שמואל / גבעתיים / גליל ים / גני תקווה / הרצליה / חולון / יהוד כפר אז"ר / כפר שמריהו / סביון / פתח תקווה / קריית אונו / ראשון לציון / רמת אפעל / רמת גן / רמת השרון / תל אביב-יפו</p>
+        <p><strong>קו חלוקה גוש דן:</strong></p>
+        <p>אירוס / באר יעקב / בית דגן / בית חנן / בית עובד / גנות / הוד השרון / חמד / כפר סבא / כפר סירקין / לוד / משמר השבעה / נטעים / נס ציונה / רחובות / רעננה / רשפון</p>
+        <p>* אנו עובדים על הגדלת מספר היעדים ורשימה זו תתעדכן בכל פעם שנוסיף יעד חדש.</p>
+        <p>** בהזמנות גדולות למספר רב של יעדים, אנו מגיעים לכל הארץ. לקבלת הצעת מחיר להזמנה גדולה יש ללחוץ על כפתור "לחברות-רכישה מרוכזת" בבאנר העליון, למלא את הפרטים ונציג שלנו יחזור אליכם בהקדם.</p>
+      </div>
+    </details>
+
+    <details class="qa-item">
+      <summary>כמה זמן מראש יש לבצע את ההזמנה?</summary>
+      <div class="qa-answer">
+        <p>לישובים הנמצאים באזור החלוקה הרגיל ניתן להזמין עד השעה 15:00 ביום המבוקש ועד שעה לפני תחילת כל סבב עבור סבב המשלוחים הקרוב.</p>
+        <p>בימי שישי ניתן לבצע הזמנה עד השעה 9:00 של אותו היום.</p>
+        <p>לישובים הנמצאים באזורי קו חלוקה ניתן להזמין עד השעה 23:00 בערב של היום שלפני. ולימי שישי עד יום לפני בשעה 16:00.</p>
+        <p>יציאת כל המארזים בכל האזורים מותנית התיאום מול מקבל המשלוח.</p>
+      </div>
+    </details>
+
+    <details class="qa-item">
+      <summary>האם אפשר לעשות הזמנה של קופסה ולקבל אותה באותו יום?</summary>
+      <div class="qa-answer">
+        <p>כן, בכפוף לתנאים המפורטים בתשובה הקודמת. בכל מקרה, מומלץ לבצע את ההזמנה בהתראה מוקדמת ככל האפשר היות ובימים עמוסים, בתקופות של חגים או מועדים מיוחדים (כמו ולנטיינ׳ס או ערב ראש השנה) עלול להיות מצב של עומס רב המאלץ אותנו לעצור קבלת משלוחים לאותו יום. במקרה של עומס רב, תחסם האפשרות לבחירת היום באתר. כל ההזמנות שבוצעו בפועל באתר לתאריך ספציפי יסופקו במועדן, בכפוף לתיאום מראש עם מקבל המשלוח.</p>
+      </div>
+    </details>
+
+    <details class="qa-item">
+      <summary>האם התיאום עם מקבל המשלוח לא הורס את ההפתעה?</summary>
+      <div class="qa-answer">
+        <p>היות ומדובר במתנה המכילה מוצרי מזון עדינים, אנו חייבים לוודא, עם מקבל המשלוח, שהוא אכן יהיה בכתובת שנמסרה לנו ע"י המזמין ובזמן שצויין.</p>
+        <p>צוות החנות שלנו מאוד מנוסה בתיאומים הנ"ל ומוסר מינימום של פרטים למקבל המשלוח על מנת שלא לפגוע באלמנט ההפתעה.</p>
+      </div>
+    </details>
+
+    <details class="qa-item">
+      <summary>מה עלות המשלוח?</summary>
+      <div class="qa-answer">
+        <p>אנחנו מבצעים משלוחים לכ 300 ישובים (רשימה מפורטת ניתן למצוא בשאלה השנייה בעמוד זה).</p>
+        <p>לאחר בחירת המארז, בהגיעכם לקופה באתר, תוכלו לבחור מתוך רשימת הישובים המפורטת ולצד כל שם של ישוב תופיע גם עלות המשלוח.</p>
+        <p>לא ניתן לבצע משלוח לישוב שאינו מופיע ברשימה.</p>
+        <p>במידה והמשלוח הוא למאושפז בבית חולים יש לבחור את שם בית החולים מתוך הרשימה.</p>
+        <p>אנחנו עובדים מול חברות שליחויות חיצוניות ועושים מאמצים רבים לקבל עבור לקוחותינו מחירים הוגנים. במידה ובאפשרותכם לקבל שירות משלוח בעלות זולה יותר מהמחיר שמופיע באתר, אתם יכולים לסמן בעמוד התשלום "איסוף עצמי" ולשלוח שליח מטעמכם לאיסוף המארז.</p>
+      </div>
+    </details>
+
+    <details class="qa-item">
+      <summary>האם ניתן להזמין משלוח של המוצרים לא כמתנה, לדוגמה אם סתם אני במאנצ׳?</summary>
+      <div class="qa-answer">
+        <p>כן, אנחנו מבצעים משלוחים של מוצרינו דרך אפליקציות WOLT ו YANGO.</p>
+        <p>משלוחים אלו מתבצעים רק במרכז תל אביב והם מגיעים באריזה בסיסית ולא באריזות המתנה המהודרות שלנו.</p>
+        <p><strong>שעות פעילות להזמנות מ WOLT:</strong></p>
+        <p>ימים א'-ה' בין השעות 09:00-00:00<br>ימי שישי בין השעות 09:00-16:00<br>מוצ"ש בין השעות 20:00-00:00</p>
+        <p>הזמנת המוצרים שלנו באריזות המתנה המהודרות, יכולות להתבצע רק דרך האתר שלנו או בפנייה ישירה לחנות.</p>
+      </div>
+    </details>
+
+    <details class="qa-item">
+      <summary>כיצד מבצעים משלוח מתנה לאדם המאושפז בבית חולים ומדוע זה עולה יותר?</summary>
+      <div class="qa-answer">
+        <p>במידה ואתם רוצים לשלוח מתנה לאדם המאושפז בבית חולים עליכם לבחור מתוך הרשימה את בית החולים ולא את הישוב בו הוא נמצא. בנוסף, יש להשתדל לציין את שם המחלקה ומספר החדר.</p>
+        <p>במקרה זה עלות המשלוח תהיה גבוהה במקצת, היות והשליח יאלץ להיכנס ברגל לתוך בית החולים ולהגיע עד למחלקה המבוקשת.</p>
+      </div>
+    </details>
+
+    <details class="qa-item">
+      <summary>האם ניתן לבצע הזמנות באיסוף עצמי?</summary>
+      <div class="qa-answer">
+        <p>כמובן, ניתן לסמן בהזמנה "איסוף עצמי" ולהגיע לחנות שלנו או לשלוח שליח מטעמכם, בשעות פעילות החנות, המפורטות באתר. רצוי לתאם את שעת הגעתכם המשוערת על מנת לחסוך ממכם זמן המתנה מיותר בחנות.</p>
+      </div>
+    </details>
+
+  </div>
+
+  <!-- הזמנות -->
+  <div class="category" id="orders">
+    <h2 class="category-title">הזמנות</h2>
+
+    <details class="qa-item">
+      <summary>לא קיבלתי אישור הזמנה/חשבונית, מה לעשות?</summary>
+      <div class="qa-answer">
+        <p>אישור ההזמנה וחשבונית, נשלחים אליכם למייל אותו רשמתם בהזמנה, באופן אוטומטי, עם סיום ההזמנה. אם לא קיבלתם, תבדקו בתיבות אחרות - לפעמים הוא מגיע לתיקיית ספאם / דואר זבל. אם עדין לא מצאתם אותו, יתכן והזמנתכם נכשלה מסיבה טכנית. במקרה כזה אתם יכולים לפנות אלינו במייל / בטלפון על מנת שנוכל לבדוק עבורכם את הסיבה.</p>
+      </div>
+    </details>
+
+    <details class="qa-item">
+      <summary>האם באפשרותי להרכיב קופסה בעצמי, עם מוצרים לבחירתי?</summary>
+      <div class="qa-answer">
+        <p>לאחר מחשבה רבה, יצרנו עבורכם באתר, מגוון רחב של קופסאות המתאימות לשלל סיטואציות וטעמים שונים ובמגוון מחירים. כל אחד ממוצרינו הינו בגודל שונה והוא מגיע באריזה פנימית שונה ולכן לא תוכלו לדעת האם המוצרים שבחרתם נכנסים לתוך הקופסה או שהקופסה עלולה להיראות ריקה.... ולכן אנו לא מאפשרים להזמין קופסאות בהרכבה עצמית או להחליף מוצרים בקופסאות הקיימות.</p>
+        <p>במידה ותגיעו למאפייה שלנו, הממוקמת ברח׳ החלוצים 6 במתחם שוק לוינסקי ת״א, תוכלו להרכיב לכם קופסה על פי טעמכם האישי, עם מוצרים לבחירתכם, תוך התייעצות עם עובדי החנות.</p>
+      </div>
+    </details>
+
+    <details class="qa-item">
+      <summary>האם יש אפשרות להוסיף בלונים, יין, פרחים וכדומה?</summary>
+      <div class="qa-answer">
+        <p>לא. אנחנו מאפייה אמריקאית ואנחנו רוצים לשלוח אליכם רק את מה שאנחנו מתמחים בו... מאפים טעימים בטירוף בתוך קופסה מושלמת.</p>
+      </div>
+    </details>
+
+    <details class="qa-item">
+      <summary>יש מינימום הזמנה?</summary>
+      <div class="qa-answer">
+        <p>לא. אפשר להזמין בכל סכום.</p>
+      </div>
+    </details>
+
+    <details class="qa-item">
+      <summary>מתי אפשר להזמין?</summary>
+      <div class="qa-answer">
+        <p>אפשר לבצע הזמנה באתר 24 שעות ביממה, 7 ימים בשבוע.</p>
+      </div>
+    </details>
+
+    <details class="qa-item">
+      <summary>מהי מדיניות ביטול וזיכוי הזמנה?</summary>
+      <div class="qa-answer">
+        <p>את מדיניות הביטול וזיכוי שלנו תוכלו למצוא בקישור, בשם זה, בתחתית העמוד.</p>
+      </div>
+    </details>
+
+  </div>
+
+  <!-- תזונה -->
+  <div class="category" id="nutrition">
+    <h2 class="category-title">תזונה</h2>
+
+    <details class="qa-item">
+      <summary>האם אתם כשרים?</summary>
+      <div class="qa-answer">
+        <p>כן. יש לנו כשרות חלבית מהרבנות הראשית תל אביב-יפו. כל משלוחי המתנות המוזמנים מאתר זה, יוצאים ישירות מהקונדיטוריה הכשרה שלנו ברחוב החלוצים 6 תל אביב.</p>
+      </div>
+    </details>
+
+    <details class="qa-item">
+      <summary>האם יש לכם מוצרים טבעוניים?</summary>
+      <div class="qa-answer">
+        <p>בהחלט. הם מופיעים בקופסה הטבעונית (VEGAN BOX).</p>
+      </div>
+    </details>
+
+    <details class="qa-item">
+      <summary>האם המוצרים שלכם מכילים אגוזים או בוטנים או אלרגנים אחרים?</summary>
+      <div class="qa-answer">
+        <p>יש לנו מוצרים המכילים אגוזים, אך לא כולם. יחד עם זאת, כל המוצרים שלנו מיוצרים באותה סביבה, סביבה שאיננה סטרילית מאלרגנים. לפיכך אין ביכולתנו להתחייב שמוצרינו אינם מכילים אגוזים, בוטנים או אלרגנים אחרים כגון סויה, גלוטן, חלב וביצים.</p>
+      </div>
+    </details>
+
+    <details class="qa-item">
+      <summary>האם יש לכם מוצרים ללא גלוטן?</summary>
+      <div class="qa-answer">
+        <p>לא. אין לנו את האפשרות לייצר מוצרים ללא גלוטן במרחב העומד לרשותנו כיום.</p>
+      </div>
+    </details>
+
+    <details class="qa-item">
+      <summary>האם המוצרים שלכם מתאימים לנשים בהריון?</summary>
+      <div class="qa-answer">
+        <p>היות ובמתכונים שלנו, אין ביצים חיות, אנו מאמינים שהמוצרים שלנו מתאימים גם לרוב הנשים בהריון. במידה ויש הגבלה ספציפית אחרת, ניתן לבדוק זאת מול החנות, שם ישמחו לעדכן במרכיבי המוצרים השונים.</p>
+      </div>
+    </details>
+
+  </div>
+
+  <!-- חנות ומאפייה -->
+  <div class="category" id="shop">
+    <h2 class="category-title">חנות ומאפייה</h2>
+
+    <details class="qa-item">
+      <summary>היכן נמצאת החנות?</summary>
+      <div class="qa-answer">
+        <p>המאפייה שלנו, נמצאת בת״א, ברח׳ החלוצים 6.</p>
+        <p>סניף שוק לוינסקי נמצא ברחוב לוינסקי 46 תל אביב.</p>
+        <p>סניף גלילות נמצא בתוך מתחם ביג פאשן גלילות - רמת השרון (סניף זה פתוח גם בשבת ולכן אין לו תעודת כשרות).</p>
+      </div>
+    </details>
+
+    <details class="qa-item">
+      <summary>האם יש לכם במאפייה גם מוצרים שלא מופיעים באתר?</summary>
+      <div class="qa-answer">
+        <p>כן, ישנם מוצרים שניתן לרכוש רק במאפייה שלנו למשל דונאטס, שהפכו למבוקשים במיוחד.</p>
+        <p>אתם מוזמנים לבקר אותנו ברח׳ החלוצים 6 במתחם שוק לוינסקי בת״א, כדי להריח ולטעום מקרוב.</p>
+      </div>
+    </details>
+
+  </div>
+
+  <!-- הזמנות מיוחדות -->
+  <div class="category" id="special">
+    <h2 class="category-title">הזמנות מיוחדות</h2>
+
+    <details class="qa-item">
+      <summary>האם אתם מספקים מוצרים לאירועים?</summary>
+      <div class="qa-answer">
+        <p>כן, את כל המוצרים שלנו ניתן להזמין לאירועים פרטיים או לאירועי חברה, HAPPY HOUR וכו'.</p>
+        <p>כל שעליכם לעשות הוא ללחוץ על כפתור "לחברות-רכישה מרוכזת" בבאנר העליון, למלא את הפרטים ונציג שלנו יחזור אליכם בהקדם.</p>
+      </div>
+    </details>
+
+    <details class="qa-item">
+      <summary>האם יש הנחה על קנייה מרוכזת?</summary>
+      <div class="qa-answer">
+        <p>כמובן, לרכישה של 10 קופסאות ומעלה ניתן לפנות אלינו, לקבלת הצעה.</p>
+        <p>כל שעליכם לעשות הוא ללחוץ על כפתור "לחברות-רכישה מרוכזת" בבאנר העליון, למלא את הפרטים ונציג שלנו יחזור אליכם בהקדם.</p>
+      </div>
+    </details>
+
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <a href="index.html"><img src="logo-sweetbox.png" alt="Sweet Box"></a>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/sweetbox.il/" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.9.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.9.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.9-.9-1.4-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.9-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 3.4c-3.5 0-6.4 2.9-6.4 6.4s2.9 6.4 6.4 6.4 6.4-2.9 6.4-6.4-2.9-6.4-6.4-6.4zm0 10.6c-2.3 0-4.2-1.9-4.2-4.2s1.9-4.2 4.2-4.2 4.2 1.9 4.2 4.2-1.9 4.2-4.2 4.2zm6.6-10.9c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5.7-1.5 1.5-1.5 1.5.7 1.5 1.5z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/sweetboxil/" target="_blank" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.69.24 2.69.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.79V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 · SWEET BOX · sweetbox.co.il</div>
+</footer>
+
+</body>
+</html>
