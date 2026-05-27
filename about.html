@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>אודות · Sweet Box</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --blue: #B5DCE8;
+  --blue-deep: #5B9DB5;
+  --blue-soft: #EDF6FA;
+  --teal-accent: #4A8FA8;
+  --ink: #1A1A1F;
+  --ink-soft: #4D5258;
+  --ink-whisper: #8A8E96;
+  --cream: #F7F3EC;
+  --brown: #554B41;
+  --paper: #FCFCFD;
+  --line: #E8EAED;
+}
+
+html, body {
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  direction: rtl;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.75;
+}
+
+a { color: inherit; text-decoration: none; }
+a:hover { color: var(--blue-deep); }
+
+/* === TOP BAR === */
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 14px 32px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  background: rgba(252, 252, 253, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.topbar .logo { text-align: center; }
+.topbar .logo img { height: 56px; display: inline-block; }
+.topbar .cta-bulk {
+  background: transparent;
+  border: 1.5px solid var(--teal-accent);
+  color: var(--teal-accent);
+  padding: 10px 22px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  border-radius: 999px;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+  justify-self: start;
+}
+.topbar .cta-bulk:hover { background: var(--teal-accent); color: #FFF; transform: translateY(-1px); }
+.topbar .cta {
+  background: var(--teal-accent);
+  color: #FFF;
+  padding: 10px 22px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  border-radius: 999px;
+  transition: background 0.3s, transform 0.2s;
+  justify-self: end;
+}
+.topbar .cta:hover { background: var(--brown); transform: translateY(-1px); color: #FFF; }
+
+/* === BREADCRUMB === */
+.breadcrumb {
+  padding: 110px 32px 18px;
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--brown);
+  letter-spacing: 1px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.breadcrumb a { color: var(--blue-deep); }
+.breadcrumb a:hover { color: var(--ink); }
+.breadcrumb .sep { margin: 0 8px; color: var(--ink-whisper); }
+
+/* === HERO === */
+.about-hero {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 32px 50px;
+  text-align: center;
+}
+.about-hero h1 {
+  font-size: clamp(38px, 5vw, 56px);
+  font-weight: 900;
+  color: var(--brown);
+  letter-spacing: 1px;
+  line-height: 1.15;
+  margin-bottom: 28px;
+}
+.about-hero .tagline {
+  font-size: clamp(20px, 2.4vw, 26px);
+  font-weight: 400;
+  color: var(--blue-deep);
+  line-height: 1.5;
+  max-width: 640px;
+  margin: 0 auto;
+  font-style: italic;
+}
+
+/* === STORY === */
+.about-story {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 60px 32px;
+  position: relative;
+}
+.about-story::before,
+.about-story::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: var(--blue);
+  margin: 0 auto;
+}
+.about-story::before { margin-bottom: 50px; }
+.about-story::after { margin-top: 50px; }
+.about-story p {
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1.9;
+  margin-bottom: 22px;
+}
+.about-story p:last-child { margin-bottom: 0; }
+.about-story p strong {
+  color: var(--brown);
+  font-weight: 600;
+}
+
+/* === CONTACT CALLOUT === */
+.contact-block {
+  max-width: 720px;
+  margin: 0 auto 60px;
+  padding: 0 32px;
+}
+.contact-card {
+  background: var(--blue-soft);
+  border-radius: 20px;
+  padding: 40px 36px;
+  text-align: center;
+}
+.contact-card .ask {
+  font-size: 19px;
+  color: var(--brown);
+  font-weight: 400;
+  margin-bottom: 12px;
+}
+.contact-card .invite {
+  font-size: 16px;
+  color: var(--ink-soft);
+  font-weight: 300;
+  margin-bottom: 26px;
+}
+.contact-card .methods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+}
+.contact-card .methods a {
+  background: white;
+  border: 1px solid var(--line);
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--brown);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.3s, border-color 0.3s, transform 0.2s;
+}
+.contact-card .methods a:hover {
+  background: var(--blue-deep);
+  border-color: var(--blue-deep);
+  color: white;
+  transform: translateY(-1px);
+}
+.contact-card .methods .ico {
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* === CLOSING === */
+.closing-line {
+  max-width: 860px;
+  margin: 0 auto 70px;
+  text-align: center;
+  padding: 0 32px;
+}
+.closing-line p {
+  font-family: 'Frank Ruhl Libre', 'Heebo', serif;
+  font-style: italic;
+  font-size: clamp(22px, 2.6vw, 30px);
+  color: var(--brown);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* === FOOTER === */
+.footer {
+  background: var(--cream);
+  padding: 36px 32px 22px;
+  margin-top: 0;
+}
+.footer-top {
+  max-width: 1200px;
+  margin: 0 auto 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(85,75,65,.12);
+  padding-bottom: 18px;
+}
+.footer-top img { height: 54px; }
+.footer-social { display: flex; gap: 14px; }
+.footer-social a {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid var(--line);
+  transition: background 0.3s;
+}
+.footer-social a:hover { background: var(--blue-soft); }
+.footer-social svg { width: 16px; height: 16px; fill: var(--brown); }
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 11px;
+  color: var(--brown);
+  letter-spacing: 2px;
+  opacity: 0.6;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 700px) {
+  .topbar { padding: 12px 16px; }
+  .topbar .cta-bulk, .topbar .cta { padding: 8px 14px; font-size: 11px; letter-spacing: 1.5px; }
+  .topbar .logo img { height: 44px; }
+  .breadcrumb { padding: 100px 18px 14px; font-size: 12.5px; }
+  .about-hero { padding: 0 18px 32px; }
+  .about-story { padding: 40px 18px; }
+  .about-story p { font-size: 16px; }
+  .contact-block { padding: 0 18px; }
+  .contact-card { padding: 30px 22px; }
+  .footer-top { flex-direction: column; gap: 14px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <a class="cta-bulk" href="happy-hour.html">הזמנה מרוכזת</a>
+  <div class="logo"><a href="index.html"><img src="logo-sweetbox.png" alt="Sweet Box"></a></div>
+  <a class="cta" href="index.html#display">בחירת קופסה</a>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">דף הבית</a>
+  <span class="sep">/</span>
+  אודות
+</div>
+
+<!-- HERO -->
+<section class="about-hero">
+  <h1>אודות</h1>
+  <p class="tagline">נכון שחיפשתם דרך חדשה ופשוטה לקנות מתנה, אבל כזו שבאמת תגרום לחיוכים מאושרים?</p>
+</section>
+
+<!-- STORY -->
+<section class="about-story">
+  <p>סוויטבוקס נולדה כחלום שמחבר את תל אביב עם ניו יורק.<br>מאפייה מופלאה שקמה במתחם שוק לוינסקי המייצרת מאפים טריים וסופר-איכותיים המבוססים על קלאסיקות אמריקאיות מושחתות.</p>
+  <p>את הבשורה של סוויטבוקס החלטנו לקחת קדימה ולארוז אותה בצורה הכי מושלמת שיש, קופסה מתוקה שמגיעה עד הדלת בצ'יק, ובתוכה מסתתרים המאפים הכי משמחים ומשובחים שיש. כמה פשוט, ככה טעים.</p>
+</section>
+
+<!-- CONTACT -->
+<div class="contact-block">
+  <div class="contact-card">
+    <p class="ask">יש לכם שאלה? יש לכם בקשה?</p>
+    <p class="invite">אנחנו כאן בשבילכם! צלצלו או כתבו לנו למייל ונחזור אליכם בהקדם.</p>
+    <div class="methods">
+      <a href="tel:036196030"><span class="ico">☎</span> 03-6196030</a>
+      <a href="mailto:shop@sweetbox.co.il"><span class="ico">✉</span> shop@sweetbox.co.il</a>
+    </div>
+  </div>
+</div>
+
+<!-- CLOSING -->
+<div class="closing-line">
+  <p>דבר אחד בטוח... יהיה מתוק וטעים.</p>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <a href="index.html"><img src="logo-sweetbox.png" alt="Sweet Box"></a>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/sweetbox.il/" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.9.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.9.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.9-.9-1.4-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.9-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 3.4c-3.5 0-6.4 2.9-6.4 6.4s2.9 6.4 6.4 6.4 6.4-2.9 6.4-6.4-2.9-6.4-6.4-6.4zm0 10.6c-2.3 0-4.2-1.9-4.2-4.2s1.9-4.2 4.2-4.2 4.2 1.9 4.2 4.2-1.9 4.2-4.2 4.2zm6.6-10.9c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5.7-1.5 1.5-1.5 1.5.7 1.5 1.5z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/sweetboxil/" target="_blank" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.69.24 2.69.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.79V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 · SWEET BOX · sweetbox.co.il</div>
+</footer>
+
+</body>
+</html>
