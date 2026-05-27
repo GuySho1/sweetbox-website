@@ -349,7 +349,8 @@ html, body {
 .branch-info { padding: 26px 28px 28px; flex: 1; display: flex; flex-direction: column; }
 .branch-name { font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif; font-size: 30px; letter-spacing: 1px; margin-bottom: 6px; }
 .branch-address { font-size: 14px; color: var(--brown); line-height: 1.5; margin-bottom: 8px; }
-.branch-hours { font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif; font-weight: 300; font-size: 13px; color: var(--blue-deep); letter-spacing: 2px; margin-bottom: 20px; }
+.branch-hours { font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif; font-weight: 300; font-size: 13px; color: var(--blue-deep); letter-spacing: 1.5px; margin-bottom: 20px; line-height: 1.7; }
+.branch-hours .hours-line { display: block; }
 .branch-wolt { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #009DE0; color: white; padding: 12px 22px; text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 1.5px; margin-top: auto; transition: background 0.3s; }
 .branch-wolt:hover { background: #007BB8; }
 .branch-wolt .wolt-icon { font-weight: 700; font-size: 14px; }
@@ -493,11 +494,11 @@ html, body {
         </div>
         <div class="display-item-info">
           <div class="display-item-sub">THE GIFT</div>
-          <div class="display-item-name">Cheesy Box · שבועות</div>
+          <div class="display-item-name">Cheese Box · שבועות</div>
           <div class="display-item-desc">המארז החגיגי לשבועות. עוגת לוטוס שכבות אישית + 6 ריבועי גבינה.</div>
           <div class="display-item-meta">
             <span>7 פריטי גבינה</span>
-            <span class="display-item-price">239 ₪</span>
+            <span class="display-item-price">260 ₪</span>
           </div>
         </div>
       </a>
@@ -727,7 +728,10 @@ html, body {
         <div class="branch-info">
           <div class="branch-name">גלילות</div>
           <div class="branch-address">ביג פאשן גלילות<br>קומת קרקע</div>
-          <div class="branch-hours">— 09:00 – 22:00 · 7 ימים בשבוע —</div>
+          <div class="branch-hours">
+            <span class="hours-line">א'–ש' · 09:00–22:00</span>
+            <span class="hours-line">פתוח גם בשבת</span>
+          </div>
           <a class="branch-wolt" href="https://wolt.com/en/isr/tel-aviv/restaurant/sweet-box-glilot" target="_blank" rel="noopener">
             <span class="wolt-icon">●</span> הזמנה ב-Wolt
           </a>
@@ -739,7 +743,10 @@ html, body {
         <div class="branch-info">
           <div class="branch-name">שוק לוינסקי</div>
           <div class="branch-address">לוינסקי 46<br>תל אביב</div>
-          <div class="branch-hours">— 09:00 – 22:00 · 7 ימים בשבוע —</div>
+          <div class="branch-hours">
+            <span class="hours-line">א'–ה' · 09:00–22:00</span>
+            <span class="hours-line">שישי עד כניסת השבת</span>
+          </div>
           <a class="branch-wolt" href="https://wolt.com/he/isr/tel-aviv/restaurant/sweetbox" target="_blank" rel="noopener">
             <span class="wolt-icon">●</span> הזמנה ב-Wolt
           </a>
@@ -866,8 +873,6 @@ html, body {
       </ul>
     </div>
   </div>
-
-  <div class="footer-kosher-line">✦ כשר בהשגחת הרבנות הראשית תל אביב יפו ✦</div>
 
   <div class="footer-bottom">© 2026 · SWEET BOX · sweetbox.co.il</div>
 </footer>
