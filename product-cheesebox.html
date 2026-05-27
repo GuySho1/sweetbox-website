@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cheese Box · שבועות · Sweet Box</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400;1,500&family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Heebo:wght@300;400;500;600;700;800&family=Italiana&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --blue: #B5DCE8;
+  --blue-deep: #5B9DB5;
+  --blue-soft: #EDF6FA;
+  --teal-accent: #4A8FA8;
+  --ink: #1A1A1F;
+  --ink-soft: #4D5258;
+  --ink-whisper: #8A8E96;
+  --cream: #F7F3EC;
+  --brown: #554B41;
+  --paper: #FCFCFD;
+  --line: #E8EAED;
+  --green: #6B8E5C;
+}
+
+html, body {
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  direction: rtl;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* === TOP BAR === */
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 14px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(250, 250, 250, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.topbar .logo img { height: 56px; display: block; }
+.topbar nav { display: flex; gap: 28px; }
+.topbar nav a {
+  color: var(--ink); font-size: 12.5px;
+  letter-spacing: 2px; transition: color 0.3s;
+}
+.topbar nav a:hover { color: var(--blue-deep); }
+.topbar .cta {
+  background: var(--teal-accent); color: #FFF;
+  padding: 10px 22px; font-size: 12px;
+  letter-spacing: 2px; font-weight: 500;
+  border-radius: 999px;
+  transition: background 0.3s, transform 0.2s;
+}
+.topbar .cta:hover { background: var(--brown); transform: translateY(-1px); }
+
+/* === BREADCRUMB === */
+.breadcrumb {
+  padding: 100px 32px 18px;
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--brown);
+  letter-spacing: 1px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.breadcrumb a { color: var(--blue-deep); transition: color 0.3s; }
+.breadcrumb a:hover { color: var(--ink); }
+.breadcrumb .sep { margin: 0 8px; color: var(--ink-whisper); }
+
+/* === PRODUCT HERO (gallery + info) === */
+.product-hero {
+  padding: 0 32px 50px;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* Gallery */
+.gallery-main {
+  background: var(--cream);
+  aspect-ratio: 1;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.gallery-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s;
+}
+
+.gallery-thumbs {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+.gallery-thumbs .thumb {
+  aspect-ratio: 1;
+  background: var(--cream);
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.gallery-thumbs .thumb:hover { border-color: var(--blue-deep); }
+.gallery-thumbs .thumb.active { border-color: var(--ink); }
+
+/* Product info */
+.product-info {
+  padding-top: 8px;
+}
+.product-eyebrow {
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
+  font-size: 16px;
+  letter-spacing: 6px;
+  color: var(--blue-deep);
+  margin-bottom: 14px;
+}
+.product-title {
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
+  font-size: clamp(40px, 4vw, 56px);
+  line-height: 1;
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+}
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--brown);
+  margin-bottom: 22px;
+}
+.product-rating .stars {
+  color: var(--blue-deep);
+  letter-spacing: 2px;
+  font-size: 17px;
+}
+.product-rating a {
+  color: var(--blue-deep);
+  text-decoration: underline;
+  font-weight: 300;
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
+}
+
+.product-price-block {
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 22px;
+}
+.product-price {
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
+  font-size: 38px;
+  color: var(--ink);
+  letter-spacing: 1px;
+}
+.product-price .small {
+  font-size: 14px;
+  color: var(--ink-whisper);
+  margin-inline-start: 8px;
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
+  font-weight: 300;
+}
+
+.product-description {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--brown);
+  margin-bottom: 24px;
+  font-weight: 400;
+}
+
+/* Gift card option */
+.gift-option {
+  background: var(--blue-soft);
+  padding: 16px 20px;
+  margin-bottom: 22px;
+  border-inline-start: 3px solid var(--blue-deep);
+}
+.gift-option label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14.5px;
+  color: var(--ink);
+  font-weight: 500;
+}
+.gift-option label input { accent-color: var(--blue-deep); width: 16px; height: 16px; }
+.gift-option .gift-fields {
+  display: none;
+  margin-top: 14px;
+}
+.gift-option input[type=checkbox]:checked ~ .gift-fields { display: block; }
+.gift-option input[type=text],
+.gift-option textarea {
+  width: 100%;
+  border: 1px solid var(--blue);
+  background: #FFFFFF;
+  padding: 10px 12px;
+  font-family: inherit;
+  font-size: 14px;
+  margin-bottom: 8px;
+  resize: vertical;
+}
+.gift-option textarea { min-height: 70px; }
+.gift-option input:focus, .gift-option textarea:focus { outline: 1px solid var(--blue-deep); }
+
+/* Quantity + Buttons */
+.actions-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.qty-select {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--ink);
+  background: #FFFFFF;
+}
+.qty-select button {
+  background: none;
+  border: none;
+  width: 42px;
+  height: 50px;
+  font-size: 18px;
+  cursor: pointer;
+  color: var(--ink);
+  font-family: inherit;
+}
+.qty-select button:hover { background: var(--cream); }
+.qty-select input {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border: none;
+  border-inline-start: 1px solid var(--line);
+  border-inline-end: 1px solid var(--line);
+  font-size: 16px;
+  font-family: inherit;
+}
+
+.btn-add {
+  flex: 1;
+  background: var(--teal-accent);
+  color: var(--paper);
+  border: none;
+  padding: 0 22px;
+  font-size: 13px;
+  letter-spacing: 3px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+  height: 50px;
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(74, 143, 168, 0.18);
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+.btn-add:hover { background: var(--brown); transform: translateY(-1px); box-shadow: 0 8px 22px rgba(85, 75, 65, 0.22); }
+
+.btn-wishlist {
+  width: 50px;
+  height: 50px;
+  border: 1px solid var(--ink);
+  background: #FFFFFF;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.3s;
+}
+.btn-wishlist:hover { background: var(--ink); color: var(--paper); }
+
+/* Trust signals */
+.trust-signals {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding-top: 18px;
+}
+.trust-cell {
+  text-align: center;
+  padding: 12px 8px;
+  background: var(--cream);
+}
+.trust-cell .ico {
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
+  font-size: 20px;
+  color: var(--blue-deep);
+  margin-bottom: 4px;
+  display: block;
+}
+.trust-cell .txt {
+  font-size: 12.5px;
+  color: var(--brown);
+  letter-spacing: 0.5px;
+}
+
+/* === SECTION HEADER === */
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.section-eyebrow {
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
+  font-size: 22px;
+  letter-spacing: 7px;
+  color: var(--blue-deep);
+  margin-bottom: 14px;
+  font-weight: 400;
+}
+.section-h2 {
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
+  font-size: clamp(34px, 4vw, 46px);
+  font-weight: normal;
+  letter-spacing: 0.5px;
+  line-height: 1.1;
+}
+.inside-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.inside-item {
+  background: #FFFFFF;
+  text-align: center;
+  padding-bottom: 22px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.inside-item:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
+.inside-item-img {
+  aspect-ratio: 1;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 16px;
+}
+.inside-item-name {
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+  color: var(--ink);
+}
+.inside-item-qty {
+  font-size: 13px;
+  color: var(--brown);
+  margin-top: 4px;
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+/* === STORY === */
+.story {
+  background: var(--paper);
+  padding: 50px 32px 60px;
+  text-align: center;
+}
+.story-inner { max-width: 740px; margin: 0 auto; }
+.story-quote {
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
+  font-weight: 300;
+  font-size: 22px;
+  color: var(--brown);
+  line-height: 1.5;
+  margin: 16px 0 10px;
+}
+.story-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+/* === REVIEWS === */
+.reviews {
+  background: var(--blue-soft);
+  padding: 60px 32px;
+}
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  max-width: 1200px;
+  margin: 30px auto 0;
+}
+.review-card {
+  background: #FFFFFF;
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+}
+.review-stars {
+  color: var(--blue-deep);
+  letter-spacing: 2px;
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+.review-quote {
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink);
+  margin-bottom: 18px;
+  flex: 1;
+}
+.review-attribution {
+  font-size: 13px;
+  color: var(--ink-whisper);
+  letter-spacing: 0.5px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.review-attribution strong { color: var(--ink); font-weight: 500; }
+
+/* === RELATED === */
+.related {
+  background: linear-gradient(180deg, #FFFFFF 0%, #EDF6FA 100%);
+  padding: 50px 32px 60px;
+}
+.related-carousel-wrap {
+  position: relative;
+  max-width: 1200px;
+  margin: 30px auto 0;
+  padding: 0 40px;
+  overflow: hidden;
+}
+.related-carousel {
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 6px 4px 22px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.related-carousel::-webkit-scrollbar { display: none; }
+.related-carousel .related-item {
+  flex: 0 0 calc(100% - 4px);
+  scroll-snap-align: center;
+  max-width: 320px;
+  margin: 0 auto;
+}
+.related-item {
+  background: #FFFFFF;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.related-item:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
+.related-arrow {
+  position: absolute;
+  top: 38%;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(85, 75, 65, 0.12);
+  transition: transform 0.2s, background 0.2s, color 0.2s;
+}
+.related-arrow:hover { background: var(--teal-accent); color: #FFFFFF; transform: scale(1.08); }
+.related-arrow.prev { right: 4px; }
+.related-arrow.next {
+  left: 4px;
+  background: var(--blue);
+  animation: arrowPulse 2.4s ease-in-out infinite;
+}
+.related-arrow.next:hover { animation: none; background: var(--teal-accent); color: #FFFFFF; }
+@keyframes arrowPulse {
+  0%, 100% { box-shadow: 0 4px 14px rgba(74, 143, 168, 0.20), 0 0 0 0 rgba(74, 143, 168, 0.5); }
+  50% { box-shadow: 0 4px 14px rgba(74, 143, 168, 0.30), 0 0 0 12px rgba(74, 143, 168, 0); }
+}
+.related-img {
+  aspect-ratio: 1;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--blue-soft);
+}
+.related-info {
+  padding: 18px 20px 22px;
+  text-align: center;
+}
+.related-name {
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+.related-price {
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
+  font-size: 18px;
+  color: var(--blue-deep);
+}
+
+/* === BRANCHES STRIP === */
+.branches-strip {
+  background: var(--cream);
+  padding: 40px 32px;
+  text-align: center;
+}
+.branches-strip p {
+  font-family: 'Heebo', 'Frank Ruhl Libre', sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+  color: var(--brown);
+  margin: 0 auto 18px;
+  max-width: 780px;
+  line-height: 1.55;
+  letter-spacing: 1px;
+}
+.branches-strip p strong {
+  color: var(--ink);
+  font-weight: 700;
+  font-style: normal;
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 16px;
+  background: var(--blue-soft);
+  padding: 1px 6px;
+}
+.branches-strip .links {
+  display: inline-flex;
+  gap: 20px;
+}
+.branches-strip .links a {
+  background: var(--blue-deep);
+  color: #FFFFFF;
+  padding: 10px 22px;
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+.branches-strip .links a:hover { background: var(--brown); }
+
+/* === FOOTER (same as homepage, simplified) === */
+.footer {
+  background: var(--cream);
+  color: var(--brown);
+  padding: 40px 32px 22px;
+  border-top: 1px solid rgba(123,188,214,0.4);
+  text-align: center;
+}
+.footer-top {
+  max-width: 800px;
+  margin: 0 auto 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.footer-top img { height: 72px; }
+.footer-social { display: flex; gap: 10px; justify-content: center; }
+.footer-social a {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--brown); color: var(--paper);
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: background 0.3s;
+}
+.footer-social a:hover { background: var(--blue-deep); }
+.footer-social svg { width: 16px; height: 16px; fill: currentColor; }
+.footer-bottom {
+  font-size: 11.5px;
+  color: var(--brown);
+  letter-spacing: 2px;
+  opacity: 0.7;
+  padding-top: 14px;
+  border-top: 1px solid rgba(85,75,65,0.18);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+  .topbar { padding: 12px 16px; }
+  .topbar nav { display: none; }
+  .topbar .logo img { height: 44px; }
+  .breadcrumb { padding: 90px 16px 12px; }
+  .product-hero { grid-template-columns: 1fr; gap: 36px; padding: 0 16px 40px; }
+  .gallery-thumbs { grid-template-columns: repeat(7, 1fr); }
+  .inside-grid, .reviews-grid { grid-template-columns: 1fr 1fr; gap: 18px; }
+  .related-carousel-wrap { padding: 0 50px; }
+  .related-carousel { gap: 12px; }
+  .related-carousel .related-item { flex: 0 0 100%; max-width: 100%; scroll-snap-align: center; }
+  .related-arrow { width: 38px; height: 38px; font-size: 18px; }
+  .trust-signals { grid-template-columns: 1fr; gap: 6px; }
+  .whats-inside, .story, .reviews, .related, .branches-strip { padding-left: 16px; padding-right: 16px; }
+  .branches-strip .links { flex-direction: column; gap: 10px; }
+}
+
+@media (max-width: 600px) {
+  .inside-grid, .reviews-grid { grid-template-columns: 1fr; }
+  .product-title { font-size: 34px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <a href="index.html" class="logo"><img src="logo-sweetbox.png" alt="Sweet Box"></a>
+  <nav>
+    <a href="index.html#display">המארזים</a>
+    <a href="index.html#branches">סניפים</a>
+    <a href="index.html#franchise">זכיינות</a>
+  </nav>
+  <a class="cta" href="#add">להוסיף לסל</a>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">דף הבית</a>
+  <span class="sep">/</span>
+  <a href="index.html#display">המארזים</a>
+  <span class="sep">/</span>
+  Cheese Box · שבועות
+</div>
+
+<!-- PRODUCT HERO -->
+<section class="product-hero">
+
+  <!-- Gallery -->
+  <div class="gallery">
+    <div class="gallery-main">
+      <img src="box-cheesy.jpg" alt="Cheese Box" id="main-img">
+    </div>
+    <div class="gallery-thumbs">
+      <div class="thumb active" data-img="box-cheesy.jpg" style="background-image: url('box-cheesy.jpg');" title="המארז המלא"></div>
+      <div class="thumb" data-img="cheese-lotus.jpg" style="background-image: url('cheese-lotus.jpg');" title="עוגת לוטוס שכבות"></div>
+      <div class="thumb" data-img="cheese-ny.jpg" style="background-image: url('cheese-ny.jpg');" title="ריבוע גבינה ניו יורק"></div>
+      <div class="thumb" data-img="cheese-oreo.jpg" style="background-image: url('cheese-oreo.jpg');" title="ריבוע גבינה ואוריאו"></div>
+      <div class="thumb" data-img="cheese-chocolate.jpg" style="background-image: url('cheese-chocolate.jpg');" title="ריבוע גבינה שוקולד"></div>
+    </div>
+  </div>
+
+  <!-- Info -->
+  <div class="product-info">
+    <div class="product-eyebrow">— שבועות 2026 —</div>
+    <h1 class="product-title">Cheese Box</h1>
+
+    <div class="product-rating">
+      <span class="stars">★★★★★</span>
+      <span>המארז העונתי של שבועות · זמין לתקופה מוגבלת</span>
+    </div>
+
+    <div class="product-price-block">
+      <div class="product-price">260 ₪ <span class="small">כולל מע"מ</span></div>
+    </div>
+
+    <p class="product-description">
+      חגיגת שבועות בקופסה אחת — עוגת לוטוס שכבות אישית, ו-6 ריבועי עוגת גבינה במגוון טעמים: ניו יורק קלאסי, אוריאו, שוקולד ובראוני. המארז העונתי שלנו, רק לתקופה מוגבלת לכבוד החג.
+    </p>
+
+    <!-- Gift card option -->
+    <div class="gift-option">
+      <label>
+        <input type="checkbox" id="gift-toggle">
+        <span>הוספת כרטיס ברכה אישי — בחינם</span>
+      </label>
+      <div class="gift-fields">
+        <input type="text" placeholder="שם הנמען">
+        <textarea placeholder="הברכה שלך (עד 100 תווים)" maxlength="100"></textarea>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="actions-row">
+      <div class="qty-select">
+        <button onclick="changeQty(1)">+</button>
+        <input type="number" value="1" min="1" max="20" id="qty-input">
+        <button onclick="changeQty(-1)">−</button>
+      </div>
+      <button class="btn-add" id="add">להוסיף לסל</button>
+      <button class="btn-wishlist" aria-label="הוסף לרשימת מתנות">♡</button>
+    </div>
+
+    <!-- Trust signals -->
+    <div class="trust-signals">
+      <div class="trust-cell">
+        <span class="ico">◇</span>
+        <div class="txt">טרי מהמפעל</div>
+      </div>
+      <div class="trust-cell">
+        <span class="ico">◇</span>
+        <div class="txt">משלוח 1-3 ימי עסקים</div>
+      </div>
+      <div class="trust-cell">
+        <span class="ico">◇</span>
+        <div class="txt">כשר חלבי · רבנות ת"א</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story">
+  <div class="story-inner">
+    <div class="section-eyebrow">— הסיפור —</div>
+    <p class="story-quote">"כל שנה לשבועות אנחנו מקדישים זמן רק לטעמי הגבינה - שכבות, ריבועים, וריאציות. מארז שאופים פעם בשנה."</p>
+    <p class="story-text">
+      שבועות זה החג של הגבינות, ולנו זאת ההזדמנות להוציא החוצה את כל הוריאציות שאנחנו אוהבים — עוגת לוטוס שכבות אישית במרכז, ושישה ריבועים שכל אחד מהם תופעה בפני עצמו. כל הרכיבים נאפים טריים במיוחד לקראת החג, וכל המארז מגיע בקופסה הכחולה המותגית שלנו. זמין רק לתקופה הקצרה שלפני שבועות.
+    </p>
+  </div>
+</section>
+
+<!-- RELATED -->
+<section class="related">
+  <div class="section-header">
+    <div class="section-eyebrow">— YOU MIGHT ALSO LIKE —</div>
+    <h2 class="section-h2">קופסאות נוספות באוסף</h2>
+  </div>
+
+  <div class="related-carousel-wrap">
+    <button class="related-arrow prev" onclick="relatedScroll(1)" aria-label="הקודם"><span style="display:inline-block;direction:ltr;unicode-bidi:bidi-override;">❯</span></button>
+    <button class="related-arrow next" onclick="relatedScroll(-1)" aria-label="הבא"><span style="display:inline-block;direction:ltr;unicode-bidi:bidi-override;">❮</span></button>
+
+    <div class="related-carousel" id="relatedCarousel">
+
+      <a href="product-bestseller.html" class="related-item">
+        <div class="related-img" style="background-image: url('box-bestseller.jpg');"></div>
+        <div class="related-info">
+          <div class="related-name">Best Seller Box</div>
+          <div class="related-price">190 ₪</div>
+        </div>
+      </a>
+
+      <a href="#" class="related-item">
+        <div class="related-img" style="background-image: url('box-dream.jpg');"></div>
+        <div class="related-info">
+          <div class="related-name">Dream Box</div>
+          <div class="related-price">430 ₪</div>
+        </div>
+      </a>
+
+      <a href="#" class="related-item">
+        <div class="related-img" style="background-image: url('box-crackpie.jpg');"></div>
+        <div class="related-info">
+          <div class="related-name">Crack Pie Box</div>
+          <div class="related-price">190 ₪</div>
+        </div>
+      </a>
+
+      <a href="#" class="related-item">
+        <div class="related-img" style="background-image: url('box-cupcake.jpg');"></div>
+        <div class="related-info">
+          <div class="related-name">Mini Cupcake Box</div>
+          <div class="related-price">170 ₪</div>
+        </div>
+      </a>
+
+      <a href="#" class="related-item">
+        <div class="related-img" style="background-image: url('box-mix.jpg');"></div>
+        <div class="related-info">
+          <div class="related-name">Mix Box</div>
+          <div class="related-price">220 ₪</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- BRANCHES STRIP -->
+<section class="branches-strip">
+  <p>לא מצאתם את השילוב המתאים? אם אתם באזורי החלוקה של הסניפים שלנו, אפשר להרכיב קופסה מותאמת אישית דרך Wolt — אבל <strong>ההזמנה תגיע ללא הקופסה הכחולה האייקונית שלנו</strong>, קחו בחשבון ;)</p>
+  <div class="links">
+    <a href="https://wolt.com/en/isr/tel-aviv/restaurant/sweet-box-glilot" target="_blank" rel="noopener">סניף גלילות · Wolt</a>
+    <a href="https://wolt.com/he/isr/tel-aviv/restaurant/sweetbox" target="_blank" rel="noopener">סניף לוינסקי · Wolt</a>
+  </div>
+</section>
+
+<!-- FOOTER (mini) -->
+<footer class="footer">
+  <div class="footer-top">
+    <img src="logo-sweetbox.png" alt="Sweet Box">
+    <div class="footer-social">
+      <a href="https://www.instagram.com/sweetbox.il/" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.9.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.9.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.9-.9-1.4-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.9-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 3.4c-3.5 0-6.4 2.9-6.4 6.4s2.9 6.4 6.4 6.4 6.4-2.9 6.4-6.4-2.9-6.4-6.4-6.4zm0 10.6c-2.3 0-4.2-1.9-4.2-4.2s1.9-4.2 4.2-4.2 4.2 1.9 4.2 4.2-1.9 4.2-4.2 4.2zm6.6-10.9c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5.7-1.5 1.5-1.5 1.5.7 1.5 1.5z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/sweetboxil/" target="_blank" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.69.24 2.69.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.79V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 · SWEET BOX · sweetbox.co.il</div>
+</footer>
+
+<script>
+  // Gallery switcher
+  document.querySelectorAll('.gallery-thumbs .thumb').forEach(thumb => {
+    thumb.addEventListener('click', function() {
+      document.querySelectorAll('.gallery-thumbs .thumb').forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+      const newSrc = this.getAttribute('data-img');
+      const main = document.getElementById('main-img');
+      main.style.opacity = '0';
+      setTimeout(() => {
+        main.src = newSrc;
+        main.style.opacity = '1';
+      }, 150);
+    });
+  });
+
+  // Quantity selector
+  function changeQty(delta) {
+    const input = document.getElementById('qty-input');
+    const next = Math.max(1, Math.min(20, parseInt(input.value) + delta));
+    input.value = next;
+  }
+
+  // Gift card show/hide
+  document.getElementById('gift-toggle').addEventListener('change', function() {
+    const fields = this.parentElement.parentElement.querySelector('.gift-fields');
+    fields.style.display = this.checked ? 'block' : 'none';
+  });
+
+  // Related products carousel scroll
+  function relatedScroll(direction) {
+    const carousel = document.getElementById('relatedCarousel');
+    if (!carousel) return;
+    const firstItem = carousel.querySelector('.related-item');
+    if (!firstItem) return;
+    const itemWidth = firstItem.offsetWidth + 22;
+    carousel.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
