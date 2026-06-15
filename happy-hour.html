@@ -15,9 +15,9 @@
   --ink: #1A1A1F;
   --ink-soft: #4D5258;
   --ink-whisper: #8A8E96;
-  --cream: #F7F3EC;
+  --cream: #FFFFFF;
   --brown: #554B41;
-  --paper: #FCFCFD;
+  --paper: #FFFFFF;
   --line: #E8EAED;
 }
 html, body {
@@ -60,6 +60,16 @@ html, body {
   transition: background 0.3s, transform 0.2s;
 }
 .topbar .cta:hover { background: var(--brown); transform: translateY(-1px); }
+.topbar .cta-hr {
+  background: transparent;
+  border: 1.5px solid var(--teal-accent);
+  color: var(--teal-accent);
+  padding: 9px 20px; font-size: 12px;
+  letter-spacing: 1.5px; text-decoration: none; font-weight: 500;
+  border-radius: 999px;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+.topbar .cta-hr:hover { background: var(--teal-accent); color: #FFFFFF; transform: translateY(-1px); }
 
 /* === HERO === */
 .hero {
@@ -552,6 +562,7 @@ html, body {
 
 <!-- TOP BAR -->
 <div class="topbar">
+  <a class="cta-hr" href="hr-portal.html">כניסת HR ←</a>
   <div class="logo"><a href="index.html"><img src="logo-sweetbox.png" alt="Sweet Box"></a></div>
   <a class="cta" href="index.html#display">בחירת קופסה</a>
 </div>

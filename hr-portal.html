@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מערכת HR · הזמנה מרוכזת · Sweet Box</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --blue: #B5DCE8;
+  --blue-deep: #5B9DB5;
+  --blue-soft: #EDF6FA;
+  --teal-accent: #4A8FA8;
+  --ink: #1A1A1F;
+  --ink-soft: #4D5258;
+  --ink-whisper: #8A8E96;
+  --cream: #FFFFFF;
+  --brown: #554B41;
+  --paper: #FFFFFF;
+  --line: #E8EAED;
+  --success: #6B8E5C;
+  --danger: #C44A4A;
+}
+
+html, body {
+  font-family: 'Heebo', sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  direction: rtl;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.7;
+}
+
+a { color: inherit; text-decoration: none; }
+a:hover { color: var(--blue-deep); }
+
+/* === TOP BAR === */
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 14px 32px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.topbar .logo { text-align: center; }
+.topbar .logo img { height: 56px; display: inline-block; }
+.topbar .cta-bulk {
+  background: transparent;
+  border: 1.5px solid var(--teal-accent);
+  color: var(--teal-accent);
+  padding: 10px 22px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  border-radius: 999px;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+  justify-self: start;
+}
+.topbar .cta-bulk:hover { background: var(--teal-accent); color: #FFF; transform: translateY(-1px); }
+.topbar .cta {
+  background: var(--teal-accent);
+  color: #FFF;
+  padding: 10px 22px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  border-radius: 999px;
+  transition: background 0.3s, transform 0.2s;
+  justify-self: end;
+}
+.topbar .cta:hover { background: var(--brown); transform: translateY(-1px); }
+
+/* === BREADCRUMB === */
+.breadcrumb {
+  padding: 110px 32px 18px;
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--brown);
+  letter-spacing: 1px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.breadcrumb a { color: var(--blue-deep); }
+.breadcrumb .sep { margin: 0 8px; color: var(--ink-whisper); }
+
+/* === HERO === */
+.portal-hero {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px 30px;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+.portal-hero .eyebrow {
+  font-size: 12px;
+  letter-spacing: 6px;
+  color: var(--teal-accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.portal-hero h1 {
+  font-size: clamp(34px, 5vw, 52px);
+  font-weight: 900;
+  color: var(--brown);
+  letter-spacing: 0.5px;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.portal-hero p {
+  font-size: 16px;
+  color: var(--ink-soft);
+  font-weight: 300;
+  max-width: 640px;
+  margin: 0 auto;
+  padding-bottom: 30px;
+}
+
+/* === LOGIN SECTION === */
+.login-wrap {
+  max-width: 480px;
+  margin: 60px auto;
+  padding: 0 32px;
+}
+.login-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 40px 36px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.04);
+}
+.login-card h2 {
+  font-size: 24px;
+  color: var(--brown);
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-align: center;
+}
+.login-card .sub {
+  font-size: 14px;
+  color: var(--ink-soft);
+  text-align: center;
+  margin-bottom: 30px;
+}
+.field-group { margin-bottom: 18px; }
+.field-group label {
+  display: block;
+  font-size: 13px;
+  color: var(--brown);
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.field-group input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--line);
+  border-radius: 8px;
+  font-family: 'Heebo', sans-serif;
+  font-size: 15px;
+  transition: border-color 0.2s;
+}
+.field-group input:focus {
+  outline: none;
+  border-color: var(--blue-deep);
+}
+.login-btn {
+  width: 100%;
+  padding: 14px;
+  background: var(--teal-accent);
+  color: white;
+  border: none;
+  border-radius: 999px;
+  font-family: 'Heebo', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  margin-top: 8px;
+}
+.login-btn:hover { background: var(--brown); transform: translateY(-1px); }
+.login-note {
+  text-align: center;
+  font-size: 13px;
+  color: var(--ink-whisper);
+  margin-top: 20px;
+}
+.login-note a {
+  color: var(--blue-deep);
+  text-decoration: underline;
+}
+.login-error {
+  background: #fce8e8;
+  border: 1px solid #f5c8c8;
+  color: var(--danger);
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 16px;
+  display: none;
+}
+.login-error.show { display: block; }
+
+/* === PORTAL DASHBOARD === */
+.portal-main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 50px 32px 80px;
+}
+.welcome-strip {
+  background: var(--blue-soft);
+  border-radius: 16px;
+  padding: 24px 32px;
+  margin-bottom: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.welcome-strip .greeting {
+  font-size: 18px;
+  color: var(--brown);
+  font-weight: 500;
+}
+.welcome-strip .greeting strong { font-weight: 700; }
+.welcome-strip .logout-btn {
+  background: transparent;
+  border: 1.5px solid var(--brown);
+  color: var(--brown);
+  padding: 8px 18px;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.3s;
+}
+.welcome-strip .logout-btn:hover { background: var(--brown); color: white; }
+
+/* Step indicator */
+.steps {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 50px;
+  position: relative;
+}
+.step {
+  flex: 1;
+  max-width: 240px;
+  text-align: center;
+  position: relative;
+  padding: 0 12px;
+}
+.step .step-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--line);
+  color: var(--ink-whisper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  margin: 0 auto 10px;
+  transition: all 0.3s;
+}
+.step.active .step-num {
+  background: var(--teal-accent);
+  color: white;
+}
+.step .step-label {
+  font-size: 13px;
+  color: var(--ink-whisper);
+  font-weight: 500;
+}
+.step.active .step-label { color: var(--brown); }
+.step::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: -50%;
+  width: 100%;
+  height: 1px;
+  background: var(--line);
+  z-index: -1;
+}
+.step:first-child::after { display: none; }
+
+/* Section card */
+.section-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 36px 32px;
+  margin-bottom: 24px;
+}
+.section-card h3 {
+  font-size: 22px;
+  color: var(--brown);
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-card h3::before {
+  content: '';
+  width: 6px;
+  height: 24px;
+  background: var(--blue);
+  border-radius: 3px;
+}
+.section-card > p {
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  margin-bottom: 24px;
+  padding-right: 18px;
+}
+
+/* Box selection */
+.box-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 14px;
+}
+.box-card {
+  background: var(--blue-soft);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+.box-card:hover { border-color: var(--blue); }
+.box-card.selected {
+  background: white;
+  border-color: var(--teal-accent);
+  box-shadow: 0 4px 14px rgba(74,143,168,0.15);
+}
+.box-card .box-img {
+  width: 100%;
+  aspect-ratio: 1;
+  background: white;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border: 1px solid var(--line);
+}
+.box-card .box-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--brown);
+  margin-bottom: 4px;
+}
+.box-card .box-price {
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+/* Method tabs */
+.method-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid var(--line);
+  margin-bottom: 30px;
+}
+.method-tab {
+  flex: 1;
+  padding: 16px 12px;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink-whisper);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.2s;
+}
+.method-tab:hover { color: var(--brown); }
+.method-tab.active {
+  color: var(--teal-accent);
+  border-bottom-color: var(--teal-accent);
+}
+
+/* Method content */
+.method-content { display: none; }
+.method-content.active { display: block; }
+
+/* Excel upload */
+.upload-zone {
+  border: 2px dashed var(--blue-deep);
+  background: var(--blue-soft);
+  border-radius: 16px;
+  padding: 50px 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.upload-zone:hover {
+  background: white;
+  border-color: var(--teal-accent);
+}
+.upload-zone .upload-icon {
+  font-size: 48px;
+  color: var(--blue-deep);
+  margin-bottom: 16px;
+  line-height: 1;
+}
+.upload-zone .upload-title {
+  font-size: 18px;
+  color: var(--brown);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.upload-zone .upload-sub {
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin-bottom: 16px;
+}
+.upload-zone .upload-btn {
+  display: inline-block;
+  background: var(--teal-accent);
+  color: white;
+  padding: 12px 28px;
+  border-radius: 999px;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+}
+.upload-zone input[type=file] { display: none; }
+.upload-template {
+  margin-top: 22px;
+  padding: 16px 20px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-size: 13px;
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.upload-template a {
+  color: var(--blue-deep);
+  font-weight: 600;
+  border-bottom: 1px solid var(--blue-deep);
+}
+.upload-result {
+  margin-top: 22px;
+  padding: 18px 22px;
+  background: #effaef;
+  border: 1px solid var(--success);
+  border-radius: 10px;
+  color: var(--success);
+  font-size: 14px;
+  font-weight: 500;
+  display: none;
+}
+.upload-result.show { display: block; }
+
+/* Manual entry table */
+.manual-table-wrap {
+  overflow-x: auto;
+  margin-bottom: 18px;
+}
+.manual-table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+}
+.manual-table th {
+  text-align: right;
+  padding: 12px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--brown);
+  background: var(--blue-soft);
+  border-bottom: 2px solid var(--blue);
+}
+.manual-table th:first-child { border-radius: 8px 0 0 0; }
+.manual-table th:last-child { border-radius: 0 8px 0 0; }
+.manual-table td {
+  padding: 8px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+.manual-table input,
+.manual-table select {
+  width: 100%;
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-family: 'Heebo', sans-serif;
+  font-size: 13.5px;
+  transition: border-color 0.2s;
+}
+.manual-table input:focus,
+.manual-table select:focus {
+  outline: none;
+  border-color: var(--blue-deep);
+}
+.remove-row {
+  background: none;
+  border: none;
+  color: var(--danger);
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+  border-radius: 4px;
+}
+.remove-row:hover { background: #fce8e8; }
+.add-row-btn {
+  background: white;
+  border: 1.5px dashed var(--blue-deep);
+  color: var(--blue-deep);
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.add-row-btn:hover {
+  background: var(--blue-soft);
+  border-style: solid;
+}
+
+/* Summary */
+.summary-strip {
+  background: var(--brown);
+  color: white;
+  border-radius: 16px;
+  padding: 24px 32px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.summary-strip .summary-text {
+  font-size: 15px;
+}
+.summary-strip .summary-text strong {
+  font-size: 22px;
+  display: block;
+  margin-bottom: 4px;
+}
+.submit-btn {
+  background: var(--teal-accent);
+  color: white;
+  border: none;
+  padding: 16px 36px;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.submit-btn:hover {
+  background: white;
+  color: var(--brown);
+  transform: translateY(-2px);
+}
+
+/* Success message */
+.success-modal {
+  display: none;
+  text-align: center;
+  padding: 60px 32px;
+}
+.success-modal.show { display: block; }
+.success-modal .check-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--success);
+  color: white;
+  font-size: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+}
+.success-modal h2 {
+  font-size: 32px;
+  color: var(--brown);
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+.success-modal p {
+  font-size: 16px;
+  color: var(--ink-soft);
+  max-width: 480px;
+  margin: 0 auto 30px;
+  line-height: 1.7;
+}
+.success-modal .btn-new {
+  display: inline-block;
+  background: var(--teal-accent);
+  color: white;
+  padding: 12px 32px;
+  border-radius: 999px;
+  font-size: 13px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+
+/* === FOOTER === */
+.footer {
+  background: var(--cream);
+  padding: 36px 32px 22px;
+  margin-top: 60px;
+  border-top: 1px solid var(--line);
+}
+.footer-top {
+  max-width: 1200px;
+  margin: 0 auto 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(85,75,65,.12);
+  padding-bottom: 18px;
+}
+.footer-top img { height: 54px; }
+.footer-social { display: flex; gap: 14px; }
+.footer-social a {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid var(--line);
+  transition: background 0.3s;
+}
+.footer-social a:hover { background: var(--blue-soft); }
+.footer-social svg { width: 16px; height: 16px; fill: var(--brown); }
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 11px;
+  color: var(--brown);
+  letter-spacing: 2px;
+  opacity: 0.6;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 700px) {
+  .topbar { padding: 12px 16px; }
+  .topbar .cta-bulk, .topbar .cta { padding: 8px 14px; font-size: 11px; letter-spacing: 1.5px; }
+  .topbar .logo img { height: 44px; }
+  .breadcrumb { padding: 100px 18px 14px; font-size: 12.5px; }
+  .portal-hero { padding: 0 18px 24px; }
+  .portal-main { padding: 36px 18px 60px; }
+  .section-card { padding: 28px 22px; }
+  .welcome-strip { flex-direction: column; text-align: center; padding: 22px; }
+  .summary-strip { flex-direction: column; text-align: center; padding: 22px; }
+  .submit-btn { width: 100%; }
+  .step { padding: 0 6px; }
+  .step .step-label { font-size: 11.5px; }
+  .footer-top { flex-direction: column; gap: 14px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <a class="cta-bulk" href="happy-hour.html">חזרה ל-Happy Hour</a>
+  <div class="logo"><a href="index.html"><img src="logo-sweetbox.png" alt="Sweet Box"></a></div>
+  <a class="cta" href="index.html#display">בחירת קופסה</a>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">דף הבית</a>
+  <span class="sep">/</span>
+  <a href="happy-hour.html">הזמנה מרוכזת</a>
+  <span class="sep">/</span>
+  מערכת HR
+</div>
+
+<!-- LOGIN VIEW (visible initially) -->
+<div id="loginView">
+  <section class="portal-hero">
+    <div class="eyebrow">— FOR HR PROFESSIONALS —</div>
+    <h1>מערכת ההזמנות של סוויטבוקס</h1>
+    <p>ברוכות הבאות. כאן תוכלי לבצע הזמנות מרוכזות לרשימת עובדים, להעלות קובץ אקסל או למלא ידנית — וכל זה במקום אחד מסודר.</p>
+  </section>
+
+  <div class="login-wrap">
+    <div class="login-card">
+      <h2>כניסה למערכת</h2>
+      <p class="sub">השתמשי בפרטים שקיבלת מנציגת המכירות שלנו</p>
+
+      <div class="login-error" id="loginError">פרטי התחברות שגויים. נסי שוב.</div>
+
+      <form onsubmit="return doLogin(event)">
+        <div class="field-group">
+          <label for="loginEmail">אימייל</label>
+          <input type="email" id="loginEmail" required placeholder="your-email@company.co.il">
+        </div>
+        <div class="field-group">
+          <label for="loginPass">סיסמה</label>
+          <input type="password" id="loginPass" required placeholder="••••••••">
+        </div>
+        <button type="submit" class="login-btn">כניסה ←</button>
+      </form>
+
+      <p class="login-note">
+        אין לך עדיין גישה? <a href="happy-hour.html#leadForm">פני אלינו בטופס יצירת הקשר</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN PORTAL (visible after login) -->
+<main class="portal-main" id="portalMain" style="display:none;">
+
+  <div class="welcome-strip">
+    <div class="greeting">שלום, <strong id="hrName">מנהלת HR</strong> ✨</div>
+    <button class="logout-btn" onclick="doLogout()">יציאה</button>
+  </div>
+
+  <!-- Steps indicator -->
+  <div class="steps">
+    <div class="step active">
+      <div class="step-num">1</div>
+      <div class="step-label">בחירת מארז</div>
+    </div>
+    <div class="step active">
+      <div class="step-num">2</div>
+      <div class="step-label">פרטי הנמענים</div>
+    </div>
+    <div class="step active">
+      <div class="step-num">3</div>
+      <div class="step-label">סיכום ושליחה</div>
+    </div>
+  </div>
+
+  <!-- Step 1: Box selection -->
+  <div class="section-card">
+    <h3>בחירת מארז להזמנה</h3>
+    <p>בחרי את המארז שתרצי לשלוח לעובדים. ניתן לבחור מארז אחד לכל ההזמנה. אם תרצי שילובים שונים — פני אלינו ונבנה לך הצעה מותאמת.</p>
+
+    <div class="box-grid">
+      <div class="box-card" data-box="best-seller" data-price="190" onclick="selectBox(this)">
+        <div class="box-img" style="background-image: url('box-bestseller.jpg');"></div>
+        <div class="box-name">Best Seller Box</div>
+        <div class="box-price">190 ₪ ליחידה</div>
+      </div>
+      <div class="box-card" data-box="dream" data-price="430" onclick="selectBox(this)">
+        <div class="box-img" style="background-image: url('box-dream.jpg');"></div>
+        <div class="box-name">Dream Box</div>
+        <div class="box-price">430 ₪ ליחידה</div>
+      </div>
+      <div class="box-card" data-box="mix" data-price="220" onclick="selectBox(this)">
+        <div class="box-img" style="background-image: url('box-mix.jpg');"></div>
+        <div class="box-name">Mix Box</div>
+        <div class="box-price">220 ₪ ליחידה</div>
+      </div>
+      <div class="box-card" data-box="cupcake" data-price="170" onclick="selectBox(this)">
+        <div class="box-img" style="background-image: url('box-cupcake.jpg');"></div>
+        <div class="box-name">Mini Cupcake Box</div>
+        <div class="box-price">170 ₪ ליחידה</div>
+      </div>
+      <div class="box-card" data-box="crackpie" data-price="190" onclick="selectBox(this)">
+        <div class="box-img" style="background-image: url('box-crackpie.jpg');"></div>
+        <div class="box-name">Crack Pie Box</div>
+        <div class="box-price">190 ₪ ליחידה</div>
+      </div>
+      <div class="box-card" data-box="cheese" data-price="260" onclick="selectBox(this)">
+        <div class="box-img" style="background-image: url('box-cheesy.jpg');"></div>
+        <div class="box-name">Cheese Box</div>
+        <div class="box-price">260 ₪ ליחידה</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 2: Recipients -->
+  <div class="section-card">
+    <h3>הזנת רשימת נמענים</h3>
+    <p>שתי דרכים לבחירה — בחרי את מה שנוח לך.</p>
+
+    <div class="method-tabs">
+      <button class="method-tab active" onclick="switchTab(this, 'excelMethod')">העלאת קובץ אקסל</button>
+      <button class="method-tab" onclick="switchTab(this, 'manualMethod')">הזנה ידנית</button>
+    </div>
+
+    <!-- Method 1: Excel upload -->
+    <div class="method-content active" id="excelMethod">
+      <label class="upload-zone" for="excelFile">
+        <div class="upload-icon">↑</div>
+        <div class="upload-title">לחצי או גררי לכאן קובץ אקסל</div>
+        <div class="upload-sub">קבצים נתמכים: .xlsx, .xls, .csv · עד 10 מ"ב</div>
+        <div class="upload-btn">בחירת קובץ</div>
+        <input type="file" id="excelFile" accept=".xlsx,.xls,.csv" onchange="handleFile(this)">
+      </label>
+
+      <div class="upload-template">
+        <div>
+          <strong>צריכה תבנית?</strong> הורידי את <a href="#" onclick="downloadTemplate(event)">תבנית האקסל שלנו</a> וודאי שיש לך עמודות: שם פרטי, שם משפחה, כתובת מלאה, טלפון, ברכה אישית (אופציונלי).
+        </div>
+      </div>
+
+      <div class="upload-result" id="uploadResult">
+        ✓ הקובץ <strong id="uploadedFileName"></strong> נטען בהצלחה. <strong id="uploadedRowCount">0</strong> רשומות זוהו.
+      </div>
+    </div>
+
+    <!-- Method 2: Manual entry -->
+    <div class="method-content" id="manualMethod">
+      <div class="manual-table-wrap">
+        <table class="manual-table" id="manualTable">
+          <thead>
+            <tr>
+              <th style="width: 130px;">שם פרטי</th>
+              <th style="width: 130px;">שם משפחה</th>
+              <th>כתובת מלאה</th>
+              <th style="width: 130px;">טלפון</th>
+              <th>ברכה אישית</th>
+              <th style="width: 40px;"></th>
+            </tr>
+          </thead>
+          <tbody id="manualRows">
+            <!-- Rows added by JS -->
+          </tbody>
+        </table>
+      </div>
+      <button type="button" class="add-row-btn" onclick="addRow()">+ הוסיפי שורה</button>
+    </div>
+  </div>
+
+  <!-- Step 3: Summary -->
+  <div class="summary-strip">
+    <div class="summary-text">
+      <strong><span id="totalCount">0</span> מארזים</strong>
+      סך הכל לתשלום: <span id="totalPrice">0</span> ₪ (לפני מע"מ ומשלוחים)
+    </div>
+    <button class="submit-btn" onclick="submitOrder()">שליחת ההזמנה ←</button>
+  </div>
+
+  <!-- Success modal -->
+  <div class="success-modal" id="successModal">
+    <div class="check-icon">✓</div>
+    <h2>ההזמנה התקבלה</h2>
+    <p>תודה! קיבלנו את ההזמנה שלך ונחזור אלייך תוך 24 שעות לאישור פרטים ותיאום משלוחים. עותק נשלח גם למייל שלך.</p>
+    <button class="btn-new" onclick="resetForm()">הזמנה חדשה</button>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <a href="index.html"><img src="logo-sweetbox.png" alt="Sweet Box"></a>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/sweetbox.il/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.9.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.9.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.9-.9-1.4-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.9-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 3.4c-3.5 0-6.4 2.9-6.4 6.4s2.9 6.4 6.4 6.4 6.4-2.9 6.4-6.4-2.9-6.4-6.4-6.4zm0 10.6c-2.3 0-4.2-1.9-4.2-4.2s1.9-4.2 4.2-4.2 4.2 1.9 4.2 4.2-1.9 4.2-4.2 4.2zm6.6-10.9c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5.7-1.5 1.5-1.5 1.5.7 1.5 1.5z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/sweetboxil/" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.69.24 2.69.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.79V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@sweetbox_tlv?lang=en" target="_blank" rel="noopener" aria-label="TikTok">
+        <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.66 20.1a6.34 6.34 0 0 0 10.86-4.43V8.79a8.16 8.16 0 0 0 4.77 1.52V6.86a4.85 4.85 0 0 1-1.71-.17z"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 · SWEET BOX · sweetbox.co.il</div>
+</footer>
+
+<script>
+  // === LOGIN ===
+  // NOTE: Login is currently a frontend mock. Any email + password longer than 4 chars works.
+  // The developer will connect this to a real backend authentication system later.
+  function doLogin(e) {
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value.trim();
+    const pass = document.getElementById('loginPass').value;
+    const err = document.getElementById('loginError');
+
+    if (!email || pass.length < 4) {
+      err.classList.add('show');
+      return false;
+    }
+    err.classList.remove('show');
+
+    // Show portal
+    document.getElementById('loginView').style.display = 'none';
+    document.getElementById('portalMain').style.display = 'block';
+
+    // Personalize greeting from email
+    const name = email.split('@')[0].split('.')[0];
+    document.getElementById('hrName').textContent = name || 'מנהלת HR';
+
+    // Initialize manual table with one empty row
+    addRow();
+    return false;
+  }
+
+  function doLogout() {
+    if (confirm('האם ברצונך להתנתק מהמערכת?')) {
+      document.getElementById('loginView').style.display = 'block';
+      document.getElementById('portalMain').style.display = 'none';
+      document.getElementById('loginEmail').value = '';
+      document.getElementById('loginPass').value = '';
+      window.scrollTo(0, 0);
+    }
+  }
+
+  // === BOX SELECTION ===
+  let selectedBox = null;
+  let selectedPrice = 0;
+
+  function selectBox(card) {
+    document.querySelectorAll('.box-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+    selectedBox = card.dataset.box;
+    selectedPrice = parseInt(card.dataset.price);
+    updateSummary();
+  }
+
+  // === METHOD TABS ===
+  function switchTab(btn, contentId) {
+    document.querySelectorAll('.method-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.method-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(contentId).classList.add('active');
+    updateSummary();
+  }
+
+  // === EXCEL UPLOAD (MOCK) ===
+  // NOTE: This is a frontend mock. The actual Excel parsing should be done by the backend.
+  // We just count the file and notify the developer to implement SheetJS or backend parsing.
+  let uploadedRows = 0;
+  function handleFile(input) {
+    const file = input.files[0];
+    if (!file) return;
+
+    document.getElementById('uploadedFileName').textContent = file.name;
+
+    // MOCK: Random row count between 8-30. Replace with actual parsing.
+    uploadedRows = Math.floor(Math.random() * 23) + 8;
+    document.getElementById('uploadedRowCount').textContent = uploadedRows;
+    document.getElementById('uploadResult').classList.add('show');
+    updateSummary();
+  }
+
+  function downloadTemplate(e) {
+    e.preventDefault();
+    // MOCK: In production this should download a real Excel template file.
+    alert('הורדת תבנית האקסל — לפי שיחה עם המפתח, יש להוסיף קובץ template-hr-orders.xlsx לשרת.');
+  }
+
+  // === MANUAL TABLE ===
+  let rowCounter = 0;
+  function addRow() {
+    rowCounter++;
+    const tbody = document.getElementById('manualRows');
+    const tr = document.createElement('tr');
+    tr.dataset.rowId = rowCounter;
+    tr.innerHTML = `
+      <td><input type="text" placeholder="שם" onchange="updateSummary()"></td>
+      <td><input type="text" placeholder="משפחה" onchange="updateSummary()"></td>
+      <td><input type="text" placeholder="רחוב, מספר, עיר, מיקוד" onchange="updateSummary()"></td>
+      <td><input type="tel" placeholder="050-0000000" onchange="updateSummary()"></td>
+      <td><input type="text" placeholder="ברכה (אופציונלי)"></td>
+      <td><button type="button" class="remove-row" onclick="removeRow(this)" aria-label="מחיקה">✕</button></td>
+    `;
+    tbody.appendChild(tr);
+    updateSummary();
+  }
+
+  function removeRow(btn) {
+    btn.closest('tr').remove();
+    updateSummary();
+  }
+
+  function countManualRows() {
+    let count = 0;
+    document.querySelectorAll('#manualRows tr').forEach(row => {
+      const inputs = row.querySelectorAll('input');
+      // Count if first name AND address have values
+      if (inputs[0].value.trim() && inputs[2].value.trim()) count++;
+    });
+    return count;
+  }
+
+  // === SUMMARY ===
+  function updateSummary() {
+    let count = 0;
+    const activeMethod = document.querySelector('.method-content.active');
+    if (activeMethod && activeMethod.id === 'excelMethod') {
+      count = uploadedRows;
+    } else {
+      count = countManualRows();
+    }
+
+    document.getElementById('totalCount').textContent = count;
+    document.getElementById('totalPrice').textContent = (count * selectedPrice).toLocaleString('he-IL');
+  }
+
+  // === SUBMIT ===
+  function submitOrder() {
+    if (!selectedBox) {
+      alert('בחרי קודם מארז להזמנה');
+      return;
+    }
+
+    const count = parseInt(document.getElementById('totalCount').textContent);
+    if (count === 0) {
+      alert('הוסיפי לפחות נמען אחד להזמנה');
+      return;
+    }
+
+    // Collect data
+    const orderData = {
+      box: selectedBox,
+      box_price: selectedPrice,
+      count: count,
+      total: count * selectedPrice,
+      method: document.querySelector('.method-content.active').id,
+      hr_email: document.getElementById('loginEmail').value,
+      timestamp: new Date().toISOString()
+    };
+
+    if (orderData.method === 'manualMethod') {
+      orderData.recipients = [];
+      document.querySelectorAll('#manualRows tr').forEach(row => {
+        const inputs = row.querySelectorAll('input');
+        if (inputs[0].value.trim() && inputs[2].value.trim()) {
+          orderData.recipients.push({
+            first_name: inputs[0].value.trim(),
+            last_name: inputs[1].value.trim(),
+            address: inputs[2].value.trim(),
+            phone: inputs[3].value.trim(),
+            message: inputs[4].value.trim()
+          });
+        }
+      });
+    }
+
+    // NOTE FOR DEVELOPER: This should POST to a backend endpoint.
+    // Suggested endpoint: POST /api/hr-orders with orderData as JSON body.
+    console.log('HR ORDER SUBMITTED:', orderData);
+
+    // Show success
+    document.querySelectorAll('.section-card, .summary-strip, .steps').forEach(el => {
+      el.style.display = 'none';
+    });
+    document.getElementById('successModal').classList.add('show');
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  function resetForm() {
+    location.reload();
+  }
+</script>
+
+</body>
+</html>
