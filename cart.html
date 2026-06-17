@@ -116,13 +116,12 @@ a:hover { color: var(--blue-deep); }
 
 /* === MAIN LAYOUT === */
 .cart-main {
-  max-width: 1200px;
+  max-width: 980px;
   margin: 0 auto;
   padding: 30px 32px 80px;
-  display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: 32px;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 /* === LEFT COLUMN (ITEMS) === */
@@ -296,14 +295,12 @@ a:hover { color: var(--blue-deep); }
   margin-top: 4px;
 }
 
-/* === RIGHT COLUMN (SUMMARY) === */
+/* === SUMMARY === */
 .cart-summary {
   background: white;
   border: 1px solid var(--line);
   border-radius: 18px;
-  padding: 28px;
-  position: sticky;
-  top: 100px;
+  padding: 28px 30px;
 }
 .cart-summary h3 {
   font-size: 18px;
@@ -321,72 +318,23 @@ a:hover { color: var(--blue-deep); }
   font-size: 14.5px;
   color: var(--ink-soft);
 }
-.summary-row.discount { color: var(--success); }
 .summary-row strong { color: var(--brown); font-weight: 500; }
-.summary-coupon {
-  margin: 22px 0;
-  padding: 18px 0;
-  border-top: 1px dashed var(--line);
+.summary-row.shipping-note strong {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ink-soft);
+}
+.summary-row:first-of-type strong {
+  font-size: 22px;
+  font-weight: 700;
+}
+.cart-summary > .summary-row:first-of-type {
+  padding-bottom: 14px;
   border-bottom: 1px dashed var(--line);
+  margin-bottom: 14px;
 }
-.summary-coupon label {
-  display: block;
-  font-size: 13px;
-  color: var(--brown);
-  font-weight: 500;
-  margin-bottom: 8px;
-}
-.summary-coupon .coupon-row {
-  display: flex;
-  gap: 8px;
-}
-.summary-coupon input {
-  flex: 1;
-  padding: 11px 14px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: white;
-  font-family: 'Heebo', sans-serif;
-  font-size: 14px;
-  transition: border-color 0.2s;
-}
-.summary-coupon input:focus { outline: none; border-color: var(--blue-deep); }
-.summary-coupon button {
-  background: white;
-  border: 1.5px solid var(--blue-deep);
-  color: var(--blue-deep);
-  padding: 10px 18px;
-  border-radius: 8px;
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.3s, color 0.3s;
-  white-space: nowrap;
-}
-.summary-coupon button:hover { background: var(--blue-deep); color: white; }
-.summary-total {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin: 24px 0 22px;
-  padding-top: 18px;
-  border-top: 1px solid var(--line);
-}
-.summary-total .label {
-  font-size: 16px;
-  color: var(--brown);
-  font-weight: 500;
-}
-.summary-total .total-value {
-  font-size: 28px;
-  font-weight: 800;
-  color: var(--brown);
-}
-.summary-total .total-value .currency {
-  font-size: 18px;
-  font-weight: 500;
-  margin-inline-start: 3px;
+.cart-summary > .summary-row:last-of-type {
+  margin-bottom: 24px;
 }
 .checkout-btn {
   width: 100%;
@@ -430,13 +378,13 @@ a:hover { color: var(--blue-deep); }
 
 /* === RELATED / UPSELL === */
 .upsell {
-  max-width: 1200px;
-  margin: 0 auto 80px;
-  padding: 60px 32px 0;
+  background: var(--blue-soft);
+  border-radius: 18px;
+  padding: 32px 30px;
 }
 .upsell-header {
   text-align: center;
-  margin-bottom: 36px;
+  margin-bottom: 24px;
 }
 .upsell-eyebrow {
   font-size: 12px;
@@ -444,13 +392,14 @@ a:hover { color: var(--blue-deep); }
   color: var(--teal-accent);
   font-weight: 700;
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 .upsell h2 {
-  font-size: clamp(26px, 3.5vw, 38px);
-  font-weight: 900;
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 800;
   color: var(--brown);
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
+  line-height: 1.2;
 }
 .upsell-grid {
   display: grid;
@@ -600,8 +549,6 @@ a:hover { color: var(--blue-deep); }
 
 /* === RESPONSIVE === */
 @media (max-width: 1000px) {
-  .cart-main { grid-template-columns: 1fr; }
-  .cart-summary { position: static; }
   .upsell-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 700px) {
@@ -610,7 +557,7 @@ a:hover { color: var(--blue-deep); }
   .topbar .logo img { height: 44px; }
   .breadcrumb { padding: 100px 18px 12px; font-size: 12.5px; }
   .cart-hero { padding: 0 18px 22px; }
-  .cart-main { padding: 20px 18px 50px; gap: 22px; }
+  .cart-main { padding: 20px 18px 50px; gap: 18px; }
   .cart-items-wrap { padding: 22px 18px; border-radius: 14px; }
   .cart-item {
     grid-template-columns: 80px 1fr;
@@ -629,7 +576,7 @@ a:hover { color: var(--blue-deep); }
     font-size: 16px;
   }
   .cart-summary { padding: 22px 20px; border-radius: 14px; }
-  .upsell { padding: 40px 18px 0; margin-bottom: 50px; }
+  .upsell { padding: 26px 22px; border-radius: 14px; }
   .upsell-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
   .footer-top { flex-direction: column; gap: 14px; }
 }
@@ -705,72 +652,112 @@ a:hover { color: var(--blue-deep); }
 <!-- MAIN -->
 <main class="cart-main">
 
-  <!-- LEFT: Items + Greeting -->
-  <div class="cart-items-section">
-    <div class="cart-items-wrap" id="cartItemsWrap">
+  <!-- CART ITEMS -->
+  <div class="cart-items-wrap" id="cartItemsWrap">
 
-      <div class="cart-items-header">
-        <h2>הקופסאות שלך</h2>
-        <span class="count" id="itemCount">0 פריטים</span>
-      </div>
-
-      <div id="cartItemsList"></div>
-
+    <div class="cart-items-header">
+      <h2>הקופסאות שלך</h2>
+      <span class="count" id="itemCount">0 פריטים</span>
     </div>
 
-    <!-- GREETING CARD SECTION -->
-    <div class="greeting-card">
-      <label class="toggle">
-        <input type="checkbox" id="giftToggle" onchange="toggleGift(this)">
-        <span>הוסיפו ברכה אישית למתנה — ללא עלות נוספת</span>
-      </label>
-      <div class="gift-fields" id="giftFields">
-        <div class="field-row">
-          <label for="recipientName">שם הנמען/ת</label>
-          <input type="text" id="recipientName" placeholder="לדוגמה: לסתיו היקרה">
-        </div>
-        <div class="field-row">
-          <label for="giftMessage">הברכה שלך (עד 100 תווים)</label>
-          <textarea id="giftMessage" maxlength="100" placeholder="כתבו כאן כמה מילים שיפנקו..." oninput="updateCharCount(this)"></textarea>
-          <div class="char-counter"><span id="charCount">0</span> / 100</div>
-        </div>
+    <div id="cartItemsList"></div>
+
+  </div>
+
+  <!-- GREETING CARD SECTION -->
+  <div class="greeting-card">
+    <label class="toggle">
+      <input type="checkbox" id="giftToggle" onchange="toggleGift(this)">
+      <span>הוסיפו ברכה אישית למתנה — ללא עלות נוספת</span>
+    </label>
+    <div class="gift-fields" id="giftFields">
+      <div class="field-row">
+        <label for="recipientName">שם הנמען/ת</label>
+        <input type="text" id="recipientName" placeholder="לדוגמה: לסתיו היקרה">
+      </div>
+      <div class="field-row">
+        <label for="giftMessage">הברכה שלך (עד 100 תווים)</label>
+        <textarea id="giftMessage" maxlength="100" placeholder="כתבו כאן כמה מילים שיפנקו..." oninput="updateCharCount(this)"></textarea>
+        <div class="char-counter"><span id="charCount">0</span> / 100</div>
       </div>
     </div>
   </div>
 
-  <!-- RIGHT: Summary -->
-  <aside class="cart-summary">
-    <h3>סיכום ההזמנה</h3>
-
-    <div class="summary-row">
-      <span>סכום ביניים</span>
-      <strong><span id="subtotal">420</span> ₪</strong>
+  <!-- UPSELL -->
+  <section class="upsell">
+    <div class="upsell-header">
+      <div class="upsell-eyebrow">— תרצו להוסיף? —</div>
+      <h2>פינוקים קטנים להזמנה</h2>
     </div>
 
-    <div class="summary-row" id="discountRow" style="display:none;">
-      <span>הנחה</span>
-      <strong>− <span id="discountValue">0</span> ₪</strong>
-    </div>
+    <div class="upsell-grid">
 
-    <div class="summary-row">
-      <span>משלוח</span>
-      <strong>יחושב בקופה</strong>
-    </div>
-
-    <div class="summary-coupon">
-      <label for="couponCode">יש לכם קוד קופון?</label>
-      <div class="coupon-row">
-        <input type="text" id="couponCode" placeholder="GOAL2026">
-        <button onclick="applyCoupon()">החלת קופון</button>
+      <div class="upsell-card">
+        <div class="upsell-img" style="background-image: url('cookie-white-pecan.jpg');"></div>
+        <div class="upsell-info">
+          <div class="upsell-name">מונסטר שוקולד לבן ופקאן</div>
+          <div class="upsell-desc">עוגיית מונסטר רכה עם שוקולד לבן ופקאן (כ-150 גרם)</div>
+          <div class="upsell-bottom">
+            <span class="upsell-price">18 ₪</span>
+            <button class="add-btn" onclick="addUpsell(this, 'monster-pecan', 'מונסטר שוקולד לבן ופקאן', 18, 'cookie-white-pecan.jpg', 'עוגיית מונסטר · 150 גרם')"><span class="plus">+</span> הוסף</button>
+          </div>
+        </div>
       </div>
+
+      <div class="upsell-card">
+        <div class="upsell-img" style="background-image: url('cookie-triple.jpg');"></div>
+        <div class="upsell-info">
+          <div class="upsell-name">מארז עוגיות חמאה</div>
+          <div class="upsell-desc">5 עוגיות חמאה קלאסיות במארז</div>
+          <div class="upsell-bottom">
+            <span class="upsell-price">20 ₪</span>
+            <button class="add-btn" onclick="addUpsell(this, 'butter-cookies', 'מארז עוגיות חמאה', 20, 'cookie-triple.jpg', '5 עוגיות חמאה')"><span class="plus">+</span> הוסף</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="upsell-card">
+        <div class="upsell-img" style="background-image: url('cookie-mm.jpg');"></div>
+        <div class="upsell-info">
+          <div class="upsell-name">מונסטר M&M's</div>
+          <div class="upsell-desc">עוגיית שוקולד צ'יפס רכה עם M&M's (כ-150 גרם)</div>
+          <div class="upsell-bottom">
+            <span class="upsell-price">18 ₪</span>
+            <button class="add-btn" onclick="addUpsell(this, 'monster-mm', &quot;מונסטר M&amp;M's&quot;, 18, 'cookie-mm.jpg', 'עוגיית מונסטר · 150 גרם')"><span class="plus">+</span> הוסף</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="upsell-card">
+        <div class="upsell-img" style="background-image: url('digital-greeting.jpg'); background-color: #FCE9F0;"></div>
+        <div class="upsell-info">
+          <div class="upsell-name">ברכה דיגיטלית מעוצבת</div>
+          <div class="upsell-desc">קישור לברכה אישית בנייד — נשלח אחרי הרכישה</div>
+          <div class="upsell-bottom">
+            <span class="upsell-price">9 ₪</span>
+            <button class="add-btn" onclick="addUpsell(this, 'digital-card', 'ברכה דיגיטלית מעוצבת', 9, 'digital-greeting.jpg', 'קישור דיגיטלי לאחר הרכישה')"><span class="plus">+</span> הוסף</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SUMMARY + CHECKOUT -->
+  <div class="cart-summary">
+    <h3>סיכום</h3>
+
+    <div class="summary-row">
+      <span>סכום הקופסאות</span>
+      <strong><span id="subtotal">0</span> ₪</strong>
     </div>
 
-    <div class="summary-total">
-      <span class="label">סך הכל לתשלום</span>
-      <span class="total-value"><span id="totalValue">420</span><span class="currency">₪</span></span>
+    <div class="summary-row shipping-note">
+      <span>משלוח</span>
+      <strong>יחושב לפי העיר בשלב הבא</strong>
     </div>
 
-    <button class="checkout-btn" onclick="goToCheckout()">מעבר לתשלום ←</button>
+    <button class="checkout-btn" onclick="goToCheckout()">המשך לפרטי משלוח ←</button>
     <a class="continue-link" href="index.html#display">חזרה לבחירת קופסאות</a>
 
     <div class="trust-row">
@@ -787,69 +774,9 @@ a:hover { color: var(--blue-deep); }
         כשר חלבי
       </div>
     </div>
-  </aside>
+  </div>
 
 </main>
-
-<!-- UPSELL -->
-<section class="upsell">
-  <div class="upsell-header">
-    <div class="upsell-eyebrow">— תרצו להוסיף? —</div>
-    <h2>פינוקים קטנים להזמנה</h2>
-  </div>
-
-  <div class="upsell-grid">
-
-    <div class="upsell-card">
-      <div class="upsell-img" style="background-image: url('cookie-white-pecan.jpg');"></div>
-      <div class="upsell-info">
-        <div class="upsell-name">מונסטר שוקולד לבן ופקאן</div>
-        <div class="upsell-desc">עוגיית מונסטר רכה עם שוקולד לבן ופקאן (כ-150 גרם)</div>
-        <div class="upsell-bottom">
-          <span class="upsell-price">18 ₪</span>
-          <button class="add-btn" onclick="addUpsell(this, 'monster-pecan', 'מונסטר שוקולד לבן ופקאן', 18, 'cookie-white-pecan.jpg', 'עוגיית מונסטר · 150 גרם')"><span class="plus">+</span> הוסף</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="upsell-card">
-      <div class="upsell-img" style="background-image: url('cookie-triple.jpg');"></div>
-      <div class="upsell-info">
-        <div class="upsell-name">מארז עוגיות חמאה</div>
-        <div class="upsell-desc">5 עוגיות חמאה קלאסיות במארז</div>
-        <div class="upsell-bottom">
-          <span class="upsell-price">20 ₪</span>
-          <button class="add-btn" onclick="addUpsell(this, 'butter-cookies', 'מארז עוגיות חמאה', 20, 'cookie-triple.jpg', '5 עוגיות חמאה')"><span class="plus">+</span> הוסף</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="upsell-card">
-      <div class="upsell-img" style="background-image: url('cookie-mm.jpg');"></div>
-      <div class="upsell-info">
-        <div class="upsell-name">מונסטר M&M's</div>
-        <div class="upsell-desc">עוגיית שוקולד צ'יפס רכה עם M&M's (כ-150 גרם)</div>
-        <div class="upsell-bottom">
-          <span class="upsell-price">18 ₪</span>
-          <button class="add-btn" onclick="addUpsell(this, 'monster-mm', &quot;מונסטר M&amp;M's&quot;, 18, 'cookie-mm.jpg', 'עוגיית מונסטר · 150 גרם')"><span class="plus">+</span> הוסף</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="upsell-card">
-      <div class="upsell-img" style="background-image: url('digital-greeting.jpg'); background-color: #FCE9F0;"></div>
-      <div class="upsell-info">
-        <div class="upsell-name">ברכה דיגיטלית מעוצבת</div>
-        <div class="upsell-desc">קישור לברכה אישית בנייד — נשלח אחרי הרכישה</div>
-        <div class="upsell-bottom">
-          <span class="upsell-price">9 ₪</span>
-          <button class="add-btn" onclick="addUpsell(this, 'digital-card', 'ברכה דיגיטלית מעוצבת', 9, 'digital-greeting.jpg', 'קישור דיגיטלי לאחר הרכישה')"><span class="plus">+</span> הוסף</button>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
 
 <!-- FOOTER -->
 <footer class="footer">
@@ -890,7 +817,6 @@ a:hover { color: var(--blue-deep); }
   }
 
   // === RENDER CART ITEMS FROM LOCALSTORAGE ===
-  let appliedDiscount = 0;
   function renderCart(){
     const list = document.getElementById('cartItemsList');
     const wrap = document.getElementById('cartItemsWrap');
@@ -905,7 +831,7 @@ a:hover { color: var(--blue-deep); }
           <a href="index.html#display" class="browse-btn">לבחירת קופסה</a>
         </div>
       `;
-      updateSummary(0);
+      document.getElementById('subtotal').textContent = 0;
       document.getElementById('itemCount').textContent = '0 פריטים';
       return;
     }
@@ -960,7 +886,7 @@ a:hover { color: var(--blue-deep); }
 
     const subtotal = window.SweetCart.subtotal();
     document.getElementById('itemCount').textContent = items.length + ' פריטים';
-    updateSummary(subtotal);
+    document.getElementById('subtotal').textContent = subtotal;
   }
 
   function animateRemove(itemEl, cb){
@@ -968,41 +894,6 @@ a:hover { color: var(--blue-deep); }
     itemEl.style.opacity = '0';
     itemEl.style.transform = 'translateX(-20px)';
     setTimeout(cb, 300);
-  }
-
-  function updateSummary(subtotal){
-    document.getElementById('subtotal').textContent = subtotal;
-    const total = Math.max(0, subtotal - appliedDiscount);
-    document.getElementById('totalValue').textContent = total;
-  }
-
-  // === COUPON ===
-  function applyCoupon() {
-    const code = document.getElementById('couponCode').value.trim().toUpperCase();
-    const subtotal = window.SweetCart.subtotal();
-    let discount = 0;
-    let message = '';
-
-    if (subtotal === 0){
-      alert('עגלת הקניות ריקה — נסו להוסיף קופסה לפני שמפעילים קופון');
-      return;
-    }
-    if (code === 'GOAL2026') {
-      discount = Math.round(subtotal * 0.15);
-      message = 'הקופון GOAL2026 הופעל - 15% הנחה';
-    } else if (code === 'HATTRICK') {
-      discount = Math.round(subtotal * 0.20);
-      message = 'הקופון HATTRICK הופעל - 20% הנחה';
-    } else {
-      alert('קוד הקופון לא תקין או פג תוקפו');
-      return;
-    }
-
-    appliedDiscount = discount;
-    document.getElementById('discountRow').style.display = 'flex';
-    document.getElementById('discountValue').textContent = discount;
-    updateSummary(subtotal);
-    alert(message);
   }
 
   // === ADD UPSELL ===
