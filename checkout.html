@@ -1121,8 +1121,9 @@ a:hover { color: var(--blue-deep); }
   }
 
   function proceedToPayment() {
-    // NOTE FOR DEVELOPER: validate fields + post to WooCommerce checkout endpoint
-    // For now this is a UI mockup
+    // NOTE FOR DEVELOPER: replace this with the real payment provider flow.
+    // For the mockup we persist the order to localStorage and route to the
+    // thank-you page so the developer can see what data the screen expects.
     if (window.SweetCart.get().length === 0){
       alert('עגלת הקניות ריקה — בחרו קופסה לפני המעבר לתשלום');
       window.location.href = 'cart.html';
@@ -1141,8 +1142,35 @@ a:hover { color: var(--blue-deep); }
       first.style.borderColor = 'var(--danger)';
       return;
     }
-    // Proceed to actual payment
-    window.location.href = 'https://sweetbox.co.il/checkout/';
+
+    // Persist the order so the thank-you page can render it
+    const items = window.SweetCart.get();
+    const city = document.getElementById('city').value.trim();
+    const closeCities = ['תל אביב', 'רמת גן', 'גבעתיים', 'בת ים', 'חולון'];
+    const shipping = closeCities.includes(city) ? 30 : 45;
+    const order = {
+      orderNumber: Math.floor(Math.random() * 90000) + 10000,
+      dateCreated: new Date().toISOString(),
+      items: items,
+      subtotal: window.SweetCart.subtotal(),
+      discount: appliedDiscount,
+      shipping: shipping,
+      delivery: {
+        date: document.getElementById('deliveryDate').value.trim(),
+        time: document.getElementById('deliveryTime').value.trim(),
+        city: city,
+        address: document.getElementById('address').value.trim(),
+        addressExtra: document.getElementById('addressExtra').value.trim(),
+        recipientName: (document.getElementById('firstName').value.trim() + ' ' + document.getElementById('lastName').value.trim()).trim(),
+        phone: document.getElementById('phone').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        notes: document.getElementById('notes').value.trim()
+      }
+    };
+    try {
+      localStorage.setItem('sweetbox_last_order', JSON.stringify(order));
+    } catch(e){ /* ignore */ }
+    window.location.href = 'thank-you.html';
   }
 
   // Initial render
