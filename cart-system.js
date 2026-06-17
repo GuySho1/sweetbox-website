@@ -197,13 +197,13 @@
     .sb-drawer-backdrop { position: absolute; inset: 0; background: rgba(20,20,25,0.55); opacity: 0; transition: opacity 0.3s; }
     .sb-drawer.open .sb-drawer-backdrop { opacity: 1; }
     .sb-drawer-panel {
-      position: absolute; top: 0; bottom: 0; inset-inline-end: 0;
+      position: absolute; top: 0; bottom: 0; inset-inline-start: 0;
       width: 84%; max-width: 340px; background: white;
-      transform: translateX(-100%);
+      transform: translateX(100%);
       transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       padding: 22px 26px 30px; overflow-y: auto;
       display: flex; flex-direction: column;
-      box-shadow: 4px 0 28px rgba(20,20,25,0.22);
+      box-shadow: -4px 0 28px rgba(20,20,25,0.22);
     }
     .sb-drawer.open .sb-drawer-panel { transform: translateX(0); }
     .sb-drawer-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--line, #E8EAED); }

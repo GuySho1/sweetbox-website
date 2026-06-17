@@ -636,10 +636,32 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 600px) {
   .inside-grid, .reviews-grid { grid-template-columns: 1fr; }
   .product-title { font-size: 34px; }
-  .actions-row { flex-wrap: wrap; }
-  .qty-select { flex: 0 0 auto; }
-  .btn-buy, .btn-add { flex: 1 1 calc(50% - 6px); font-size: 12px; letter-spacing: 1px; }
-  .btn-wishlist { order: 99; }
+  .actions-row {
+    flex-wrap: nowrap;
+    gap: 6px;
+  }
+  .qty-select {
+    flex: 0 0 auto;
+    height: 46px;
+  }
+  .qty-select button { width: 30px; height: 46px; font-size: 16px; }
+  .qty-select input { width: 32px; height: 46px; font-size: 14px; }
+  .btn-buy, .btn-add {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 46px;
+    padding: 0 6px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  .btn-wishlist {
+    width: 46px;
+    height: 46px;
+    flex: 0 0 46px;
+    font-size: 16px;
+  }
+  .btn-add .full-text { display: none; }
 }
 
 /* === CART ICON IN TOPBAR === */
@@ -753,7 +775,7 @@ a { color: inherit; text-decoration: none; }
         <button onclick="changeQty(-1)">−</button>
       </div>
       <button class="btn-buy" id="btnBuy">קנה עכשיו</button>
-      <button class="btn-add" id="add">+ הוסף לעגלה</button>
+      <button class="btn-add" id="add">+ הוסף<span class="full-text"> לעגלה</span></button>
       <button class="btn-wishlist" aria-label="הוסף לרשימת מתנות">♡</button>
     </div>
 
