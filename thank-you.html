@@ -574,8 +574,36 @@ a { color: inherit; text-decoration: none; }
 
 <script src="cart-system.js"></script>
 <script>
-  // Read last order from localStorage
-  const orderData = JSON.parse(localStorage.getItem('sweetbox_last_order') || 'null');
+  // Demo mode: ?demo=1 in URL loads sample data so the page can be previewed
+  // without going through the real cart → checkout flow.
+  const isDemo = new URLSearchParams(window.location.search).get('demo') === '1';
+  const DEMO_ORDER = {
+    orderNumber: 24180,
+    dateCreated: new Date().toISOString(),
+    items: [
+      { id: 'best-seller-box', name: 'Best Seller Box', price: 190, image: '01-box-styled.jpg', meta: '6 פריטים אייקוניים', qty: 1 },
+      { id: 'valentines-box', name: "Valentine's Box", price: 250, image: 'box-valentines.png', meta: 'מארז רומנטי · 8 פריטים', qty: 1 }
+    ],
+    subtotal: 440,
+    discount: 0,
+    shipping: 30,
+    delivery: {
+      date: '2026-06-25',
+      time: '12:00 – 15:00',
+      city: 'תל אביב',
+      address: 'הרצל 12',
+      addressExtra: 'דירה 4',
+      recipientName: 'יעל כהן',
+      phone: '050-1234567',
+      email: 'guy@example.com',
+      notes: ''
+    }
+  };
+
+  // Read last order from localStorage (or use demo data when in demo mode)
+  const orderData = isDemo
+    ? DEMO_ORDER
+    : JSON.parse(localStorage.getItem('sweetbox_last_order') || 'null');
 
   if (!orderData || !orderData.items || orderData.items.length === 0) {
     // No order — show empty state

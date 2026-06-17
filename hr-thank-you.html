@@ -655,7 +655,32 @@ a { color: inherit; text-decoration: none; }
 
 <script src="cart-system.js"></script>
 <script>
-  const hrOrder = JSON.parse(localStorage.getItem('sweetbox_last_hr_order') || 'null');
+  // Demo mode: ?demo=1 loads sample HR order so the page can be previewed
+  const isDemo = new URLSearchParams(window.location.search).get('demo') === '1';
+  const DEMO_HR_ORDER = {
+    orderNumber: 'HR-31425',
+    timestamp: new Date().toISOString(),
+    box: 'Best Seller Box',
+    box_price: 190,
+    count: 24,
+    total: 4560,
+    method: 'manualMethod',
+    hr_email: 'hr@company.co.il',
+    recipients: [
+      { first_name: 'מאיה', last_name: 'לוי', address: 'אבן גבירול 14, תל אביב', phone: '050-1234567' },
+      { first_name: 'יואב', last_name: 'כהן', address: 'יהודה הלוי 3, תל אביב', phone: '052-7654321' },
+      { first_name: 'דנה', last_name: 'מרקוס', address: 'דיזנגוף 100, תל אביב', phone: '054-1112222' },
+      { first_name: 'אורי', last_name: 'בן דוד', address: 'רוטשילד 45, תל אביב', phone: '050-3334444' },
+      { first_name: 'ענת', last_name: 'שגיא', address: 'בלפור 12, רמת גן', phone: '052-5556666' },
+      { first_name: 'תומר', last_name: 'אדלר', address: 'הברזל 30, תל אביב', phone: '054-7778888' },
+      { first_name: 'שירה', last_name: 'פרידמן', address: 'ארלוזורוב 86, תל אביב', phone: '050-9990000' },
+      { first_name: 'איתי', last_name: 'אלון', address: 'בן יהודה 22, תל אביב', phone: '052-1112233' }
+    ]
+  };
+
+  const hrOrder = isDemo
+    ? DEMO_HR_ORDER
+    : JSON.parse(localStorage.getItem('sweetbox_last_hr_order') || 'null');
 
   if (!hrOrder){
     const content = document.getElementById('content');
