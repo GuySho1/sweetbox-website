@@ -268,13 +268,58 @@ a:hover { color: var(--blue-deep); }
   .contact-card { padding: 30px 22px; }
   .footer-top { flex-direction: column; gap: 14px; }
 }
+
+/* === CART ICON IN TOPBAR === */
+.topbar-side { display: flex; align-items: center; gap: 14px; }
+.cart-icon-btn {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: white;
+  border: 1.5px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: border-color 0.3s, transform 0.2s;
+}
+.cart-icon-btn:hover { border-color: var(--blue-deep); transform: translateY(-1px); }
+.cart-icon-btn svg { width: 18px; height: 18px; color: var(--brown); }
+.cart-icon-btn .cart-badge {
+  position: absolute;
+  top: -4px;
+  inset-inline-start: -4px;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: var(--teal-accent);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+  line-height: 1;
+}
+@media (max-width: 700px) {
+  .cart-icon-btn { width: 38px; height: 38px; }
+  .topbar-side { gap: 8px; }
+}
 </style>
 </head>
 <body>
 
 <!-- TOP BAR -->
 <div class="topbar">
-  <a class="cta-bulk" href="happy-hour.html">הזמנה מרוכזת</a>
+  <div class="topbar-side">
+    <a href="cart.html" class="cart-icon-btn" aria-label="עגלת הקניות">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg>
+      <span class="cart-badge" style="display:none;">0</span>
+    </a>
+    <a class="cta-bulk" href="happy-hour.html">הזמנה מרוכזת</a>
+  </div>
   <div class="logo"><a href="index.html"><img src="logo-sweetbox.png" alt="Sweet Box"></a></div>
   <a class="cta" href="index.html#display">בחירת קופסה</a>
 </div>
@@ -334,5 +379,6 @@ a:hover { color: var(--blue-deep); }
   <div class="footer-bottom">© 2026 · SWEET BOX · sweetbox.co.il</div>
 </footer>
 
+<script src="cart-system.js"></script>
 </body>
 </html>

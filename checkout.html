@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>סיום הזמנה · Sweet Box</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --blue: #B5DCE8;
+  --blue-deep: #5B9DB5;
+  --blue-soft: #EDF6FA;
+  --teal-accent: #4A8FA8;
+  --ink: #1A1A1F;
+  --ink-soft: #4D5258;
+  --ink-whisper: #8A8E96;
+  --cream: #FFFFFF;
+  --brown: #554B41;
+  --paper: #FFFFFF;
+  --line: #E8EAED;
+  --danger: #C44A4A;
+  --success: #6B8E5C;
+  --bg-soft: #FAFAFB;
+}
+
+html, body {
+  font-family: 'Heebo', sans-serif;
+  color: var(--ink);
+  background: var(--bg-soft);
+  direction: rtl;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.7;
+}
+
+a { color: inherit; text-decoration: none; }
+a:hover { color: var(--blue-deep); }
+
+/* === TOP BAR === */
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 14px 32px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.topbar .topbar-side {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  justify-self: start;
+}
+.topbar .logo { text-align: center; }
+.topbar .logo img { height: 56px; display: inline-block; }
+.topbar .cta-bulk {
+  background: transparent;
+  border: 1.5px solid var(--teal-accent);
+  color: var(--teal-accent);
+  padding: 10px 22px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  border-radius: 999px;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+.topbar .cta-bulk:hover { background: var(--teal-accent); color: #FFF; transform: translateY(-1px); }
+.topbar .cta {
+  background: var(--teal-accent);
+  color: #FFF;
+  padding: 10px 22px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  border-radius: 999px;
+  transition: background 0.3s, transform 0.2s;
+  justify-self: end;
+}
+.topbar .cta:hover { background: var(--brown); transform: translateY(-1px); }
+
+/* Cart icon button */
+.cart-icon-btn {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: white;
+  border: 1.5px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s, transform 0.2s;
+}
+.cart-icon-btn:hover {
+  border-color: var(--blue-deep);
+  transform: translateY(-1px);
+}
+.cart-icon-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--brown);
+  fill: none;
+  stroke-width: 1.8;
+}
+.cart-icon-btn .cart-badge {
+  position: absolute;
+  top: -4px;
+  inset-inline-start: -4px;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: var(--teal-accent);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+}
+
+/* === BREADCRUMB === */
+.breadcrumb {
+  padding: 110px 32px 14px;
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--brown);
+  letter-spacing: 1px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.breadcrumb a { color: var(--blue-deep); }
+.breadcrumb .sep { margin: 0 8px; color: var(--ink-whisper); }
+
+/* === HERO === */
+.checkout-hero {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px 24px;
+  text-align: center;
+}
+.checkout-hero h1 {
+  font-size: clamp(34px, 5vw, 52px);
+  font-weight: 900;
+  color: var(--brown);
+  letter-spacing: 0.5px;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+.checkout-hero p {
+  font-size: 15px;
+  color: var(--ink-soft);
+  font-weight: 300;
+}
+
+/* === STEPS BAR === */
+.steps-bar {
+  max-width: 700px;
+  margin: 0 auto 28px;
+  padding: 0 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.steps-bar::before {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: 60px;
+  right: 60px;
+  height: 2px;
+  background: var(--line);
+  z-index: 0;
+}
+.step {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.step .circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--ink-whisper);
+}
+.step.done .circle {
+  background: var(--success);
+  border-color: var(--success);
+  color: white;
+}
+.step.active .circle {
+  background: var(--teal-accent);
+  border-color: var(--teal-accent);
+  color: white;
+}
+.step .label {
+  font-size: 12px;
+  color: var(--ink-whisper);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+.step.active .label, .step.done .label { color: var(--brown); }
+
+/* === MAIN LAYOUT === */
+.checkout-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px 80px;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 32px;
+  align-items: start;
+}
+
+/* === FORM SIDE === */
+.form-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 28px 30px;
+  margin-bottom: 20px;
+}
+.form-card h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--brown);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.form-card h2 .step-num {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--blue-soft);
+  color: var(--blue-deep);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+}
+.form-card .helper {
+  font-size: 13px;
+  color: var(--ink-whisper);
+  margin-bottom: 22px;
+  margin-inline-start: 36px;
+  font-weight: 300;
+}
+.field-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.field-row {
+  margin-bottom: 16px;
+}
+.field-row label, .field-grid label {
+  display: block;
+  font-size: 13px;
+  color: var(--brown);
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.field-row label .req, .field-grid label .req { color: var(--danger); }
+.field-row input[type=text],
+.field-row input[type=tel],
+.field-row input[type=email],
+.field-row input[type=date],
+.field-row input[type=time],
+.field-row select,
+.field-row textarea,
+.field-grid input[type=text],
+.field-grid input[type=tel],
+.field-grid input[type=email],
+.field-grid input[type=date],
+.field-grid input[type=time],
+.field-grid select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  background: white;
+  font-family: 'Heebo', sans-serif;
+  font-size: 14.5px;
+  color: var(--ink);
+  transition: border-color 0.2s, background 0.2s;
+}
+.field-row input:focus,
+.field-row select:focus,
+.field-row textarea:focus,
+.field-grid input:focus,
+.field-grid select:focus {
+  outline: none;
+  border-color: var(--blue-deep);
+  background: #FBFEFE;
+}
+.field-row textarea {
+  min-height: 90px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.field-row select,
+.field-grid select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23554B41' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: left 16px center;
+  padding-inline-end: 14px;
+  padding-inline-start: 36px;
+}
+
+/* === NOTES BOX === */
+.delivery-notes {
+  background: var(--blue-soft);
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin: 24px 0;
+}
+.delivery-notes h4 {
+  font-size: 14px;
+  color: var(--brown);
+  font-weight: 700;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.delivery-notes h4::before {
+  content: 'ℹ';
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--blue-deep);
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+}
+.delivery-notes p {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 6px;
+}
+.delivery-notes p:last-child { margin-bottom: 0; }
+
+/* === PAYMENT METHODS === */
+.payment-methods {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+.payment-option {
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  padding: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.payment-option:hover { border-color: var(--blue-deep); background: var(--blue-soft); }
+.payment-option input[type=radio] {
+  accent-color: var(--teal-accent);
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+.payment-option.selected { border-color: var(--teal-accent); background: var(--blue-soft); }
+.payment-option .pay-info { flex: 1; }
+.payment-option .pay-name {
+  font-weight: 600;
+  font-size: 14.5px;
+  color: var(--brown);
+}
+.payment-option .pay-desc {
+  font-size: 12px;
+  color: var(--ink-whisper);
+  font-weight: 300;
+}
+
+/* === SUBMIT BUTTON === */
+.submit-section {
+  margin-top: 22px;
+}
+.submit-btn {
+  width: 100%;
+  background: var(--teal-accent);
+  color: white;
+  border: none;
+  padding: 18px;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+.submit-btn:hover { background: var(--brown); transform: translateY(-1px); }
+.back-link {
+  display: block;
+  text-align: center;
+  color: var(--blue-deep);
+  font-size: 13px;
+  text-decoration: underline;
+  font-weight: 500;
+  margin-top: 14px;
+}
+.back-link:hover { color: var(--brown); }
+
+/* === SECURITY ROW === */
+.security-row {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin-top: 22px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--ink-whisper);
+}
+.security-row .cell { display: inline-flex; align-items: center; gap: 6px; }
+.security-row .lock {
+  width: 14px;
+  height: 14px;
+  color: var(--success);
+}
+
+/* === SUMMARY (RIGHT) === */
+.order-summary {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 28px;
+  position: sticky;
+  top: 100px;
+}
+.order-summary h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--brown);
+  margin-bottom: 20px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.order-summary h3 .edit-link {
+  font-size: 12px;
+  color: var(--blue-deep);
+  font-weight: 400;
+  text-decoration: underline;
+}
+
+.mini-item {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+.mini-item:last-of-type { border-bottom: none; }
+.mini-item .mini-img {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--blue-soft);
+  position: relative;
+}
+.mini-item .mini-img .mini-qty {
+  position: absolute;
+  top: -6px;
+  inset-inline-start: -6px;
+  width: 22px;
+  height: 22px;
+  background: var(--brown);
+  color: white;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mini-item .mini-name {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--brown);
+  margin-bottom: 2px;
+  line-height: 1.3;
+}
+.mini-item .mini-meta {
+  font-size: 11.5px;
+  color: var(--ink-whisper);
+  font-weight: 300;
+}
+.mini-item .mini-price {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--brown);
+}
+
+.summary-coupon {
+  margin: 18px 0;
+  padding: 16px 0;
+  border-top: 1px dashed var(--line);
+  border-bottom: 1px dashed var(--line);
+}
+.summary-coupon label {
+  display: block;
+  font-size: 12.5px;
+  color: var(--brown);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.summary-coupon .coupon-row {
+  display: flex;
+  gap: 8px;
+}
+.summary-coupon input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: white;
+  font-family: 'Heebo', sans-serif;
+  font-size: 13px;
+}
+.summary-coupon input:focus { outline: none; border-color: var(--blue-deep); }
+.summary-coupon button {
+  background: white;
+  border: 1.5px solid var(--blue-deep);
+  color: var(--blue-deep);
+  padding: 9px 16px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+  white-space: nowrap;
+}
+.summary-coupon button:hover { background: var(--blue-deep); color: white; }
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+.summary-row strong { color: var(--brown); font-weight: 500; }
+.summary-row.discount { color: var(--success); }
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 18px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+.summary-total .label {
+  font-size: 16px;
+  color: var(--brown);
+  font-weight: 500;
+}
+.summary-total .total-value {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--brown);
+}
+.summary-total .total-value .currency {
+  font-size: 18px;
+  font-weight: 500;
+  margin-inline-start: 3px;
+}
+
+/* === FOOTER === */
+.footer {
+  background: var(--cream);
+  padding: 36px 32px 22px;
+  border-top: 1px solid var(--line);
+}
+.footer-top {
+  max-width: 1200px;
+  margin: 0 auto 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(85,75,65,.12);
+  padding-bottom: 18px;
+}
+.footer-top img { height: 54px; }
+.footer-social { display: flex; gap: 14px; }
+.footer-social a {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid var(--line);
+  transition: background 0.3s;
+}
+.footer-social a:hover { background: var(--blue-soft); }
+.footer-social svg { width: 16px; height: 16px; fill: var(--brown); }
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 11px;
+  color: var(--brown);
+  letter-spacing: 2px;
+  opacity: 0.6;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 1000px) {
+  .checkout-main { grid-template-columns: 1fr; }
+  .order-summary { position: static; order: -1; }
+}
+@media (max-width: 700px) {
+  .topbar { padding: 12px 16px; }
+  .topbar .cta-bulk, .topbar .cta { padding: 8px 12px; font-size: 11px; letter-spacing: 1.5px; }
+  .topbar .logo img { height: 44px; }
+  .topbar .topbar-side { gap: 8px; }
+  .cart-icon-btn { width: 38px; height: 38px; }
+  .breadcrumb { padding: 100px 18px 12px; font-size: 12.5px; }
+  .checkout-hero { padding: 0 18px 22px; }
+  .steps-bar { padding: 0 18px; }
+  .checkout-main { padding: 0 18px 50px; gap: 22px; }
+  .form-card { padding: 22px 20px; border-radius: 14px; }
+  .field-grid { grid-template-columns: 1fr; gap: 14px; }
+  .payment-methods { grid-template-columns: 1fr; }
+  .order-summary { padding: 22px 20px; border-radius: 14px; }
+  .footer-top { flex-direction: column; gap: 14px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-side">
+    <a href="cart.html" class="cart-icon-btn" aria-label="עגלת הקניות">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg>
+      <span class="cart-badge" style="display:none;">0</span>
+    </a>
+    <a class="cta-bulk" href="happy-hour.html">הזמנה מרוכזת</a>
+  </div>
+  <div class="logo"><a href="index.html"><img src="logo-sweetbox.png" alt="Sweet Box"></a></div>
+  <a class="cta" href="index.html#display">בחירת קופסה</a>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">דף הבית</a>
+  <span class="sep">/</span>
+  <a href="cart.html">עגלת הקניות</a>
+  <span class="sep">/</span>
+  סיום הזמנה
+</div>
+
+<!-- HERO -->
+<section class="checkout-hero">
+  <h1>סיום הזמנה</h1>
+  <p>עוד שלושה צעדים קצרים והקופסה יוצאת לדרך אליכם.</p>
+</section>
+
+<!-- STEPS -->
+<div class="steps-bar">
+  <div class="step done">
+    <div class="circle">✓</div>
+    <div class="label">עגלה</div>
+  </div>
+  <div class="step active">
+    <div class="circle">2</div>
+    <div class="label">פרטי משלוח</div>
+  </div>
+  <div class="step">
+    <div class="circle">3</div>
+    <div class="label">תשלום</div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="checkout-main">
+
+  <!-- LEFT: Form -->
+  <div class="form-side">
+
+    <!-- DELIVERY -->
+    <div class="form-card">
+      <h2><span class="step-num">1</span> מתי ולאן שולחים?</h2>
+      <p class="helper">בחרו עיר או יישוב, תאריך וחלון משלוח שמתאים לכם.</p>
+
+      <div class="field-row">
+        <label for="city">עיר / יישוב למשלוח <span class="req">*</span></label>
+        <select id="city" required>
+          <option value="">בחרו עיר / יישוב</option>
+          <option>תל אביב</option>
+          <option>רמת גן</option>
+          <option>גבעתיים</option>
+          <option>הרצליה</option>
+          <option>רעננה</option>
+          <option>כפר סבא</option>
+          <option>פתח תקווה</option>
+          <option>ראשון לציון</option>
+          <option>חולון</option>
+          <option>בת ים</option>
+          <option>נתניה</option>
+          <option>חיפה</option>
+          <option>ירושלים</option>
+          <option>באר שבע</option>
+        </select>
+      </div>
+
+      <div class="field-grid">
+        <div>
+          <label for="deliveryDate">תאריך משלוח <span class="req">*</span></label>
+          <input type="date" id="deliveryDate" required>
+        </div>
+        <div>
+          <label for="deliveryTime">חלון זמן למשלוח <span class="req">*</span></label>
+          <select id="deliveryTime" required>
+            <option value="">בחרו חלון זמן</option>
+            <option>09:00 – 12:00</option>
+            <option>12:00 – 15:00</option>
+            <option>15:00 – 18:00</option>
+            <option>18:00 – 21:00</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECIPIENT -->
+    <div class="form-card">
+      <h2><span class="step-num">2</span> פרטי מקבל הקופסה</h2>
+      <p class="helper">אנחנו יוצרים קשר בנייד שמרשמתם פה לפני שיוצאים למשלוח.</p>
+
+      <div class="field-grid">
+        <div>
+          <label for="firstName">שם פרטי <span class="req">*</span></label>
+          <input type="text" id="firstName" placeholder="שם הנמען/ת" required>
+        </div>
+        <div>
+          <label for="lastName">שם משפחה <span class="req">*</span></label>
+          <input type="text" id="lastName" placeholder="שם משפחה" required>
+        </div>
+      </div>
+
+      <div class="field-grid">
+        <div>
+          <label for="phone">טלפון לתיאום משלוח <span class="req">*</span></label>
+          <input type="tel" id="phone" placeholder="05X-XXX-XXXX" required>
+        </div>
+        <div>
+          <label for="email">אימייל</label>
+          <input type="email" id="email" placeholder="לקבלת חשבונית">
+        </div>
+      </div>
+
+      <div class="field-row">
+        <label for="address">כתובת מלאה — רחוב ומספר בית <span class="req">*</span></label>
+        <input type="text" id="address" placeholder="לדוגמה: יהודה הלוי 15" required>
+      </div>
+
+      <div class="field-row">
+        <label for="addressExtra">דירה, קומה, כניסה וכו' <span style="font-size:11px; color: var(--ink-whisper)">(לא חובה)</span></label>
+        <input type="text" id="addressExtra" placeholder="דירה 4, קומה 2, כניסה ב'">
+      </div>
+    </div>
+
+    <!-- NOTES -->
+    <div class="form-card">
+      <h2><span class="step-num">3</span> הערות להזמנה</h2>
+      <p class="helper">משהו שכדאי שנדע? איפה לרשמות אם אין מענה? צריך לתאם רגע לפני?</p>
+
+      <div class="field-row">
+        <textarea id="notes" placeholder="הערות חופשיות — לדוגמה: 'נא להשאיר בבית של השכנים, דירה 3'"></textarea>
+      </div>
+
+      <div class="delivery-notes">
+        <h4>חשוב לדעת לפני שלוחצים</h4>
+        <p>את הברכה ניתן יהיה להוסיף בעמוד הבא, לפני התשלום.</p>
+        <p>במידה והוספתם את הברכה של פיי (דיגיטלית), אין צורך בכתיבת ברכה. לאחר השלמת ההזמנה, ישלח אליך קישור להוספת תוכן הברכה הדיגיטלית.</p>
+        <p>מועד המסירה יהיה כפוף לתיאום שלנו מול מקבל/ת המשלוח. אנו מתחייבים שהמשלוח יגיע ביום המבוקש ובמסגרת חלון הזמן שבחרתם.</p>
+      </div>
+    </div>
+
+    <!-- SUBMIT -->
+    <div class="submit-section">
+      <button class="submit-btn" onclick="proceedToPayment()">המשך לתשלום ←</button>
+      <a href="cart.html" class="back-link">חזרה לעגלת הקניות</a>
+
+      <div class="security-row">
+        <div class="cell">
+          <svg class="lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          תשלום מאובטח SSL
+        </div>
+        <div class="cell">◇ סליקה ע"י Hyp</div>
+        <div class="cell">◇ כשר חלבי</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT: Summary -->
+  <aside class="order-summary">
+    <h3>פרטי ההזמנה <a href="cart.html" class="edit-link">עריכה</a></h3>
+
+    <div id="checkoutItemsList"></div>
+
+    <div class="summary-coupon">
+      <label for="couponCode">קוד קופון</label>
+      <div class="coupon-row">
+        <input type="text" id="couponCode" placeholder="הזינו קוד קופון">
+        <button onclick="applyCoupon()">החלת קופון</button>
+      </div>
+    </div>
+
+    <div class="summary-row">
+      <span>סכום ביניים</span>
+      <strong><span id="subtotal">420</span> ₪</strong>
+    </div>
+
+    <div class="summary-row" id="discountRow" style="display:none;">
+      <span>הנחה</span>
+      <strong>− <span id="discountValue">0</span> ₪</strong>
+    </div>
+
+    <div class="summary-row">
+      <span>משלוח</span>
+      <strong id="shippingValue">— ייקבע לפי העיר —</strong>
+    </div>
+
+    <div class="summary-total">
+      <span class="label">סך הכל</span>
+      <span class="total-value"><span id="totalValue">420</span><span class="currency">₪</span></span>
+    </div>
+  </aside>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <a href="index.html"><img src="logo-sweetbox.png" alt="Sweet Box"></a>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/sweetbox.il/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.9.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.9.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.9-.9-1.4-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.9-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 3.4c-3.5 0-6.4 2.9-6.4 6.4s2.9 6.4 6.4 6.4 6.4-2.9 6.4-6.4-2.9-6.4-6.4-6.4zm0 10.6c-2.3 0-4.2-1.9-4.2-4.2s1.9-4.2 4.2-4.2 4.2 1.9 4.2 4.2-1.9 4.2-4.2 4.2zm6.6-10.9c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5.7-1.5 1.5-1.5 1.5.7 1.5 1.5z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/sweetboxil/" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.69.24 2.69.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.79V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@sweetbox_tlv?lang=en" target="_blank" rel="noopener" aria-label="TikTok">
+        <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.66 20.1a6.34 6.34 0 0 0 10.86-4.43V8.79a8.16 8.16 0 0 0 4.77 1.52V6.86a4.85 4.85 0 0 1-1.71-.17z"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 · SWEET BOX · sweetbox.co.il</div>
+</footer>
+
+<script src="cart-system.js"></script>
+<script>
+  let appliedDiscount = 0;
+
+  function escapeHtml(str){
+    return (str||'').toString()
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  }
+
+  function renderCheckoutItems(){
+    const list = document.getElementById('checkoutItemsList');
+    const items = window.SweetCart.get();
+    if (items.length === 0){
+      list.innerHTML = `
+        <div style="text-align:center; padding: 20px 0; color: var(--ink-whisper); font-size: 13.5px;">
+          העגלה ריקה. <a href="cart.html" style="color: var(--blue-deep); text-decoration: underline;">חזרה לעגלה</a>
+        </div>
+      `;
+    } else {
+      list.innerHTML = items.map(item => `
+        <div class="mini-item">
+          <div class="mini-img" style="background-image: url('${escapeHtml(item.image)}');">
+            <span class="mini-qty">${item.qty}</span>
+          </div>
+          <div class="mini-info">
+            <div class="mini-name">${escapeHtml(item.name)}</div>
+            <div class="mini-meta">${escapeHtml(item.meta||'')}</div>
+          </div>
+          <div class="mini-price">${(parseFloat(item.price)||0) * (parseInt(item.qty)||0)} ₪</div>
+        </div>
+      `).join('');
+    }
+    const subtotal = window.SweetCart.subtotal();
+    document.getElementById('subtotal').textContent = subtotal;
+    recalcTotal();
+  }
+
+  function applyCoupon() {
+    const code = document.getElementById('couponCode').value.trim().toUpperCase();
+    const subtotal = window.SweetCart.subtotal();
+    let discount = 0;
+    let message = '';
+
+    if (subtotal === 0){
+      alert('עגלת הקניות ריקה — נסו להוסיף קופסה לפני שמפעילים קופון');
+      return;
+    }
+    if (code === 'GOAL2026') {
+      discount = Math.round(subtotal * 0.15);
+      message = 'הקופון GOAL2026 הופעל - 15% הנחה';
+    } else if (code === 'HATTRICK') {
+      discount = Math.round(subtotal * 0.20);
+      message = 'הקופון HATTRICK הופעל - 20% הנחה';
+    } else {
+      alert('קוד הקופון לא תקין או פג תוקפו');
+      return;
+    }
+
+    appliedDiscount = discount;
+    document.getElementById('discountRow').style.display = 'flex';
+    document.getElementById('discountValue').textContent = discount;
+    recalcTotal();
+    alert(message);
+  }
+
+  function recalcTotal() {
+    const subtotal = window.SweetCart.subtotal();
+    const total = Math.max(0, subtotal - appliedDiscount);
+    document.getElementById('totalValue').textContent = total;
+  }
+
+  function proceedToPayment() {
+    // NOTE FOR DEVELOPER: validate fields + post to WooCommerce checkout endpoint
+    // For now this is a UI mockup
+    if (window.SweetCart.get().length === 0){
+      alert('עגלת הקניות ריקה — בחרו קופסה לפני המעבר לתשלום');
+      window.location.href = 'cart.html';
+      return;
+    }
+    const required = ['city', 'deliveryDate', 'deliveryTime', 'firstName', 'lastName', 'phone', 'address'];
+    let missing = [];
+    required.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el.value.trim()) missing.push(id);
+    });
+    if (missing.length > 0) {
+      alert('יש למלא את כל השדות המסומנים בכוכבית.');
+      const first = document.getElementById(missing[0]);
+      first.focus();
+      first.style.borderColor = 'var(--danger)';
+      return;
+    }
+    // Proceed to actual payment
+    window.location.href = 'https://sweetbox.co.il/checkout/';
+  }
+
+  // Initial render
+  if (window.SweetCart){
+    renderCheckoutItems();
+  } else {
+    document.addEventListener('DOMContentLoaded', renderCheckoutItems);
+  }
+
+  // City changes update shipping
+  document.getElementById('city').addEventListener('change', function() {
+    const city = this.value;
+    const shippingEl = document.getElementById('shippingValue');
+    if (!city) {
+      shippingEl.textContent = '— ייקבע לפי העיר —';
+    } else {
+      const isClose = ['תל אביב', 'רמת גן', 'גבעתיים', 'בת ים', 'חולון'].includes(city);
+      shippingEl.textContent = isClose ? '30 ₪' : '45 ₪';
+    }
+  });
+</script>
+
+</body>
+</html>

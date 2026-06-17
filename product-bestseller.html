@@ -260,14 +260,14 @@ a { color: inherit; text-decoration: none; }
   font-family: inherit;
 }
 
-.btn-add {
+.btn-buy {
   flex: 1;
   background: var(--teal-accent);
   color: var(--paper);
   border: none;
-  padding: 0 22px;
+  padding: 0 18px;
   font-size: 13px;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   cursor: pointer;
   font-family: inherit;
   font-weight: 500;
@@ -276,7 +276,25 @@ a { color: inherit; text-decoration: none; }
   box-shadow: 0 6px 18px rgba(74, 143, 168, 0.18);
   transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
 }
-.btn-add:hover { background: var(--brown); transform: translateY(-1px); box-shadow: 0 8px 22px rgba(85, 75, 65, 0.22); }
+.btn-buy:hover { background: var(--brown); transform: translateY(-1px); box-shadow: 0 8px 22px rgba(85, 75, 65, 0.22); }
+
+.btn-add {
+  flex: 1;
+  background: white;
+  color: var(--blue-deep);
+  border: 1.5px solid var(--blue-deep);
+  padding: 0 18px;
+  font-size: 13px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+  height: 50px;
+  border-radius: 999px;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+.btn-add:hover { background: var(--blue-deep); color: white; transform: translateY(-1px); }
+.btn-add:disabled { opacity: 0.85; cursor: default; }
 
 .btn-wishlist {
   width: 50px;
@@ -618,6 +636,49 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 600px) {
   .inside-grid, .reviews-grid { grid-template-columns: 1fr; }
   .product-title { font-size: 34px; }
+  .actions-row { flex-wrap: wrap; }
+  .qty-select { flex: 0 0 auto; }
+  .btn-buy, .btn-add { flex: 1 1 calc(50% - 6px); font-size: 12px; letter-spacing: 1px; }
+  .btn-wishlist { order: 99; }
+}
+
+/* === CART ICON IN TOPBAR === */
+.topbar-side { display: flex; align-items: center; gap: 14px; }
+.cart-icon-btn {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: white;
+  border: 1.5px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: border-color 0.3s, transform 0.2s;
+}
+.cart-icon-btn:hover { border-color: var(--blue-deep); transform: translateY(-1px); }
+.cart-icon-btn svg { width: 18px; height: 18px; color: var(--brown); }
+.cart-icon-btn .cart-badge {
+  position: absolute;
+  top: -4px;
+  inset-inline-start: -4px;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: var(--teal-accent);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+  line-height: 1;
+}
+@media (max-width: 700px) {
+  .cart-icon-btn { width: 38px; height: 38px; }
+  .topbar-side { gap: 8px; }
 }
 </style>
 </head>
@@ -625,13 +686,19 @@ a { color: inherit; text-decoration: none; }
 
 <!-- TOP BAR -->
 <div class="topbar">
-  <a href="index.html" class="logo"><img src="logo-sweetbox.png" alt="Sweet Box"></a>
+  <div class="topbar-side">
+    <a href="index.html" class="logo"><img src="logo-sweetbox.png" alt="Sweet Box"></a>
+    <a href="cart.html" class="cart-icon-btn" aria-label="עגלת הקניות">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg>
+      <span class="cart-badge" style="display:none;">0</span>
+    </a>
+  </div>
   <nav>
     <a href="index.html#display">המארזים</a>
     <a href="index.html#branches">סניפים</a>
     <a href="index.html#franchise">זכיינות</a>
   </nav>
-  <a class="cta" href="#add">להוסיף לסל</a>
+  <a class="cta" href="#add">להוסיף לעגלה</a>
 </div>
 
 <!-- BREADCRUMB -->
@@ -687,7 +754,8 @@ a { color: inherit; text-decoration: none; }
         <input type="number" value="1" min="1" max="20" id="qty-input">
         <button onclick="changeQty(-1)">−</button>
       </div>
-      <button class="btn-add" id="add">להוסיף לסל</button>
+      <button class="btn-buy" id="btnBuy">קנה עכשיו</button>
+      <button class="btn-add" id="add">+ הוסף לעגלה</button>
       <button class="btn-wishlist" aria-label="הוסף לרשימת מתנות">♡</button>
     </div>
 
@@ -839,7 +907,33 @@ a { color: inherit; text-decoration: none; }
     const itemWidth = firstItem.offsetWidth + 22;
     carousel.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
   }
+
+  // === BUY / ADD TO CART (Best Seller Box) ===
+  const BESTSELLER_BOX_ITEM = {
+    id: 'best-seller-box',
+    name: 'Best Seller Box',
+    price: 190,
+    image: '01-box-styled.jpg',
+    meta: '6 פריטים אייקוניים'
+  };
+  function currentQty(){
+    const v = parseInt(document.getElementById('qty-input').value);
+    return isNaN(v) || v < 1 ? 1 : v;
+  }
+  document.getElementById('btnBuy').addEventListener('click', function(e){
+    e.preventDefault();
+    const item = Object.assign({}, BESTSELLER_BOX_ITEM, { qty: currentQty() });
+    window.SweetCart.buyNow(item);
+  });
+  const addBtn = document.getElementById('add');
+  addBtn.addEventListener('click', function(e){
+    e.preventDefault();
+    const item = Object.assign({}, BESTSELLER_BOX_ITEM, { qty: currentQty() });
+    window.SweetCart.add(item);
+    window.SweetCart.flashAdded(addBtn);
+  });
 </script>
+<script src="cart-system.js"></script>
 
 </body>
 </html>

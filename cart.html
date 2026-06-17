@@ -633,13 +633,58 @@ a:hover { color: var(--blue-deep); }
   .upsell-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
   .footer-top { flex-direction: column; gap: 14px; }
 }
+
+/* === CART ICON IN TOPBAR === */
+.topbar-side { display: flex; align-items: center; gap: 14px; }
+.cart-icon-btn {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: white;
+  border: 1.5px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: border-color 0.3s, transform 0.2s;
+}
+.cart-icon-btn:hover { border-color: var(--blue-deep); transform: translateY(-1px); }
+.cart-icon-btn svg { width: 18px; height: 18px; color: var(--brown); }
+.cart-icon-btn .cart-badge {
+  position: absolute;
+  top: -4px;
+  inset-inline-start: -4px;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: var(--teal-accent);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+  line-height: 1;
+}
+@media (max-width: 700px) {
+  .cart-icon-btn { width: 38px; height: 38px; }
+  .topbar-side { gap: 8px; }
+}
 </style>
 </head>
 <body>
 
 <!-- TOP BAR -->
 <div class="topbar">
-  <a class="cta-bulk" href="happy-hour.html">הזמנה מרוכזת</a>
+  <div class="topbar-side">
+    <a href="cart.html" class="cart-icon-btn" aria-label="עגלת הקניות">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg>
+      <span class="cart-badge" style="display:none;">0</span>
+    </a>
+    <a class="cta-bulk" href="happy-hour.html">הזמנה מרוכזת</a>
+  </div>
   <div class="logo"><a href="index.html"><img src="logo-sweetbox.png" alt="Sweet Box"></a></div>
   <a class="cta" href="index.html#display">בחירת קופסה</a>
 </div>
@@ -666,40 +711,10 @@ a:hover { color: var(--blue-deep); }
 
       <div class="cart-items-header">
         <h2>הקופסאות שלך</h2>
-        <span class="count" id="itemCount">2 פריטים</span>
+        <span class="count" id="itemCount">0 פריטים</span>
       </div>
 
-      <!-- Item 1 -->
-      <div class="cart-item" data-price="170">
-        <div class="item-img" style="background-image: url('box-cupcake.jpg');"></div>
-        <div class="item-info">
-          <div class="item-name">Mini Cupcake Box</div>
-          <div class="item-meta">16 מיני קאפקייקס · 4 טעמים</div>
-        </div>
-        <div class="item-qty">
-          <button onclick="changeQty(this, 1)" aria-label="הגדל כמות">+</button>
-          <input type="number" value="1" min="1" max="20" onchange="recalculate()">
-          <button onclick="changeQty(this, -1)" aria-label="הקטן כמות">−</button>
-        </div>
-        <div class="item-price"><span class="line-total">170</span> ₪</div>
-        <button class="remove-btn" onclick="removeItem(this)" aria-label="הסר מהעגלה">✕</button>
-      </div>
-
-      <!-- Item 2 -->
-      <div class="cart-item" data-price="250">
-        <div class="item-img" style="background-image: url('box-valentines.png');"></div>
-        <div class="item-info">
-          <div class="item-name">Valentine's Box</div>
-          <div class="item-meta">מארז רומנטי · 8 פריטים</div>
-        </div>
-        <div class="item-qty">
-          <button onclick="changeQty(this, 1)" aria-label="הגדל כמות">+</button>
-          <input type="number" value="1" min="1" max="20" onchange="recalculate()">
-          <button onclick="changeQty(this, -1)" aria-label="הקטן כמות">−</button>
-        </div>
-        <div class="item-price"><span class="line-total">250</span> ₪</div>
-        <button class="remove-btn" onclick="removeItem(this)" aria-label="הסר מהעגלה">✕</button>
-      </div>
+      <div id="cartItemsList"></div>
 
     </div>
 
@@ -792,7 +807,7 @@ a:hover { color: var(--blue-deep); }
         <div class="upsell-desc">עוגיית מונסטר רכה עם שוקולד לבן ופקאן (כ-150 גרם)</div>
         <div class="upsell-bottom">
           <span class="upsell-price">18 ₪</span>
-          <button class="add-btn" onclick="addUpsell(this, 'monster-pecan', 18)"><span class="plus">+</span> הוסף</button>
+          <button class="add-btn" onclick="addUpsell(this, 'monster-pecan', 'מונסטר שוקולד לבן ופקאן', 18, 'cookie-white-pecan.jpg', 'עוגיית מונסטר · 150 גרם')"><span class="plus">+</span> הוסף</button>
         </div>
       </div>
     </div>
@@ -804,7 +819,7 @@ a:hover { color: var(--blue-deep); }
         <div class="upsell-desc">5 עוגיות חמאה קלאסיות במארז</div>
         <div class="upsell-bottom">
           <span class="upsell-price">20 ₪</span>
-          <button class="add-btn" onclick="addUpsell(this, 'butter-cookies', 20)"><span class="plus">+</span> הוסף</button>
+          <button class="add-btn" onclick="addUpsell(this, 'butter-cookies', 'מארז עוגיות חמאה', 20, 'cookie-triple.jpg', '5 עוגיות חמאה')"><span class="plus">+</span> הוסף</button>
         </div>
       </div>
     </div>
@@ -816,7 +831,7 @@ a:hover { color: var(--blue-deep); }
         <div class="upsell-desc">עוגיית שוקולד צ'יפס רכה עם M&M's (כ-150 גרם)</div>
         <div class="upsell-bottom">
           <span class="upsell-price">18 ₪</span>
-          <button class="add-btn" onclick="addUpsell(this, 'monster-mm', 18)"><span class="plus">+</span> הוסף</button>
+          <button class="add-btn" onclick="addUpsell(this, 'monster-mm', &quot;מונסטר M&amp;M's&quot;, 18, 'cookie-mm.jpg', 'עוגיית מונסטר · 150 גרם')"><span class="plus">+</span> הוסף</button>
         </div>
       </div>
     </div>
@@ -828,7 +843,7 @@ a:hover { color: var(--blue-deep); }
         <div class="upsell-desc">קישור לברכה אישית בנייד — נשלח אחרי הרכישה</div>
         <div class="upsell-bottom">
           <span class="upsell-price">9 ₪</span>
-          <button class="add-btn" onclick="addUpsell(this, 'digital-card', 9)"><span class="plus">+</span> הוסף</button>
+          <button class="add-btn" onclick="addUpsell(this, 'digital-card', 'ברכה דיגיטלית מעוצבת', 9, 'digital-greeting.jpg', 'קישור דיגיטלי לאחר הרכישה')"><span class="plus">+</span> הוסף</button>
         </div>
       </div>
     </div>
@@ -855,6 +870,7 @@ a:hover { color: var(--blue-deep); }
   <div class="footer-bottom">© 2026 · SWEET BOX · sweetbox.co.il</div>
 </footer>
 
+<script src="cart-system.js"></script>
 <script>
   // === GIFT CARD TOGGLE ===
   function toggleGift(checkbox) {
@@ -866,53 +882,21 @@ a:hover { color: var(--blue-deep); }
     document.getElementById('charCount').textContent = textarea.value.length;
   }
 
-  // === QUANTITY ===
-  function changeQty(btn, delta) {
-    const input = btn.parentElement.querySelector('input');
-    const next = Math.max(1, Math.min(20, parseInt(input.value) + delta));
-    input.value = next;
-    recalculate();
+  // === ESCAPE HTML ===
+  function escapeHtml(str){
+    return (str||'').toString()
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
   }
 
-  // === REMOVE ITEM ===
-  function removeItem(btn) {
-    const item = btn.closest('.cart-item');
-    item.style.transition = 'opacity 0.3s, transform 0.3s';
-    item.style.opacity = '0';
-    item.style.transform = 'translateX(-20px)';
-    setTimeout(() => {
-      item.remove();
-      recalculate();
-      updateItemCount();
-      checkEmpty();
-    }, 300);
-  }
-
-  // === RECALCULATE TOTALS ===
+  // === RENDER CART ITEMS FROM LOCALSTORAGE ===
   let appliedDiscount = 0;
-  function recalculate() {
-    let subtotal = 0;
-    document.querySelectorAll('.cart-item').forEach(item => {
-      const price = parseFloat(item.dataset.price);
-      const qty = parseInt(item.querySelector('input').value);
-      const lineTotal = price * qty;
-      item.querySelector('.line-total').textContent = lineTotal;
-      subtotal += lineTotal;
-    });
-    document.getElementById('subtotal').textContent = subtotal;
-    const total = Math.max(0, subtotal - appliedDiscount);
-    document.getElementById('totalValue').textContent = total;
-  }
-
-  function updateItemCount() {
-    const count = document.querySelectorAll('.cart-item').length;
-    document.getElementById('itemCount').textContent = count + ' פריטים';
-  }
-
-  function checkEmpty() {
+  function renderCart(){
+    const list = document.getElementById('cartItemsList');
     const wrap = document.getElementById('cartItemsWrap');
-    const items = document.querySelectorAll('.cart-item');
-    if (items.length === 0) {
+    const items = window.SweetCart.get();
+
+    if (items.length === 0){
       wrap.innerHTML = `
         <div class="empty-cart">
           <div class="icon">◯</div>
@@ -921,16 +905,88 @@ a:hover { color: var(--blue-deep); }
           <a href="index.html#display" class="browse-btn">לבחירת קופסה</a>
         </div>
       `;
+      updateSummary(0);
+      document.getElementById('itemCount').textContent = '0 פריטים';
+      return;
     }
+
+    list.innerHTML = items.map(item => {
+      const lineTotal = (parseFloat(item.price)||0) * (parseInt(item.qty)||0);
+      return `
+        <div class="cart-item" data-id="${escapeHtml(item.id)}" data-price="${item.price}">
+          <div class="item-img" style="background-image: url('${escapeHtml(item.image)}');"></div>
+          <div class="item-info">
+            <div class="item-name">${escapeHtml(item.name)}</div>
+            <div class="item-meta">${escapeHtml(item.meta||'')}</div>
+          </div>
+          <div class="item-qty">
+            <button data-act="inc" aria-label="הגדל כמות">+</button>
+            <input type="number" value="${item.qty}" min="1" max="20" data-act="set">
+            <button data-act="dec" aria-label="הקטן כמות">−</button>
+          </div>
+          <div class="item-price"><span class="line-total">${lineTotal}</span> ₪</div>
+          <button class="remove-btn" data-act="remove" aria-label="הסר מהעגלה">✕</button>
+        </div>
+      `;
+    }).join('');
+
+    // Wire up buttons
+    list.querySelectorAll('.cart-item').forEach(itemEl => {
+      const id = itemEl.dataset.id;
+      const input = itemEl.querySelector('input');
+      itemEl.querySelector('[data-act="inc"]').addEventListener('click', () => {
+        const next = Math.min(20, (parseInt(input.value)||1) + 1);
+        window.SweetCart.setQty(id, next);
+        renderCart();
+      });
+      itemEl.querySelector('[data-act="dec"]').addEventListener('click', () => {
+        const next = (parseInt(input.value)||1) - 1;
+        if (next < 1){
+          animateRemove(itemEl, () => { window.SweetCart.remove(id); renderCart(); });
+        } else {
+          window.SweetCart.setQty(id, next);
+          renderCart();
+        }
+      });
+      input.addEventListener('change', () => {
+        const v = Math.max(1, Math.min(20, parseInt(input.value)||1));
+        window.SweetCart.setQty(id, v);
+        renderCart();
+      });
+      itemEl.querySelector('[data-act="remove"]').addEventListener('click', () => {
+        animateRemove(itemEl, () => { window.SweetCart.remove(id); renderCart(); });
+      });
+    });
+
+    const subtotal = window.SweetCart.subtotal();
+    document.getElementById('itemCount').textContent = items.length + ' פריטים';
+    updateSummary(subtotal);
+  }
+
+  function animateRemove(itemEl, cb){
+    itemEl.style.transition = 'opacity 0.3s, transform 0.3s';
+    itemEl.style.opacity = '0';
+    itemEl.style.transform = 'translateX(-20px)';
+    setTimeout(cb, 300);
+  }
+
+  function updateSummary(subtotal){
+    document.getElementById('subtotal').textContent = subtotal;
+    const total = Math.max(0, subtotal - appliedDiscount);
+    document.getElementById('totalValue').textContent = total;
   }
 
   // === COUPON ===
   function applyCoupon() {
     const code = document.getElementById('couponCode').value.trim().toUpperCase();
-    const subtotal = parseFloat(document.getElementById('subtotal').textContent);
+    const subtotal = window.SweetCart.subtotal();
     let discount = 0;
     let message = '';
 
+    if (subtotal === 0){
+      alert('עגלת הקניות ריקה — נסו להוסיף קופסה לפני שמפעילים קופון');
+      return;
+    }
     if (code === 'GOAL2026') {
       discount = Math.round(subtotal * 0.15);
       message = 'הקופון GOAL2026 הופעל - 15% הנחה';
@@ -945,31 +1001,46 @@ a:hover { color: var(--blue-deep); }
     appliedDiscount = discount;
     document.getElementById('discountRow').style.display = 'flex';
     document.getElementById('discountValue').textContent = discount;
-    recalculate();
+    updateSummary(subtotal);
     alert(message);
   }
 
   // === ADD UPSELL ===
-  function addUpsell(btn, sku, price) {
+  function addUpsell(btn, id, name, price, image, meta) {
+    window.SweetCart.add({ id, name, price, image, meta, qty: 1 });
+    const original = btn.innerHTML;
     btn.innerHTML = '✓ נוסף';
     btn.style.background = 'var(--success)';
     btn.disabled = true;
-    // NOTE FOR DEVELOPER: connect this to WooCommerce add-to-cart endpoint
     setTimeout(() => {
-      btn.innerHTML = '<span class="plus">+</span> הוסף';
+      btn.innerHTML = original;
       btn.style.background = '';
       btn.disabled = false;
-    }, 2000);
+    }, 1800);
+    renderCart();
   }
 
   // === CHECKOUT ===
   function goToCheckout() {
-    // NOTE FOR DEVELOPER: redirect to actual WooCommerce checkout
-    window.location.href = 'https://sweetbox.co.il/checkout/';
+    const items = window.SweetCart.get();
+    if (items.length === 0){
+      alert('עגלת הקניות ריקה — בחרו קופסה לפני המעבר לתשלום');
+      return;
+    }
+    window.location.href = 'checkout.html';
   }
 
-  // Init
-  recalculate();
+  // Init — seed cart on first visit so the mockup looks populated,
+  // then render
+  if (window.SweetCart){
+    window.SweetCart.seedIfEmpty();
+    renderCart();
+  } else {
+    document.addEventListener('DOMContentLoaded', () => {
+      window.SweetCart.seedIfEmpty();
+      renderCart();
+    });
+  }
 </script>
 
 </body>
