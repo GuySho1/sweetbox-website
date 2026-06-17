@@ -628,7 +628,23 @@ a { color: inherit; text-decoration: none; }
   .related-carousel { gap: 12px; }
   .related-carousel .related-item { flex: 0 0 100%; max-width: 100%; scroll-snap-align: center; }
   .related-arrow { width: 38px; height: 38px; font-size: 18px; }
-  .trust-signals { grid-template-columns: 1fr; gap: 6px; }
+  .trust-signals {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    padding-top: 12px;
+  }
+  .trust-cell {
+    padding: 8px 4px;
+  }
+  .trust-cell .ico {
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+  .trust-cell .txt {
+    font-size: 11px;
+    letter-spacing: 0;
+    line-height: 1.3;
+  }
   .whats-inside, .story, .reviews, .related, .branches-strip { padding-left: 16px; padding-right: 16px; }
   .branches-strip .links { flex-direction: column; gap: 10px; }
 }
@@ -643,6 +659,8 @@ a { color: inherit; text-decoration: none; }
   .qty-select {
     flex: 0 0 auto;
     height: 46px;
+    border-radius: 999px;
+    overflow: hidden;
   }
   .qty-select button { width: 30px; height: 46px; font-size: 16px; }
   .qty-select input { width: 32px; height: 46px; font-size: 14px; }

@@ -191,6 +191,15 @@
         justify-self: end !important;
         order: 99 !important;
       }
+      /* Product-page pattern: logo is nested inside topbar-side. Pull it
+         to the visual center via absolute positioning. */
+      .topbar .topbar-side > .logo {
+        position: absolute !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        z-index: 5 !important;
+      }
     }
     .sb-drawer { position: fixed; inset: 0; z-index: 1000; pointer-events: none; direction: rtl; }
     .sb-drawer.open { pointer-events: auto; }
