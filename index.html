@@ -100,6 +100,25 @@ html, body {
   color: var(--blue-deep);
 }
 .display-header p { font-size: 18px; color: var(--brown); max-width: 620px; margin: 18px auto 0; line-height: 1.65; font-weight: 400; }
+.full-view-link {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 11px 24px;
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: var(--teal-accent);
+  border: 1.5px solid var(--teal-accent);
+  border-radius: 999px;
+  background: transparent;
+  font-weight: 500;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+  text-decoration: none;
+}
+.full-view-link:hover {
+  background: var(--teal-accent);
+  color: white;
+  transform: translateY(-1px);
+}
 .display-carousel-wrap { position: relative; max-width: 1280px; margin: 0 auto; padding: 0 40px; overflow: hidden; }
 .display-carousel { display: flex; gap: 22px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 6px 4px 22px; scrollbar-width: none; -ms-overflow-style: none; }
 .display-carousel::-webkit-scrollbar { display: none; }
@@ -433,6 +452,7 @@ html, body {
   .display-header .display-eyebrow { margin-bottom: 14px; font-size: 12px; letter-spacing: 4px; }
   .display-header h2 { font-size: clamp(28px, 6vw, 38px); }
   .display-header p { font-size: 14.5px; margin-top: 12px; line-height: 1.55; }
+  .full-view-link { margin-top: 14px; padding: 9px 18px; font-size: 12px; letter-spacing: 1.5px; }
   .display-carousel-wrap { padding-bottom: 28px; }
   .divider { padding: 0; }
   .divider img { max-width: 80%; }
@@ -601,6 +621,7 @@ html, body {
     <div class="display-eyebrow">— THE COLLECTION —</div>
     <h2>בחרו את <em>הקופסה</em> שלכם</h2>
     <p>מגוון קופסאות בשילובים שונים, כולן בייצור עצמי אצלנו במאפייה, ארוזות בקפידה ובאהבה.</p>
+    <a href="all-boxes.html" class="full-view-link">תצוגה מלאה — כל 15 הקופסאות ←</a>
   </div>
   <div class="display-carousel-wrap">
     <button class="carousel-arrow prev" onclick="carouselScroll(1)" aria-label="הקודם"><span style="display:inline-block;direction:ltr;unicode-bidi:bidi-override;">❯</span></button>
