@@ -170,16 +170,26 @@
     @media (max-width: 760px) {
       .topbar .cta-bulk, .topbar .cta, .topbar .cta-hr, .topbar nav { display: none !important; }
       .mobile-hamburger { display: flex !important; }
-      /* RTL: hamburger to the start (right), cart icon (inside topbar-side) to the end (left) */
+      /* RTL mobile: hamburger on the right (start), logo center, cart icon on the left (end) */
+      .topbar {
+        display: grid !important;
+        grid-template-columns: auto 1fr auto !important;
+        gap: 8px !important;
+      }
       .topbar > .mobile-hamburger {
-        grid-column: 1 / 2;
-        justify-self: start;
-        order: -1;
+        grid-column: 1 / 2 !important;
+        justify-self: start !important;
+        order: -1 !important;
+      }
+      .topbar > .logo {
+        grid-column: 2 / 3 !important;
+        justify-self: center !important;
+        order: 0 !important;
       }
       .topbar > .topbar-side {
-        grid-column: 3 / 4;
-        justify-self: end;
-        order: 99;
+        grid-column: 3 / 4 !important;
+        justify-self: end !important;
+        order: 99 !important;
       }
     }
     .sb-drawer { position: fixed; inset: 0; z-index: 1000; pointer-events: none; direction: rtl; }
@@ -279,7 +289,8 @@
     hamburger.setAttribute('aria-label', 'פתיחת תפריט');
     hamburger.innerHTML = HAMBURGER_HTML;
     hamburger.addEventListener('click', openDrawer);
-    topbar.appendChild(hamburger);
+    // Insert as first child so it lands on the start side (right in RTL)
+    topbar.insertBefore(hamburger, topbar.firstChild);
   }
 
   function openDrawer(){
