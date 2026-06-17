@@ -533,6 +533,86 @@ a:hover { color: var(--blue-deep); }
   color: var(--brown);
 }
 
+/* Compact upsell inside the order summary */
+.checkout-upsell {
+  margin: 16px 0 4px;
+  padding: 14px 14px 12px;
+  background: var(--blue-soft);
+  border-radius: 12px;
+}
+.checkout-upsell .upsell-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--teal-accent);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.checkout-upsell .upsell-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.checkout-upsell .upsell-row {
+  display: grid;
+  grid-template-columns: 38px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  background: white;
+  border-radius: 10px;
+  padding: 7px 10px 7px 7px;
+}
+.checkout-upsell .upsell-thumb {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--blue-soft);
+}
+.checkout-upsell .upsell-info { min-width: 0; }
+.checkout-upsell .upsell-name {
+  font-size: 12px;
+  color: var(--brown);
+  font-weight: 500;
+  line-height: 1.25;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.checkout-upsell .upsell-price-row {
+  font-size: 11.5px;
+  color: var(--ink-whisper);
+  font-weight: 400;
+  margin-top: 2px;
+}
+.checkout-upsell .upsell-add {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: white;
+  border: 1.5px solid var(--blue-deep);
+  color: var(--blue-deep);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+  line-height: 1;
+  font-family: inherit;
+  padding: 0;
+}
+.checkout-upsell .upsell-add:hover {
+  background: var(--blue-deep);
+  color: white;
+  transform: scale(1.05);
+}
+.checkout-upsell .upsell-add.added {
+  background: var(--success);
+  color: white;
+  border-color: var(--success);
+}
+
 .summary-coupon {
   margin: 18px 0;
   padding: 16px 0;
@@ -844,6 +924,45 @@ a:hover { color: var(--blue-deep); }
 
     <div id="checkoutItemsList"></div>
 
+    <!-- Compact upsell — only shown when these items aren't already in the cart -->
+    <div class="checkout-upsell" id="checkoutUpsell">
+      <div class="upsell-label">— תרצו להוסיף? —</div>
+      <div class="upsell-list">
+        <div class="upsell-row" data-id="monster-pecan">
+          <div class="upsell-thumb" style="background-image: url('cookie-white-pecan.jpg');"></div>
+          <div class="upsell-info">
+            <div class="upsell-name">מונסטר שוקולד לבן ופקאן</div>
+            <div class="upsell-price-row">18 ₪ · עוגיית מונסטר</div>
+          </div>
+          <button class="upsell-add" type="button" aria-label="הוסף לעגלה" onclick="addCheckoutUpsell(this, 'monster-pecan', 'מונסטר שוקולד לבן ופקאן', 18, 'cookie-white-pecan.jpg', 'עוגיית מונסטר · 150 גרם')">+</button>
+        </div>
+        <div class="upsell-row" data-id="butter-cookies">
+          <div class="upsell-thumb" style="background-image: url('cookie-triple.jpg');"></div>
+          <div class="upsell-info">
+            <div class="upsell-name">מארז עוגיות חמאה</div>
+            <div class="upsell-price-row">20 ₪ · 5 עוגיות</div>
+          </div>
+          <button class="upsell-add" type="button" aria-label="הוסף לעגלה" onclick="addCheckoutUpsell(this, 'butter-cookies', 'מארז עוגיות חמאה', 20, 'cookie-triple.jpg', '5 עוגיות חמאה')">+</button>
+        </div>
+        <div class="upsell-row" data-id="monster-mm">
+          <div class="upsell-thumb" style="background-image: url('cookie-mm.jpg');"></div>
+          <div class="upsell-info">
+            <div class="upsell-name">מונסטר M&amp;M's</div>
+            <div class="upsell-price-row">18 ₪ · עוגיית מונסטר</div>
+          </div>
+          <button class="upsell-add" type="button" aria-label="הוסף לעגלה" onclick="addCheckoutUpsell(this, 'monster-mm', &quot;מונסטר M&amp;M's&quot;, 18, 'cookie-mm.jpg', 'עוגיית מונסטר · 150 גרם')">+</button>
+        </div>
+        <div class="upsell-row" data-id="digital-card">
+          <div class="upsell-thumb" style="background-image: url('digital-greeting.jpg'); background-color: #FCE9F0;"></div>
+          <div class="upsell-info">
+            <div class="upsell-name">ברכה דיגיטלית מעוצבת</div>
+            <div class="upsell-price-row">9 ₪ · קישור לאחר הרכישה</div>
+          </div>
+          <button class="upsell-add" type="button" aria-label="הוסף לעגלה" onclick="addCheckoutUpsell(this, 'digital-card', 'ברכה דיגיטלית מעוצבת', 9, 'digital-greeting.jpg', 'קישור דיגיטלי לאחר הרכישה')">+</button>
+        </div>
+      </div>
+    </div>
+
     <div class="summary-coupon">
       <label for="couponCode">קוד קופון</label>
       <div class="coupon-row">
@@ -930,6 +1049,41 @@ a:hover { color: var(--blue-deep); }
     const subtotal = window.SweetCart.subtotal();
     document.getElementById('subtotal').textContent = subtotal;
     recalcTotal();
+    refreshUpsellVisibility();
+  }
+
+  // === UPSELL — compact add-ons inside checkout summary ===
+  function refreshUpsellVisibility(){
+    const wrap = document.getElementById('checkoutUpsell');
+    if (!wrap) return;
+    const cartIds = new Set(window.SweetCart.get().map(i => i.id));
+    let visibleCount = 0;
+    wrap.querySelectorAll('.upsell-row').forEach(row => {
+      if (cartIds.has(row.dataset.id)){
+        row.style.display = 'none';
+      } else {
+        row.style.display = '';
+        visibleCount++;
+      }
+    });
+    // Hide entire wrap if everything has been added
+    wrap.style.display = visibleCount === 0 ? 'none' : '';
+  }
+
+  function addCheckoutUpsell(btn, id, name, price, image, meta){
+    window.SweetCart.add({ id, name, price, image, meta, qty: 1 });
+    btn.textContent = '✓';
+    btn.classList.add('added');
+    btn.disabled = true;
+    // Re-render the items list, then animate the row out
+    renderCheckoutItems();
+    const row = btn.closest('.upsell-row');
+    if (row){
+      row.style.transition = 'opacity 0.4s, transform 0.4s';
+      row.style.opacity = '0';
+      row.style.transform = 'translateX(-12px)';
+      setTimeout(() => { refreshUpsellVisibility(); }, 400);
+    }
   }
 
   function applyCoupon() {
