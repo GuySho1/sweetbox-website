@@ -1013,4 +1013,145 @@ html, body {
       const cards = document.querySelectorAll('#boxesCarousel .display-item');
       cards.forEach(card => {
         const info = card.querySelector('.display-item-info');
-        if (
+        if (!info || info.querySelector('.box-cta-row')) return;
+        const item = buildItem(card);
+        const row = document.createElement('div');
+        row.className = 'box-cta-row';
+        const buy = document.createElement('button');
+        buy.type = 'button';
+        buy.className = 'box-buy-btn';
+        buy.textContent = 'קנה עכשיו';
+        buy.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          window.SweetCart.buyNow(item);
+        });
+        const add = document.createElement('button');
+        add.type = 'button';
+        add.className = 'box-add-btn';
+        add.textContent = '+ הוסף לעגלה';
+        add.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          window.SweetCart.add(item);
+          window.SweetCart.flashAdded(add);
+        });
+        row.appendChild(buy);
+        row.appendChild(add);
+        info.appendChild(row);
+      });
+    }
+    if (document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', injectButtons);
+    } else {
+      injectButtons();
+    }
+  })();
+
+  // === TYPEWRITER EFFECT FOR MOTION SHOWCASE ===
+  (function() {
+    const messages = [
+      'מונסטר קוקיז - רד וולווט, שוקולד צ׳יפס, אמסטרדם ועוד המון',
+      'מיני קאפקייקס רכות ומושלמות',
+      'צ׳יזקייקס למות - אוריאו, בראוניז או קלאסית',
+      'קוביות בראוניז לא מהעולם הזה',
+      'קראק פאי - ראו הוזהרתם',
+      'עוגת ניו יורק קרמבל חלומית',
+      'מאפין פטל נימוח ומתוק',
+      'עוגת שכבות בטעמי קרם גבינה ולוטוס'
+    ];
+    const target = document.getElementById('motion-text');
+    if (!target) return;
+
+    let messageIdx = 0;
+    let charIdx = 0;
+    let isDeleting = false;
+    const typeSpeed = 90;
+    const deleteSpeed = 45;
+    const pauseAtEnd = 1600;
+    const pauseAtStart = 400;
+
+    function tick() {
+      const current = messages[messageIdx];
+      if (!isDeleting) {
+        target.textContent = current.substring(0, charIdx + 1);
+        charIdx++;
+        if (charIdx === current.length) {
+          isDeleting = true;
+          setTimeout(tick, pauseAtEnd);
+          return;
+        }
+        setTimeout(tick, typeSpeed);
+      } else {
+        target.textContent = current.substring(0, charIdx - 1);
+        charIdx--;
+        if (charIdx === 0) {
+          isDeleting = false;
+          messageIdx = (messageIdx + 1) % messages.length;
+          setTimeout(tick, pauseAtStart);
+          return;
+        }
+        setTimeout(tick, deleteSpeed);
+      }
+    }
+
+    setTimeout(tick, 600);
+  })();
+
+  // === CAROUSEL SCROLL ===
+  function carouselScroll(direction) {
+    const carousel = document.getElementById('boxesCarousel');
+    if (!carousel) return;
+    const firstItem = carousel.querySelector('.display-item');
+    if (!firstItem) return;
+    const itemWidth = firstItem.offsetWidth + 22;
+    carousel.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
+  }
+
+  // === BOXES COUNTER UPDATE ===
+  (function() {
+    const carousel = document.getElementById('boxesCarousel');
+    const currentEl = document.getElementById('boxesCurrent');
+    if (!carousel || !currentEl) return;
+    const items = carousel.querySelectorAll('.display-item');
+    const total = items.length;
+    document.getElementById('boxesTotal').textContent = total;
+
+    function updateCounter() {
+      const firstItem = carousel.querySelector('.display-item');
+      if (!firstItem) return;
+      const itemWidth = firstItem.offsetWidth + 22;
+      // In RTL the scrollLeft is negative when scrolling toward the end
+      const scrollPos = Math.abs(carousel.scrollLeft);
+      const index = Math.round(scrollPos / itemWidth) + 1;
+      const clamped = Math.max(1, Math.min(total, index));
+      currentEl.textContent = clamped;
+    }
+
+    carousel.addEventListener('scroll', updateCounter, { passive: true });
+    updateCounter();
+  })();
+
+  // === BRANCHES CAROUSEL SCROLL ===
+  function branchesScroll(direction) {
+    const carousel = document.getElementById('branchesCarousel');
+    if (!carousel) return;
+    const firstItem = carousel.querySelector('.branch-card');
+    if (!firstItem) return;
+    const itemWidth = firstItem.offsetWidth + 22;
+    carousel.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
+  }
+
+  // === REVIEWS CAROUSEL SCROLL ===
+  function reviewsScroll(direction) {
+    const carousel = document.getElementById('reviewsCarousel');
+    if (!carousel) return;
+    const firstItem = carousel.querySelector('.review-card');
+    if (!firstItem) return;
+    const itemWidth = firstItem.offsetWidth + 22;
+    carousel.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
