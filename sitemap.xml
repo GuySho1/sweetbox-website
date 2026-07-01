@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+    <loc>https://sweetbox.co.il/</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://sweetbox.co.il/all-boxes.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://sweetbox.co.il/desserts-map.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://sweetbox.co.il/happy-hour.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://sweetbox.co.il/about.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://sweetbox.co.il/qna.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://sweetbox.co.il/terms.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://sweetbox.co.il/refunds.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://sweetbox.co.il/product-bestseller.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://sweetbox.co.il/01-box-styled.jpg</image:loc>
+      <image:title>Best Seller Box</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://sweetbox.co.il/product-dream.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://sweetbox.co.il/box-dream.jpg</image:loc>
+      <image:title>Dream Box</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://sweetbox.co.il/product-crackpie.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://sweetbox.co.il/box-crackpie.jpg</image:loc>
+      <image:title>Crack Pie Box</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://sweetbox.co.il/product-cupcake.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://sweetbox.co.il/box-cupcake.jpg</image:loc>
+      <image:title>Mini Cupcake Box</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://sweetbox.co.il/product-mix.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://sweetbox.co.il/box-mix.jpg</image:loc>
+      <image:title>Mix Box</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://sweetbox.co.il/product-premium.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://sweetbox.co.il/box-premium.png</image:loc>
+      <image:title>Premium Box</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://sweetbox.co.il/product-party.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://sweetbox.co.il/box-party.png</image:loc>
+      <image:title>Party Box</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://sweetbox.co.il/product-super.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://sweetbox.co.il/box-super.png</image:loc>
+      <image:title>Super Box</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://sweetbox.co.il/product-valentines.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://sweetbox.co.il/box-valentines.png</image:loc>
+      <image:title>Valentine's Box</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://sweetbox.co.il/product-gift.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://sweetbox.co.il/box-gift.png</image:loc>
+      <image:title>Gift Box</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://sweetbox.co.il/product-newyork.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://sweetbox.co.il/box-newyork.png</image:loc>
+      <image:title>New York Box</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://sweetbox.co.il/product-iloveyou.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://sweetbox.co.il/box-iloveyou.png</image:loc>
+      <image:title>I Love You Box</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://sweetbox.co.il/product-creamcake.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://sweetbox.co.il/box-creamcake.png</image:loc>
+      <image:title>Cream Cake Box</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://sweetbox.co.il/product-vegan.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://sweetbox.co.il/box-vegan.png</image:loc>
+      <image:title>Vegan Box</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://sweetbox.co.il/product-cheesebox.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://sweetbox.co.il/box-cheesy.jpg</image:loc>
+      <image:title>Cheese Box</image:title>
+    </image:image>
+  </url>
+
+</urlset>
